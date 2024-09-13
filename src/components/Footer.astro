@@ -1,0 +1,22 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="flex items-center pb-2 text-white justify-evenly bg-main-700">
+    <div class="flex items-center gap-4">
+        <a href="/eating-memories" class="flex flex-row items-center flex-1 gap-2">
+            <Icon name="mingcute:fork-knife-line" class="text-3xl"></Icon>
+            <div class="font-bold">Basic Food Blog</div>
+        </a>
+        <span class="cursor-default select-none">|</span>
+        <a href="/eating-memories/about" class="p-2">About</a>
+        <span class="cursor-default select-none">|</span>
+        <a href="/eating-memories/faq" class="p-2">FAQ</a>
+    </div>
+    <a href=`https://github.com/kymlu/eating-memories`>
+        <div class="flex flex-row items-center gap-1 p-2">
+            <Icon name="mingcute:github-2-line"></Icon>
+            Github
+        </div>
+    </a>
+</div>

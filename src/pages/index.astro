@@ -1,3 +1,31 @@
-<body>
-  <h1>Testing my new site</h1>
-</body>
+---
+import "../styles/global.css";
+import RecipePreview from "../layouts/RecipePreview.astro";
+import { dateSort } from "../utils";
+import { Icon } from "astro-icon/components"
+import BasePage from "../layouts/BasePage.astro";
+const allRecipes = await Astro.glob("./posts/*.md");
+var filteredRecipes = 0;
+
+---
+
+<BasePage>
+    <div class="flex justify-between">
+		<div class="flex flex-wrap items-center gap-5 portrait:flex-col">
+			<div>
+				<input class="px-2 border-2 border-main-400" type="search" placeholder="Search name or ingredient"/>
+			</div>
+			<button class="flex items-center"><span>Cuisine </span><span><Icon name="mingcute:down-line"></Icon></span></button>
+			<button class="flex items-center"><span>Course </span><span><Icon name="mingcute:down-line"></Icon></span></button>
+			<button class="flex items-center"><span>Dietary </span><span><Icon name="mingcute:down-line"></Icon></span></button>
+		</div>
+		<button><Icon class="hover:text-main-400" name="mingcute:sort-ascending-line"></Icon></button>
+	</div>
+    <br>
+    
+	<div class="grid gap-2 landscape:grid-cols-2">
+        { allRecipes.sort((post) => post.frontmatter.title).map((post) =>
+            <RecipePreview name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine}></RecipePreview>)
+        }
+    </div>
+</BasePage>

@@ -1,0 +1,129 @@
+---
+import BasePage from "./BasePage.astro";
+import { Icon } from "astro-icon/components"
+import MiniRecipePreview from "./MiniRecipePreview.astro";
+import { recipeIndex } from "../recipe-index.ts"
+
+interface Props {
+    frontmatter: Recipe;
+}
+
+const { frontmatter } = Astro.props;
+const relatedRecipes = await Astro.glob("/src/pages/posts/*.md").then((recipes) => { return recipes.filter((recipe) => recipe.frontmatter.ingredients && 
+    recipe.frontmatter.ingredients.flatMap((group: IngredientsGroup) => group.ingredients).some((ingredient: Ingredient) => {
+        return ingredient.recipeId && ingredient.recipeId == frontmatter.id}))});
+
+var scale = 1;
+
+interface Recipe {
+    layout: string;
+    id: number;
+    title: string;
+    pubDate: Date;
+    description: string;
+    cuisine?: string;
+    courseType?: string;
+    dietary?: string[];
+    yield?: number;
+    ingredients?: IngredientsGroup[];
+    url: string;
+}
+
+interface IngredientsGroup {
+    name?: string;
+    ingredients: Ingredient[];
+    recipeId?: number;
+}
+
+interface Ingredient {
+    quantity?: number;
+    measurement?: string;
+    name: string;
+    note?: string;
+    recipeId?: number;
+}
+---
+<script is:inline define:vars={{frontmatter}}>
+    var scale = 0;
+    function increaseScale(){
+        scale++;
+    }
+    
+    function decreaseScale(){
+        scale--;
+    }
+
+    document.getElementById("minus-yield")?.addEventListener("click", () => {scale--; });
+    document.getElementById("plus-yield")?.addEventListener("click", () => {scale++;});
+</script>
+
+<BasePage title={frontmatter.title}>
+    <h1 class="flex items-center gap-2">{frontmatter.title}<Icon name="mingcute:heart-line"></Icon></h1>
+    <div class="flex flex-col gap-x-24 landscape:flex-row">
+        <div class="landscape:max-w-[25%]">
+            <div class="text-main-900">{frontmatter.description}</div>
+            <div class="flex flex-row gap-2">
+                { frontmatter.cuisine && <span class="px-2 py-1 capitalize rounded-xl bg-main-300">{frontmatter.cuisine}</span>}
+                { frontmatter.courseType && <span class="px-2 py-1 capitalize rounded-xl bg-main-300">{frontmatter.courseType}</span>}
+                { frontmatter.dietary && <div class="flex flex-row gap-2">{frontmatter.dietary.map((diet) => <span class="px-2 py-1 capitalize rounded-xl bg-main-300">{diet}</span>)}</div>}
+            </div>
+            <br>
+            { frontmatter.yield && 
+                <div class="flex flex-row gap-2">
+                    <button id="minus-yield"><Icon class="hover:text-main-400" name="mingcute:minimize-fill"></Icon></button>
+                    <span id="y">Yield: {frontmatter.yield}</span>
+                    <button id="plus-yield"><Icon class="hover:text-main-400" name="mingcute:plus-fill"></Icon></button>
+                </div>
+            }
+            <div>scale: x</div>
+            <br>
+            {frontmatter.ingredients && 
+                <div>
+                    <h2 class="capitalize">Ingredients</h2>
+                    <div class="flex flex-col gap-1">
+                        {frontmatter.ingredients.map((group: IngredientsGroup) => (
+                            <div>
+                                {group.name && <div>{group.recipeId ? <a href={recipeIndex[group.recipeId]} class="underline text-main-500"><h3 class="capitalize">{group.name}</h3></a> : <h3 class="capitalize">{group.name}</h3>}</div>}
+                                <ul>
+                                    {
+                                        group.ingredients.map((ingredient: Ingredient) => 
+                                            {
+                                                const text = <span>
+                                                        {ingredient.quantity && <span>{ingredient.quantity * scale} </span>}
+                                                        {ingredient.measurement && <span>{ingredient.measurement} </span>}
+                                                        {ingredient.name && <span>{ingredient.name} </span>}
+                                                        {ingredient.note && <span class="text-xs italic text-main-800">{ingredient.note}</span>}
+                                                    </span>
+                                                return <li>
+                                                            <input type="checkbox">
+                                                            {ingredient.recipeId ? <a href={recipeIndex[ingredient.recipeId]} class="underline text-main-500">{text}</a> : text}
+                                                        </li>
+                                            }
+                                    )
+                                }
+                                </ul>
+                                <br>
+                            </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="flex-1">
+            <h2 class="capitalize">Method</h2>
+            <slot/>
+            {relatedRecipes.length > 0 && 
+                <div>
+                    <br>
+                    <h2>Recipes using this one</h2>
+                    <div class="grid grid-cols-4 gap-1">
+                        { relatedRecipes.sort((recipe) => recipe.frontmatter.title).map((post: any) =>
+                            <MiniRecipePreview name={post.frontmatter.title} link={post.url}></MiniRecipePreview>)
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</BasePage>

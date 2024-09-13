@@ -1,0 +1,27 @@
+---
+import "../styles/global.css"
+
+interface Props {
+	name: string;
+    description: string;
+	link?: string;
+	imageLink?: string;
+	cuisine?: string;
+	course?: string;
+	dietary?: string[];
+}
+const { name, description, link, imageLink, cuisine, course, dietary} = Astro.props;
+---
+
+<a href={link} class="box-content flex flex-row gap-2 p-2 transition-all duration-100 border-2 border-solid rounded-lg min-h-5 border-main-500 hover:shadow-custom hover:shadow-main-400">
+    <img src={imageLink ?? "/eating-memories/favicon.svg"} class="w-20 h-20 rounded-lg bg-main-100">
+    <div class="w-9/12">
+        <span class="text-main-800"><b>{name}</b></span>
+        <span class="overflow-hidden text-ellipsis" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{description}</span>
+        <div class="flex gap-1 text-sm">
+            {cuisine && <span class="px-2 py-1 rounded-xl bg-main-300">{cuisine}</span>}
+            {course && <span class="px-2 py-1 rounded-xl bg-main-300">{course}</span>}
+            {dietary && <div class="flex gap-1 text-sm">{dietary.map((diet: String) => <span class="px-2 py-1 rounded-xl bg-main-300">{diet}</span>)}</div>}
+        </div>
+    </div> 
+</a>

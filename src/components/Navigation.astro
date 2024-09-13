@@ -1,0 +1,19 @@
+---
+import { Icon } from "astro-icon/components";
+
+---
+<div class="flex flex-row items-center justify-between px-20 pt-5 pb-1 border-b-4 border-main-600 portrait:px-10">
+    <a href="/eating-memories" class="flex flex-row items-center flex-1 gap-2">
+		<Icon name="mingcute:fork-knife-line" class="text-3xl text-main-500"></Icon>
+    	<h1>Basic Food Blog</h1>
+	</a>
+    <div class="flex flex-row items-center gap-2">
+		{[
+			["Recipes", "/eating-memories"],
+			["About", "/eating-memories/about"],
+			].map(([title, url]) => (
+			<a href={url} class="px-2 py-1 transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">{title}</a>
+		))}
+      <button><Icon class="hover:text-main-400" name="mingcute:sun-line"></Icon></button>
+    </div>
+</div>
