@@ -1,7 +1,9 @@
 ---
 import "../styles/global.css"
+import Fav from "./Fave.astro";
 
 interface Props {
+    id: number;
 	name: string;
     description: string;
 	link?: string;
@@ -10,18 +12,25 @@ interface Props {
 	course?: string;
 	dietary?: string[];
 }
-const { name, description, link, imageLink, cuisine, course, dietary} = Astro.props;
+const { id, name, description, link, imageLink, cuisine, course, dietary} = Astro.props;
 ---
 
-<a href={link} class="box-content flex flex-row gap-2 p-2 transition-all duration-100 border-2 border-solid rounded-lg min-h-5 border-main-500 hover:shadow-custom hover:shadow-main-400">
-    <img src={imageLink ?? "/eating-memories/favicon.svg"} class="w-20 h-20 rounded-lg bg-main-100">
-    <div class="w-9/12">
-        <span class="text-main-800"><b>{name}</b></span>
-        <span class="overflow-hidden text-ellipsis" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{description}</span>
-        <div class="flex gap-1 text-sm">
-            {cuisine && <span class="px-2 py-1 rounded-xl bg-main-300">{cuisine}</span>}
-            {course && <span class="px-2 py-1 rounded-xl bg-main-300">{course}</span>}
-            {dietary && <div class="flex gap-1 text-sm">{dietary.map((diet: String) => <span class="px-2 py-1 rounded-xl bg-main-300">{diet}</span>)}</div>}
-        </div>
-    </div> 
-</a>
+<div class="box-content relative flex flex-row justify-between p-2 transition-all duration-100 border-2 border-solid rounded-lg min-w-60 min-h-5 border-main-500 hover:shadow-custom hover:shadow-main-400">
+    <a href={link} class="flex flex-row flex-1 gap-4 pr-7">
+        <img src={imageLink ?? "/eating-memories/favicon.svg"} class="w-20 h-20 rounded-lg bg-main-100">
+        <div class="flex-1">
+            <div class="flex justify-between">
+                <span class="text-main-800"><b>{name}</b></span>
+            </div>
+            <span class="overflow-hidden text-ellipsis" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{description}</span>
+            <div class="flex gap-1 text-sm">
+                {cuisine && <span class="px-2 py-1 rounded-xl bg-main-300">{cuisine}</span>}
+                {course && <span class="px-2 py-1 rounded-xl bg-main-300">{course}</span>}
+                {dietary && <div class="flex gap-1 text-sm">{dietary.map((diet: String) => <span class="px-2 py-1 rounded-xl bg-main-300">{diet}</span>)}</div>}
+            </div>
+        </div> 
+    </a>
+    <div class="absolute right-2">
+        <Fav id={id}></Fav>
+    </div>
+</div>

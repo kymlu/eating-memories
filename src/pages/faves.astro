@@ -1,0 +1,32 @@
+---
+import "../styles/global.css";
+import BasePage from "../layouts/BasePage.astro";
+---
+<BasePage>
+	<h1>Favourited Recipes</h1>
+	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
+        <span id="no-faves" class="hidden">No Favourited Recipes Found</span>
+    </div>
+</BasePage>
+<!-- TODO: make this work -->
+<script>
+	import type { MarkdownInstance } from "astro";
+    import RecipePreview from "../layouts/RecipePreview.astro";
+    import {LOCAL_STORAGE_KEYS, LOCAL_STORAGE_SEPARATOR} from "../utils.ts";
+    await Astro.glob("/eating-memories/src/pages/posts/*.md").then((recipes) => {
+        const favesString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.FAVES);
+        let favesList: MarkdownInstance<Record<string, any>>[] = [];
+        if(favesString){
+            let faveIdList = favesString.split(LOCAL_STORAGE_SEPARATOR).filter(f => f != "");
+            favesList = recipes.filter((recipe) => faveIdList.includes(recipe.frontmatter.id));
+        }
+        if (favesList.length > 0) {
+            let listElement = document.querySelector("#recipe-list");
+            favesList.forEach(f => {
+                listElement?.appendChild(RecipePreview({id: f.frontmatter.id, name:f.frontmatter.title,  description: f.frontmatter.description, link: f.url, dietary: f.frontmatter.dietary, course: f.frontmatter.course, cuisine: f.frontmatter.cuisine}))
+            });
+        } else {
+            document.querySelector("#no-faves")?.classList.remove("hidden");
+        }
+    });
+</script>

@@ -1,19 +1,54 @@
 ---
 import { Icon } from "astro-icon/components";
-
+import { getPageLink, PAGE_NAMES } from "../utils";
 ---
-<div class="flex flex-row items-center justify-between px-20 pt-5 pb-1 border-b-4 border-main-600 portrait:px-10">
-    <a href="/eating-memories" class="flex flex-row items-center flex-1 gap-2">
+<div class="flex flex-row items-center justify-between gap-2 px-20 pt-5 pb-1 border-b-4 border-main-600 portrait:px-10">
+	<button id="close-button" class="hidden landscape:hidden"><Icon class="hover:text-main-400" name="mingcute:close-line"></Icon></button>
+	<button id="menu-button" class="landscape:hidden"><Icon class="hover:text-main-400" name="mingcute:menu-line"></Icon></button>
+    <a href={getPageLink()} class="flex flex-row items-center flex-1 gap-2 portrait:justify-center">
 		<Icon name="mingcute:fork-knife-line" class="text-3xl text-main-500"></Icon>
     	<h1>Basic Food Blog</h1>
 	</a>
-    <div class="flex flex-row items-center gap-2">
+    <div class="flex flex-row items-center gap-2 portrait:hidden">
 		{[
-			["Recipes", "/eating-memories"],
-			["About", "/eating-memories/about"],
-			].map(([title, url]) => (
+			["Recipes", getPageLink()],
+			["About", getPageLink(PAGE_NAMES.ABOUT)],
+			["FAQ", getPageLink(PAGE_NAMES.FAQ)],
+			["Saved", getPageLink(PAGE_NAMES.FAVES)],
+		].map(([title, url]) => (
 			<a href={url} class="px-2 py-1 transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">{title}</a>
 		))}
-      <button><Icon class="hover:text-main-400" name="mingcute:sun-line"></Icon></button>
     </div>
+	<button><Icon class="hover:text-main-400" name="mingcute:sun-line"></Icon></button>
 </div>
+<div id="menu" class="absolute left-0 z-10 hidden">
+	<div id="menu-background" class="absolute w-screen h-screen opacity-50 bg-main-950"></div>
+	<div class="absolute left-0 flex gap-5 flex-col w-[60vw] h-screen p-10 bg-white">
+		{[
+			["Recipes", getPageLink()],
+			["About", getPageLink(PAGE_NAMES.ABOUT)],
+			["FAQ", getPageLink(PAGE_NAMES.ABOUT)],
+			["Saved", getPageLink(PAGE_NAMES.FAVES)],
+			].map(([title, url]) => (
+			<a href={url} class="px-2 py-1 text-xl transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">{title}</a>
+		))}
+	</div>
+</div>
+
+<script>
+	function toggleMenu(){
+		document.getElementById("menu")?.classList.toggle("hidden");
+		document.getElementById("close-button")?.classList.toggle("hidden");
+		document.getElementById("menu-button")?.classList.toggle("hidden");
+	}
+	
+	function hideMenu(){
+		document.getElementById("menu")?.classList.add("hidden");
+		document.getElementById("close-button")?.classList.add("hidden");
+		document.getElementById("menu-button")?.classList.remove("hidden");
+	}
+
+	document.getElementById("menu-button")?.addEventListener("click", toggleMenu);
+	document.getElementById("menu-background")?.addEventListener("click", hideMenu);
+	document.getElementById("close-button")?.addEventListener("click", hideMenu);
+</script>

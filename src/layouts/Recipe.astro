@@ -2,7 +2,8 @@
 import BasePage from "./BasePage.astro";
 import { Icon } from "astro-icon/components"
 import MiniRecipePreview from "./MiniRecipePreview.astro";
-import { recipeIndex } from "../recipe-index.ts"
+import { getPostLink } from "../utils";
+import Fave from "./Fave.astro";
 
 interface Props {
     frontmatter: Recipe;
@@ -10,10 +11,9 @@ interface Props {
 
 const { frontmatter } = Astro.props;
 const relatedRecipes = await Astro.glob("/src/pages/posts/*.md").then((recipes) => { return recipes.filter((recipe) => recipe.frontmatter.ingredients && 
-    recipe.frontmatter.ingredients.flatMap((group: IngredientsGroup) => group.ingredients).some((ingredient: Ingredient) => {
-        return ingredient.recipeId && ingredient.recipeId == frontmatter.id}))});
-
-var scale = 1;
+    (recipe.frontmatter.ingredients.some((group: IngredientsGroup) => group.recipeId && group.recipeId == frontmatter.id)
+    || recipe.frontmatter.ingredients.flatMap((group: IngredientsGroup) => group.ingredients).some((ingredient: Ingredient) => {
+        return ingredient.recipeId && ingredient.recipeId == frontmatter.id})))});
 
 interface Recipe {
     layout: string;
@@ -43,22 +43,11 @@ interface Ingredient {
     recipeId?: number;
 }
 ---
-<script is:inline define:vars={{frontmatter}}>
-    var scale = 0;
-    function increaseScale(){
-        scale++;
-    }
-    
-    function decreaseScale(){
-        scale--;
-    }
-
-    document.getElementById("minus-yield")?.addEventListener("click", () => {scale--; });
-    document.getElementById("plus-yield")?.addEventListener("click", () => {scale++;});
-</script>
-
 <BasePage title={frontmatter.title}>
-    <h1 class="flex items-center gap-2">{frontmatter.title}<Icon name="mingcute:heart-line"></Icon></h1>
+    <div class="flex items-center gap-1">
+        <h1 class="flex items-center gap-2">{frontmatter.title}</h1>
+        <Fave id={frontmatter.id}></Fave>
+    </div>
     <div class="flex flex-col gap-x-24 landscape:flex-row">
         <div class="landscape:max-w-[25%]">
             <div class="text-main-900">{frontmatter.description}</div>
@@ -69,34 +58,33 @@ interface Ingredient {
             </div>
             <br>
             { frontmatter.yield && 
-                <div class="flex flex-row gap-2">
-                    <button id="minus-yield"><Icon class="hover:text-main-400" name="mingcute:minimize-fill"></Icon></button>
-                    <span id="y">Yield: {frontmatter.yield}</span>
-                    <button id="plus-yield"><Icon class="hover:text-main-400" name="mingcute:plus-fill"></Icon></button>
-                </div>
+                <yield-component data-default-value={frontmatter.yield} class="flex flex-row gap-2">
+                    <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name="mingcute:minimize-fill"></Icon></button>
+                    <span>Yield: <span id="yield"></span></span>
+                    <button id="plus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name="mingcute:plus-fill"></Icon></button>
+                    <br>
+                </yield-component>
             }
-            <div>scale: x</div>
-            <br>
             {frontmatter.ingredients && 
                 <div>
                     <h2 class="capitalize">Ingredients</h2>
                     <div class="flex flex-col gap-1">
                         {frontmatter.ingredients.map((group: IngredientsGroup) => (
                             <div>
-                                {group.name && <div>{group.recipeId ? <a href={recipeIndex[group.recipeId]} class="underline text-main-500"><h3 class="capitalize">{group.name}</h3></a> : <h3 class="capitalize">{group.name}</h3>}</div>}
+                                {group.name && <div>{group.recipeId ? <a href={getPostLink(group.recipeId)} class="underline text-main-500"><h3 class="capitalize">{group.name}</h3></a> : <h3 class="capitalize">{group.name}</h3>}</div>}
                                 <ul>
                                     {
                                         group.ingredients.map((ingredient: Ingredient) => 
                                             {
                                                 const text = <span>
-                                                        {ingredient.quantity && <span>{ingredient.quantity * scale} </span>}
+                                                        {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity}></ingredient-quantity>}
                                                         {ingredient.measurement && <span>{ingredient.measurement} </span>}
                                                         {ingredient.name && <span>{ingredient.name} </span>}
                                                         {ingredient.note && <span class="text-xs italic text-main-800">{ingredient.note}</span>}
                                                     </span>
                                                 return <li>
                                                             <input type="checkbox">
-                                                            {ingredient.recipeId ? <a href={recipeIndex[ingredient.recipeId]} class="underline text-main-500">{text}</a> : text}
+                                                            {ingredient.recipeId ? <a href={getPostLink(ingredient.recipeId)} class="underline text-main-500">{text}</a> : text}
                                                         </li>
                                             }
                                     )
@@ -115,11 +103,11 @@ interface Ingredient {
             <slot/>
             {relatedRecipes.length > 0 && 
                 <div>
-                    <br>
-                    <h2>Recipes using this one</h2>
-                    <div class="grid grid-cols-4 gap-1">
+                    <hr>
+                    <h2>Use this recipe to make</h2>
+                    <div class="flex flex-row gap-2 p-2 overflow-y-scroll">
                         { relatedRecipes.sort((recipe) => recipe.frontmatter.title).map((post: any) =>
-                            <MiniRecipePreview name={post.frontmatter.title} link={post.url}></MiniRecipePreview>)
+                            <MiniRecipePreview id={post.frontmatter.id} name={post.frontmatter.title} link={post.url}></MiniRecipePreview>)
                         }
                     </div>
                 </div>
@@ -127,3 +115,80 @@ interface Ingredient {
         </div>
     </div>
 </BasePage>
+
+
+<script>
+    class Yield extends HTMLElement {
+        defaultValue: number;
+        currentValue: number;
+        constructor(){
+            super();
+            this.defaultValue = 1;
+            this.currentValue = 1;
+        }
+        
+        connectedCallback(){
+            if(this.dataset.defaultValue){
+                this.currentValue = this.defaultValue = parseInt(this.dataset.defaultValue);
+                if(this.querySelector("#yield")){
+                    (this.querySelector("#yield") as HTMLElement).innerText = this.currentValue.toString();
+                }
+                this.checkButtons();
+            }
+            (this.querySelector("#minus-yield") as HTMLElement).addEventListener("click", () => {
+                this.currentValue--;
+                this.updateScale();
+                this.checkButtons();
+            });
+            (this.querySelector("#plus-yield") as HTMLElement).addEventListener("click", () => {
+                this.updateScale();
+                this.currentValue++;
+                this.checkButtons();
+            });
+        }
+
+        checkButtons() {
+            if(this.currentValue == 1) {
+                this.querySelector("#minus-yield")?.setAttribute("disabled", "");
+            } else {
+                this.querySelector("#minus-yield")?.removeAttribute("disabled");
+            }
+            
+            if(this.currentValue == 100){
+                this.querySelector("#plus-yield")?.setAttribute("disabled", "");
+            } else {
+                this.querySelector("#plus-yield")?.removeAttribute("disabled");
+            }
+        }
+
+        updateScale(){
+            (this.querySelector("#yield") as HTMLElement).innerText = this.currentValue.toString();
+            (Array.from(document.querySelectorAll("ingredient-quantity")) as IngredientQuantity[]).forEach((count: IngredientQuantity) => {
+                    count.scaleValue(this.currentValue/this.defaultValue);
+            })
+        }   
+    }
+    customElements.define('yield-component', Yield);
+
+    class IngredientQuantity extends HTMLElement {
+        defaultValue: number;
+        constructor(){
+            super();
+            this.defaultValue = 1;
+        }
+
+        connectedCallback(){
+            if(this.dataset.defaultValue){
+                this.defaultValue = parseFloat(this.dataset.defaultValue);
+                this.innerText = this.defaultValue.toString();
+            }
+        }
+        
+        scaleValue(scale: number){
+            this.innerText = parseFloat((this.defaultValue * scale).toFixed(1)).toString();
+        }
+    }
+
+    customElements.define('ingredient-quantity', IngredientQuantity);
+    
+</script>
