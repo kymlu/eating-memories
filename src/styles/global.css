@@ -198,7 +198,10 @@ button, a {
 }
 
 blockquote {
-    @apply bg-main-200 pl-5 border-l-4 border-l-main-600;
+    @apply bg-main-100 pt-2 pb-1 px-5 border-l-4 border-l-main-600;
+    blockquote {
+        @apply border-none pb-0;
+    }
 }
 
 p {
@@ -213,12 +216,16 @@ h2 {
     @apply text-lg;
 }
 
-ul, ol {
-    @apply pl-10;
+h3, h4, h5 {
+    @apply mt-3;
+}
+
+ul {
+    @apply pl-4;
 }
 
 ol {
-    @apply list-decimal;
+    @apply list-decimal pl-6;
 }
 
 hr {

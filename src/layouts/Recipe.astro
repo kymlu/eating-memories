@@ -11,9 +11,9 @@ interface Props {
 
 const { frontmatter } = Astro.props;
 const relatedRecipes = await Astro.glob("/src/pages/posts/*.md").then((recipes) => { return recipes.filter((recipe) => recipe.frontmatter.ingredients && 
-    (recipe.frontmatter.ingredients.some((group: IngredientsGroup) => group.recipeId && group.recipeId == frontmatter.id)
+    (recipe.frontmatter.ingredients.some((group: IngredientsGroup) => group.recipeId && group.recipeId ==frontmatter.id)
     || recipe.frontmatter.ingredients.flatMap((group: IngredientsGroup) => group.ingredients).some((ingredient: Ingredient) => {
-        return ingredient.recipeId && ingredient.recipeId == frontmatter.id})))});
+        return ingredient.recipeId && ingredient.recipeId ==frontmatter.id})))});
 
 interface Recipe {
     layout: string;
@@ -21,10 +21,13 @@ interface Recipe {
     title: string;
     pubDate: Date;
     description: string;
+    adaptedFrom?: string;
+    adaptedFromURL?: string;
     cuisine?: string;
     courseType?: string;
     dietary?: string[];
     yield?: number;
+    yieldUnit?: string;
     ingredients?: IngredientsGroup[];
     url: string;
 }
@@ -37,7 +40,7 @@ interface IngredientsGroup {
 
 interface Ingredient {
     quantity?: number;
-    measurement?: string;
+    unit?: string;
     name: string;
     note?: string;
     recipeId?: number;
@@ -48,17 +51,17 @@ interface Ingredient {
         <h1 class="flex items-center gap-2">{frontmatter.title}</h1>
         <Fave id={frontmatter.id}></Fave>
     </div>
-    <div class="flex flex-col gap-x-24 landscape:flex-row">
-        <div class="landscape:max-w-[25%]">
+    <div class="flex flex-col gap-x-16 landscape:flex-row">
+        <div class="landscape:max-w-[40%] landscape:min-w-[25%] flex flex-col gap-2">
             <div class="text-main-900">{frontmatter.description}</div>
-            <div class="flex flex-row gap-2">
-                { frontmatter.cuisine && <span class="px-2 py-1 capitalize rounded-xl bg-main-300">{frontmatter.cuisine}</span>}
-                { frontmatter.courseType && <span class="px-2 py-1 capitalize rounded-xl bg-main-300">{frontmatter.courseType}</span>}
-                { frontmatter.dietary && <div class="flex flex-row gap-2">{frontmatter.dietary.map((diet) => <span class="px-2 py-1 capitalize rounded-xl bg-main-300">{diet}</span>)}</div>}
+            <div class="flex flex-row flex-wrap items-center gap-2">
+                {frontmatter.cuisine && <span class="px-2 py-1 capitalize whitespace-nowrap rounded-xl bg-main-300">{frontmatter.cuisine }</span>}
+                {frontmatter.courseType && <span class="px-2 py-1 capitalize whitespace-nowrap rounded-xl bg-main-300">{frontmatter.courseType }</span>}
+                {frontmatter.dietary && <div class="flex flex-row gap-2">{frontmatter.dietary.map((diet) => <span class="px-2 py-1 capitalize whitespace-nowrap rounded-xl bg-main-300">{ diet }</span>)}</div>}
             </div>
-            <br>
-            { frontmatter.yield && 
-                <yield-component data-default-value={frontmatter.yield} class="flex flex-row gap-2">
+            {frontmatter.adaptedFrom && <a href={frontmatter.adaptedFromURL} class="text-main-900">Adapted from {frontmatter.adaptedFrom}</a>}
+            {frontmatter.yield && 
+                <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="flex flex-row gap-2">
                     <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name="mingcute:minimize-fill"></Icon></button>
                     <span>Yield: <span id="yield"></span></span>
                     <button id="plus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name="mingcute:plus-fill"></Icon></button>
@@ -78,19 +81,20 @@ interface Ingredient {
                                             {
                                                 const text = <span>
                                                         {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity}></ingredient-quantity>}
-                                                        {ingredient.measurement && <span>{ingredient.measurement} </span>}
+                                                        {ingredient.unit && <span>{ingredient.unit} </span>}
                                                         {ingredient.name && <span>{ingredient.name} </span>}
                                                         {ingredient.note && <span class="text-xs italic text-main-800">{ingredient.note}</span>}
                                                     </span>
-                                                return <li>
-                                                            <input type="checkbox">
-                                                            {ingredient.recipeId ? <a href={getPostLink(ingredient.recipeId)} class="underline text-main-500">{text}</a> : text}
-                                                        </li>
+                                                return <ingredient-component>
+                                                            <li class="flex">
+                                                                <input type="checkbox" class="mt-2 mr-2">
+                                                                {ingredient.recipeId ? <a href={getPostLink(ingredient.recipeId)} class="underline text-main-500">{text}</a> : text}
+                                                            </li>
+                                                        </ingredient-component>
                                             }
                                     )
                                 }
                                 </ul>
-                                <br>
                             </div>
                             ))
                         }
@@ -99,7 +103,8 @@ interface Ingredient {
             }
         </div>
         <div class="flex-1">
-            <h2 class="capitalize">Method</h2>
+            <br class="landscape:hidden">
+            <h2 class="capitalize landscape:hidden">Method</h2>
             <slot/>
             {relatedRecipes.length > 0 && 
                 <div>
@@ -118,23 +123,42 @@ interface Ingredient {
 
 
 <script>
+    class Ingredient extends HTMLElement {
+        constructor(){
+            super();
+        }
+        connectedCallback(){
+            this.querySelector("input")?.addEventListener("change", () => {
+                this.querySelector("li")?.classList.toggle("line-through");
+                this.querySelector("li")?.classList.toggle("decoration-2");
+                this.querySelector("li")?.classList.toggle("decoration-main-600");
+            })
+        }
+    }
+    customElements.define('ingredient-component', Ingredient);
+
     class Yield extends HTMLElement {
         defaultValue: number;
         currentValue: number;
+        unit: string;
         constructor(){
             super();
             this.defaultValue = 1;
             this.currentValue = 1;
+            this.unit = "";
         }
         
         connectedCallback(){
             if(this.dataset.defaultValue){
-                this.currentValue = this.defaultValue = parseInt(this.dataset.defaultValue);
-                if(this.querySelector("#yield")){
-                    (this.querySelector("#yield") as HTMLElement).innerText = this.currentValue.toString();
+                if(this.dataset.unit){
+                    this.unit = this.dataset.unit;
                 }
+                
+                this.currentValue = this.defaultValue = parseInt(this.dataset.defaultValue);
+                this.setYieldString();
                 this.checkButtons();
             }
+
             (this.querySelector("#minus-yield") as HTMLElement).addEventListener("click", () => {
                 this.currentValue--;
                 this.updateScale();
@@ -161,10 +185,19 @@ interface Ingredient {
             }
         }
 
+        setYieldString(){
+            (this.querySelector("#yield") as HTMLElement).innerText = 
+                `${this.currentValue.toString()} ${this.currentValue == 1 
+                    ? this.unit : 
+                    (this.unit[this.unit.length-1] == "y" ? 
+                        `${this.unit.slice(0, this.unit.length-1)}ies` : 
+                        `${this.unit}s`)}`;
+        }
+
         updateScale(){
-            (this.querySelector("#yield") as HTMLElement).innerText = this.currentValue.toString();
+            this.setYieldString();
             (Array.from(document.querySelectorAll("ingredient-quantity")) as IngredientQuantity[]).forEach((count: IngredientQuantity) => {
-                    count.scaleValue(this.currentValue/this.defaultValue);
+                count.scaleValue(this.currentValue/this.defaultValue);
             })
         }   
     }
@@ -185,7 +218,7 @@ interface Ingredient {
         }
         
         scaleValue(scale: number){
-            this.innerText = parseFloat((this.defaultValue * scale).toFixed(1)).toString();
+            this.innerText = parseFloat((this.defaultValue * scale).toFixed(2)).toString();
         }
     }
 

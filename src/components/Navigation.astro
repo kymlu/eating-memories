@@ -1,13 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
-import { getPageLink, PAGE_NAMES } from "../utils";
+import { getPageLink, PAGE_NAMES, SITE_TITLE } from "../utils";
 ---
 <div class="flex flex-row items-center justify-between gap-2 px-20 pt-5 pb-1 border-b-4 border-main-600 portrait:px-10">
 	<button id="close-button" class="hidden landscape:hidden"><Icon class="hover:text-main-400" name="mingcute:close-line"></Icon></button>
 	<button id="menu-button" class="landscape:hidden"><Icon class="hover:text-main-400" name="mingcute:menu-line"></Icon></button>
     <a href={getPageLink()} class="flex flex-row items-center flex-1 gap-2 portrait:justify-center">
 		<Icon name="mingcute:fork-knife-line" class="text-3xl text-main-500"></Icon>
-    	<h1>Basic Food Blog</h1>
+    	<h1>{ SITE_TITLE}</h1>
 	</a>
     <div class="flex flex-row items-center gap-2 portrait:hidden">
 		{[
