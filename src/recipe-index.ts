@@ -9,5 +9,6 @@ export const recipeIndex: RecipeIndex = {
     "pastry-3": "rainbow-flaky-mooncake",
     "filling-1": "bean-paste",
     "sauce-1": "roasted-veggie-pasta-sauce",
-    "dessert-1": "snow-skin-mooncake"
+    "sauce-2": "teriyaki-sauce",
+    "dessert-2": "apple-crumble",
 };

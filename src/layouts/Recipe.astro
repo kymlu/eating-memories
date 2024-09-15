@@ -199,8 +199,8 @@ interface Ingredient {
                 this.checkButtons();
             });
             (this.querySelector("#plus-yield") as HTMLElement).addEventListener("click", () => {
-                this.updateScale();
                 this.currentValue++;
+                this.updateScale();
                 this.checkButtons();
             });
         }
