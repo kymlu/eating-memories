@@ -60,7 +60,7 @@ interface Ingredient {
                 {frontmatter.courseType && <span class="px-2 py-1 capitalize whitespace-nowrap rounded-xl bg-main-300">{frontmatter.courseType }</span>}
                 {frontmatter.dietary && <div class="flex flex-row gap-2">{frontmatter.dietary.map((diet) => <span class="px-2 py-1 capitalize whitespace-nowrap rounded-xl bg-main-300">{ diet }</span>)}</div>}
             </div>
-            {frontmatter.adaptedFrom && <a href={frontmatter.adaptedFromURL} class="text-main-900">Adapted from {frontmatter.adaptedFrom}</a>}
+            {frontmatter.adaptedFrom && <a target="_blank" rel="noopener noreferrer" href={frontmatter.adaptedFromURL} class="text-main-900">Adapted from {frontmatter.adaptedFrom}</a>}
             {frontmatter.yield && 
                 <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="flex flex-row gap-2">
                     <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.MINUS}></Icon></button>
