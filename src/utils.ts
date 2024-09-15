@@ -1,7 +1,7 @@
 import type { MarkdownInstance } from "astro";
 import { recipeIndex } from "./recipe-index";
 
-export const SITE_TITLE: string = "Another Recipe Repository";
+export const SITE_TITLE: string = "Recipe Vault";
 export const SITE_SLUG: string = "eating-memories";
 export const PAGE_NAMES = {
     HOME: "",

@@ -1,11 +1,8 @@
 ---
-import "../styles/global.css";
 import RecipePreview from "../layouts/RecipePreview.astro";
-import { dateSort } from "../utils";
 import { Icon } from "astro-icon/components"
 import BasePage from "../layouts/BasePage.astro";
 const allRecipes = await Astro.glob("./posts/*.md");
-var filteredRecipes = 0;
 
 ---
 
