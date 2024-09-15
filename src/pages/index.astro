@@ -2,7 +2,7 @@
 import RecipePreview from "../layouts/RecipePreview.astro";
 import { Icon } from "astro-icon/components"
 import BasePage from "../layouts/BasePage.astro";
-import { ICONS } from "../utils";
+import { ICONS } from "../const.ts";
 
 const allRecipes = await Astro.glob("./posts/*.md");
 

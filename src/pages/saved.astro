@@ -19,7 +19,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
     <span id="no-saved" class="hidden">You have no saved recipes!</span>
 </BasePage>
 <script>
-    import {LOCAL_STORAGE_KEYS} from "../utils.ts";
+    import {LOCAL_STORAGE_KEYS} from "../const.ts";
     const savedString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
     let savedList: string[] = [];
     if(savedString){

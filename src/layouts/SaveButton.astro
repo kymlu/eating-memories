@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components"
-import { ICONS } from "../utils";
+import { ICONS } from "../const.ts";
 interface Props {
     recipeId: string;
 }
@@ -12,7 +12,7 @@ const { recipeId } = Astro.props;
 </save-button>
 
 <script>
-    import { LOCAL_STORAGE_KEYS } from "../utils";
+    import { LOCAL_STORAGE_KEYS } from "../const.ts";
     class SaveButton extends HTMLElement {
         buttons: HTMLButtonElement[];
         recipeId: string;

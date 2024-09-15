@@ -2,8 +2,9 @@
 import BasePage from "./BasePage.astro";
 import { Icon } from "astro-icon/components"
 import MiniRecipePreview from "./MiniRecipePreview.astro";
-import { getPostLink, ICONS } from "../utils";
+import { getPostLink } from "../utils";
 import SaveButton from "./SaveButton.astro";
+import { ICONS } from "../const";
 
 interface Props {
     frontmatter: Recipe;
