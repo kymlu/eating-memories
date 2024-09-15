@@ -2,6 +2,7 @@
 import RecipePreview from "../layouts/RecipePreview.astro";
 import { Icon } from "astro-icon/components"
 import BasePage from "../layouts/BasePage.astro";
+import { ICONS } from "../utils";
 
 const allRecipes = await Astro.glob("./posts/*.md");
 
@@ -12,9 +13,9 @@ const allRecipes = await Astro.glob("./posts/*.md");
 		<div>
 			<input class="px-2 border-2 border-main-400" type="search" placeholder="Search name or ingredient"/>
 		</div>
-		<button class="flex items-center"><span>Cuisine </span><span><Icon name="mingcute:down-line"></Icon></span></button>
-		<button class="flex items-center"><span>Course </span><span><Icon name="mingcute:down-line"></Icon></span></button>
-		<button class="flex items-center"><span>Dietary </span><span><Icon name="mingcute:down-line"></Icon></span></button>
+		<button class="flex items-center"><span>Cuisine </span><span><Icon name={ICONS.EXPAND}></Icon></span></button>
+		<button class="flex items-center"><span>Course </span><span><Icon name={ICONS.EXPAND}></Icon></span></button>
+		<button class="flex items-center"><span>Dietary </span><span><Icon name={ICONS.EXPAND}></Icon></span></button>
 		<br>
 	</div>
     

@@ -9,7 +9,7 @@ adaptedFromURL: "https://www.justonecookbook.com/anko-red-bean-paste/"
 cuisine: "Asian"
 courseType: "dessert"
 yield: 450
-yieldUnit: "g"
+yieldUnit: "gram"
 ingredients:
     - ingredients:
         - quantity: 200
@@ -30,7 +30,7 @@ ingredients:
         - name: "water"
           note: "as needed"
 ---
-### COOK BEANS
+# COOK BEANS
 > Optionally, soak beans overnight (8-12 hrs) if you want to cook faster or remove the skin beforehand.
 
 Put **beans** into a pot and pour cold water over it to just cover the beans.
@@ -48,7 +48,7 @@ When you can ~~annihilate~~ crush beans between two fingers, it is done.
 Drain the beans, but keep the bean water for the next steps.
 
 ---
-### MASH BEANS
+# MASH BEANS
 To mash the beans, blend it using a food processor. Add some bean liquid if it is thick.
 > It shouldn't be watery, but maybe a little thicker than apple sauce (can't think of other things to compare it to).
 >
@@ -56,7 +56,7 @@ To mash the beans, blend it using a food processor. Add some bean liquid if it i
 >
 > If you don't have a blender, use the sieve method or use a mashing tool of your choice.
 ---
-### FLAVOUR BEANS
+# FLAVOUR BEANS
 Put paste in a clean saucepan. Add **oil**, **sugar** and **salt**, and mix.
 > When adding sugar and salt, it's better to undersalt if you're concerned about flavour. You can add more if it's not to your taste.
 

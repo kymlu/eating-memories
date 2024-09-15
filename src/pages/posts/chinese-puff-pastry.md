@@ -40,23 +40,24 @@ ingredients:
     - name: "filling ideas"
       ingredients:
         - name: "red bean paste"
+          recipeId: "filling-1"
         - name: "mung bean paste"
         - name: "chestnut paste"
         - name: "char siu"
         - name: "curry"
         - name: "anything you want, really"
 ---
-### CREATE WATER DOUGH
+# CREATE WATER DOUGH
 1. Add **sugar** in room temperature softened **butter**, mix well.
 2. Mix in **flour**. Once relatively mixed together, use fingers to rub until the texture is soft and sandy.
 3. Add **warm water**. Mix until it can come out of the bowl cleanly. 
 4. Wrap up with cling wrap and rest for 30 mins.
 ---
-### CREATE OIL DOUGH
+# CREATE OIL DOUGH
 1. Soften **butter** to room temperature.
 2. Add the **flour** and **cornstarch**. Mix into a dough.
 ---
-### MIX WATER AND OIL DOUGHS
+# MIX WATER AND OIL DOUGHS
 1. Knead the water dough.
 > There are many ways to combine the doughs together. You could combine them in portioned sections, or combine it all at once. Additionally, you could **[fold it into thirds](#folding)**, or **[roll them](#rolling)**. I don't see anything wrong with mixing and matching.
 
@@ -70,21 +71,21 @@ ingredients:
 3. Fold the uncovered water dough overtop the oil dough. Seal the edges tightly, avoiding bubbles.
 4. Rest for 15 minutes.
 
-#### FOLDING
+## FOLDING
 1. Roll out the dough into a rectangular(ish) shape.
 > Don't worry if it rips a little. No one will notice (probably).
 2. Fold the left and right on top of each other, overlapping the middle section to create 3 layers.
 3. Wait 20 min. 
 4. *Optional* Repeat step 1-3 two more times, but in step 3, fold the top and bottom over each other the second time, and then left and right again the third.
 
-#### ROLLING
+## ROLLING
 1. Roll out the dough into a rectangular(ish) shape.
 > Don't worry if it rips a little. No one will notice (probably).
 2. From the bottom, tightly roll up the dough.
 3. Wait 20 min. 
 4. *Optional* Repeat step 1-3 two more times, rotating the dough 90 degrees each time.
 
-### FILL AND COOK
+# FILL AND COOK
 1. Roll out the dough.
 > If you didn't portion the dough beforehand, now is the time to portion them out.
 >

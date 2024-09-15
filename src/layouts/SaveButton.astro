@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components"
+import { ICONS } from "../utils";
+interface Props {
+    recipeId: string;
+}
+const { recipeId } = Astro.props;
+---
+<save-button class="relative w-6 h-6" data-recipe-id={recipeId}>
+    <button class="absolute top-0 right-0"><Icon name={ICONS.NOT_SAVED}></Icon></button>
+    <button class="absolute top-0 right-0 hidden"><Icon name={ICONS.SAVED}></Icon></button>
+</save-button>
+
+<script>
+    import { LOCAL_STORAGE_KEYS } from "../utils";
+    class SaveButton extends HTMLElement {
+        buttons: HTMLButtonElement[];
+        recipeId: string;
+        constructor(){
+            super();
+            this.recipeId = "";
+            this.buttons = [];
+        }
+        
+        connectedCallback(){
+            this.recipeId = this.dataset.recipeId ?? "";
+            this.buttons = Array.from(this.querySelectorAll("button"));
+            this.buttons[0].addEventListener("click", () => { this.addSaved(); });
+            this.buttons[1].addEventListener("click", () => { this.removeSaved(); });
+            // TODO: see if I can set this as a global var
+            const savedString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
+            try{
+                if(savedString && (JSON.parse(savedString) as string[]).includes(this.recipeId)) {
+                    this.toggleButton(true);
+                }
+            } catch(e) {
+                console.log(e);
+                this.#removeAllSaved();
+            }
+        }
+        
+        toggleButton(isSaved: boolean){
+            this.buttons[0].classList.toggle("hidden", isSaved);
+            this.buttons[1].classList.toggle("hidden", !isSaved);
+        }
+
+        addSaved(){
+            let currentSaved = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
+            let savedList: string[] = [];
+            if (currentSaved) {
+                try {
+                    savedList = (JSON.parse(currentSaved) as string[]).filter(saved => saved != "") ?? [];
+                } catch(e) {
+                    this.#removeAllSaved();
+                }
+            }
+            if(!savedList.includes(this.recipeId)){
+                let newSaved = JSON.stringify(savedList.concat(this.recipeId));
+                window.localStorage.setItem(LOCAL_STORAGE_KEYS.SAVED, newSaved);
+                this.toggleButton(true);
+            }
+        }
+        
+        removeSaved(){
+            let currentSaved = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
+            if(!currentSaved){
+                return;
+            }
+            try {
+                let savedList = (JSON.parse(currentSaved) as string[]).filter(saved => saved != "");
+                if(savedList.includes(this.recipeId)){
+                    let newSaved = JSON.stringify(savedList.toSpliced(savedList.indexOf(this.recipeId), 1));
+                    window.localStorage.setItem(LOCAL_STORAGE_KEYS.SAVED, newSaved);
+                    this.toggleButton(false);
+                }
+            } catch (e) {
+                this.#removeAllSaved();
+            }
+        }
+
+        #removeAllSaved(){
+            window.localStorage.removeItem(LOCAL_STORAGE_KEYS.SAVED);
+        }
+    }
+
+    customElements.define('save-button', SaveButton);
+</script>

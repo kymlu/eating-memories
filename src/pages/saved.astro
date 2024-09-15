@@ -1,0 +1,52 @@
+---
+import "../styles/global.css";
+import BasePage from "../layouts/BasePage.astro";
+import RecipePreview from "../layouts/RecipePreview.astro";
+const allRecipes = await Astro.glob("./posts/*.md");
+---
+<BasePage>
+    <div class="flex flex-row justify-between mb-2 portrait:flex-col">
+        <h1 class="">Saved Recipes</h1>
+        <button id="clear-btn" class="hidden w-32 p-1 text-white portrait:self-end rounded-xl bg-main-400">Clear Saved</button>
+    </div>
+	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
+        { allRecipes.sort((post) => post.frontmatter.title).map((post) =>
+            <saved-wrapper class="hidden" data-id={post.frontmatter.id}>
+                <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine}></RecipePreview>
+            </saved-wrapper>)
+        }
+    </div>
+    <span id="no-saved" class="hidden">You have no saved recipes!</span>
+</BasePage>
+<script>
+    import {LOCAL_STORAGE_KEYS} from "../utils.ts";
+    const savedString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
+    let savedList: string[] = [];
+    if(savedString){
+        savedList = (JSON.parse(savedString) as string[]).filter(id => id != "");
+    }
+    
+    document.getElementById("clear-btn")?.addEventListener("click", () => {
+        window.localStorage.removeItem(LOCAL_STORAGE_KEYS.SAVED);
+        location.reload();
+    });
+
+    class SavedWrapper extends HTMLElement {
+        connectedCallback(){
+            if(this.dataset.id && savedList.includes(this.dataset.id)){
+                this.classList.remove("hidden");
+                document.getElementById("clear-btn")?.classList.remove("hidden");
+            } else {
+                if(document.getElementById("recipe-list")?.querySelectorAll("saved-wrapper").length == 0){
+                    document.getElementById("no-saved")?.classList.remove("hidden");
+                }
+                // Note: there is this weird bug (at least in safari) where if you remove this element, unless the first recipe is in the saved list, all the bookmark icons on the page will not be visible.
+                // Works regardless of what is first.
+                // TODO: work on a solution where you aren't removing saved recipes but instead adding.
+                // this.parentElement?.removeChild(this);
+                // this.remove();
+            }
+        }
+    }
+    customElements.define("saved-wrapper", SavedWrapper);
+</script>

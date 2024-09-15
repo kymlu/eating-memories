@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css"
-import Fave from "./Fave.astro";
+import SaveButton from "./SaveButton.astro";
 interface Props {
 	id: string;
 	name: string;
@@ -16,6 +16,6 @@ const { id, name, link, imageLink} = Astro.props;
 		<span class="text-center">{name}</span>
 	</a>
 	<div class="absolute top-1 right-1">
-		<Fave id={id}></Fave>
+		<SaveButton recipeId={id}></SaveButton>
 	</div>
 </div>
