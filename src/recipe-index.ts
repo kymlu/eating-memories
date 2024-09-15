@@ -1,10 +1,13 @@
 interface RecipeIndex {
-    [id: number]: string;
+    [id: string]: string;
 }
 
 // Example usage
 export const recipeIndex: RecipeIndex = {
-    1: "char-siu-so",
-    2: "chinese-puff-pastry",
-    10: "roasted-veggie-pasta-sauce"
+    "pastry-1": "chinese-puff-pastry",
+    "pastry-2": "char-siu-so",
+    "pastry-3": "rainbow-flaky-mooncake",
+    "filling-1": "bean-paste",
+    "sauce-1": "roasted-veggie-pasta-sauce",
+    "dessert-1": "snow-skin-mooncake"
 };

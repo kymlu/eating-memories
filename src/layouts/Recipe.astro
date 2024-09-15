@@ -17,7 +17,7 @@ const relatedRecipes = await Astro.glob("/src/pages/posts/*.md").then((recipes) 
 
 interface Recipe {
     layout: string;
-    id: number;
+    id: string;
     title: string;
     pubDate: Date;
     description: string;
@@ -35,7 +35,7 @@ interface Recipe {
 interface IngredientsGroup {
     name?: string;
     ingredients: Ingredient[];
-    recipeId?: number;
+    recipeId?: string;
 }
 
 interface Ingredient {
@@ -43,7 +43,7 @@ interface Ingredient {
     unit?: string;
     name: string;
     note?: string;
-    recipeId?: number;
+    recipeId?: string;
 }
 ---
 <BasePage title={frontmatter.title}>
@@ -69,7 +69,7 @@ interface Ingredient {
                 </yield-component>
             }
             {frontmatter.ingredients && 
-                <div>
+                <div id="ingredients-list">
                     <h2 class="capitalize">Ingredients</h2>
                     <div class="flex flex-col gap-1">
                         {frontmatter.ingredients.map((group: IngredientsGroup) => (
@@ -105,7 +105,9 @@ interface Ingredient {
         <div class="flex-1">
             <br class="landscape:hidden">
             <h2 class="capitalize landscape:hidden">Method</h2>
-            <slot/>
+            <div id="post">
+                <slot/>
+            </div>
             {relatedRecipes.length > 0 && 
                 <div>
                     <hr>
@@ -120,6 +122,29 @@ interface Ingredient {
         </div>
     </div>
 </BasePage>
+
+<style>
+    #ingredients-list {
+        ul {
+            @apply pl-4;
+            li {
+                @apply list-none;
+            }
+        }
+    }
+
+    #post {
+        blockquote {
+            @apply mb-2;
+        }
+        a {
+            @apply underline;
+        }
+        ul, ol {
+            @apply mb-2;
+        }
+    }
+</style>
 
 
 <script>

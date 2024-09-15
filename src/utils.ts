@@ -15,13 +15,11 @@ export const LOCAL_STORAGE_KEYS = {
     FAVES: "faves"
 }
 
-export const LOCAL_STORAGE_SEPARATOR = ",";
-
 export function getPageLink(page?: string) {
     return `/${SITE_SLUG}${page ? `/${page}` : ""}`;
 }
 
-export function getPostLink(postId: number){
+export function getPostLink(postId: string){
     return `/${SITE_SLUG}/posts/${recipeIndex[postId]}`;
 }
 

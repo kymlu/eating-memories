@@ -1,17 +1,17 @@
 ---
 import { Icon } from "astro-icon/components"
 interface Props {
-    id: number;
+    id: string;
 }
 const { id } = Astro.props;
 ---
-<fave-component class="flex items-center" data-id={id}>
-    <button><Icon name="mingcute:heart-line"></Icon></button>
-    <button class="hidden"><Icon name="mingcute:heart-fill"></Icon></button>
+<fave-component class="relative grid" data-id={id}>
+    <button class="absolute top-0 right-0"><Icon name="mingcute:heart-line"></Icon></button>
+    <button class="absolute top-0 right-0 hidden"><Icon name="mingcute:heart-fill"></Icon></button>
 </fave-component>
 
 <script>
-    import { LOCAL_STORAGE_KEYS, LOCAL_STORAGE_SEPARATOR } from "../utils";
+    import { LOCAL_STORAGE_KEYS } from "../utils";
     class FaveElement extends HTMLElement {
         buttons: HTMLButtonElement[];
         constructor(){
@@ -20,13 +20,18 @@ const { id } = Astro.props;
         }
         
         connectedCallback(){
-            this.id = this.dataset.id?.toString() ?? "";
+            this.id = this.dataset.id ?? "";
             this.buttons = Array.from(this.querySelectorAll("button"));
             this.buttons[0].addEventListener("click", () => { this.addFave(); });
             this.buttons[1].addEventListener("click", () => { this.removeFave(); });
+            // TODO: see if I can set this as a global var
             const favesString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.FAVES);
-            if(favesString && favesString.split(",").includes(this.id)) {
-                this.toggleButton(true);
+            try{
+                if(favesString && JSON.parse(favesString).includes(this.id)) {
+                    this.toggleButton(true);
+                }
+            } catch(e) {
+                this.#removeAllFaves();
             }
         }
         
@@ -36,25 +41,41 @@ const { id } = Astro.props;
         }
 
         addFave(){
-            let currentFavees = window.localStorage.getItem(LOCAL_STORAGE_KEYS.FAVES)?.split(LOCAL_STORAGE_SEPARATOR).filter(fave => fave != "") ?? [];
-            if(!currentFavees.includes(this.id)){
-                let newFavees = currentFavees.concat(this.id).join(LOCAL_STORAGE_SEPARATOR);
-                window.localStorage.setItem(LOCAL_STORAGE_KEYS.FAVES, newFavees);
+            let currentFaves = window.localStorage.getItem(LOCAL_STORAGE_KEYS.FAVES);
+            let favesList: string[] = [];
+            if (currentFaves) {
+                try {
+                    favesList = (JSON.parse(currentFaves) as string[]).filter(fave => fave != "") ?? [];
+                } catch(e) {
+                    this.#removeAllFaves();
+                }
+            }
+            if(!favesList.includes(this.id)){
+                let newFaves = JSON.stringify(favesList.concat(this.id));
+                window.localStorage.setItem(LOCAL_STORAGE_KEYS.FAVES, newFaves);
                 this.toggleButton(true);
             }
         }
         
         removeFave(){
-            let currentFavees = window.localStorage.getItem(LOCAL_STORAGE_KEYS.FAVES);
-            if(!currentFavees){
+            let currentFaves = window.localStorage.getItem(LOCAL_STORAGE_KEYS.FAVES);
+            if(!currentFaves){
                 return;
             }
-            let favesList = currentFavees.split(LOCAL_STORAGE_SEPARATOR).filter(fave => fave != "");
-            if(favesList.includes(this.id)){
-                let newFavees = favesList.toSpliced(favesList.indexOf(this.id), 1).join(LOCAL_STORAGE_SEPARATOR);
-                window.localStorage.setItem(LOCAL_STORAGE_KEYS.FAVES, newFavees);
-                this.toggleButton(false);
+            try {
+                let favesList = (JSON.parse(currentFaves) as string[]).filter(fave => fave != "");
+                if(favesList.includes(this.id)){
+                    let newFaves = JSON.stringify(favesList.toSpliced(favesList.indexOf(this.id), 1));
+                    window.localStorage.setItem(LOCAL_STORAGE_KEYS.FAVES, newFaves);
+                    this.toggleButton(false);
+                }
+            } catch (e) {
+                this.#removeAllFaves();
             }
+        }
+
+        #removeAllFaves(){
+            window.localStorage.removeItem(LOCAL_STORAGE_KEYS.FAVES);
         }
     }
 

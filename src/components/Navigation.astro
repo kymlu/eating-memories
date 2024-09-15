@@ -1,6 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getPageLink, PAGE_NAMES, SITE_TITLE } from "../utils";
+const pages = [["Recipes", undefined],
+			["About", PAGE_NAMES.ABOUT],
+			["FAQ", PAGE_NAMES.FAQ],
+			["Saved", PAGE_NAMES.FAVES, "mingcute:heart-fill"]];
 ---
 <div class="flex flex-row items-center justify-between gap-2 px-20 pt-5 pb-1 border-b-4 border-main-600 portrait:px-10">
 	<button id="close-button" class="hidden landscape:hidden"><Icon class="hover:text-main-400" name="mingcute:close-line"></Icon></button>
@@ -10,28 +14,23 @@ import { getPageLink, PAGE_NAMES, SITE_TITLE } from "../utils";
     	<h1>{ SITE_TITLE}</h1>
 	</a>
     <div class="flex flex-row items-center gap-2 portrait:hidden">
-		{[
-			["Recipes", getPageLink()],
-			["About", getPageLink(PAGE_NAMES.ABOUT)],
-			["FAQ", getPageLink(PAGE_NAMES.FAQ)],
-			["Saved", getPageLink(PAGE_NAMES.FAVES)],
-		].map(([title, url]) => (
-			<a href={url} class="px-2 py-1 transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">{title}</a>
+		{pages.map(([title, slug, icon]) => (
+			<a href={getPageLink(slug)} class="flex flex-row items-center gap-1 px-2 py-1 transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">
+				<span>{title}</span>
+				{ icon && <Icon class="text-lg" name={icon}></Icon>}
+			</a>
 		))}
     </div>
 	<button><Icon class="hover:text-main-400" name="mingcute:sun-line"></Icon></button>
 </div>
 <div id="menu" class="absolute left-0 z-10 hidden">
 	<div id="menu-background" class="absolute w-screen h-screen opacity-50 bg-main-950"></div>
-	<div class="absolute left-0 flex gap-5 flex-col w-[60vw] h-screen p-10 bg-white">
-		{[
-			["Recipes", getPageLink()],
-			["About", getPageLink(PAGE_NAMES.ABOUT)],
-			["FAQ", getPageLink(PAGE_NAMES.ABOUT)],
-			["Saved", getPageLink(PAGE_NAMES.FAVES)],
-			].map(([title, url]) => (
-			<a href={url} class="px-2 py-1 text-xl transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">{title}</a>
-		))}
+	<div class="absolute left-0 flex gap-5 flex-col w-[75vw] h-screen p-10 bg-white">
+		{pages.map(([title, slug, icon]) => (
+			<a href={getPageLink(slug)} class="flex flex-row items-center gap-1 px-2 py-1 text-xl transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">
+				<span>{title}</span>
+				{ icon && <Icon class="text-lg" name={icon}></Icon>}
+			</a>))}
 	</div>
 </div>
 

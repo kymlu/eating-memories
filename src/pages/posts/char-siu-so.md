@@ -1,12 +1,13 @@
 ---
 layout: "../../layouts/Recipe.astro"
 title: "Char Siu So"
-id: 1
+id: "pastry-2"
 pubDate: 2024-09-01
 description: "Pork."
 cuisine: "Chinese"
 courseType: "main"
 yield: 16
+yieldUnit: "pastry"
 ingredients:
     - name: "filling"
       ingredients:
@@ -14,31 +15,25 @@ ingredients:
           name: "small onion"
           note: "diced"
         - quantity:  385
-          measurement: "g"
+          unit: "g"
           name: "charsiu"
           note: "diced"
         - quantity:  1
-          measurement: "tsp"
+          unit: "tsp"
           name: "soy sauce"
         - quantity: 2
-          measurement: "tsp"
+          unit: "tsp"
           name: "white sugar"
         - name: "black pepper"
         - quantity:  1
-          measurement: "tsp"
+          unit: "tsp"
           name: "cornstarch"
         - quantity: 0.5
-          measurement: "cup"
+          unit: "cup"
           name: "water"
     - name: "skin"
-      recipeId: 2
+      recipeId: "pastry-1"
       ingredients:
         - name: "puff pastry"
 ---
-<!-- Should I give recipes ids? -->
-1. asduashdas
-weijasds
-> Note: don"t burn the cheese
-2. weoiisadihasd
-
-> # Notes
+Coming soon...

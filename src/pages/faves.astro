@@ -1,32 +1,49 @@
 ---
 import "../styles/global.css";
 import BasePage from "../layouts/BasePage.astro";
+import RecipePreview from "../layouts/RecipePreview.astro";
+const allRecipes = await Astro.glob("./posts/*.md");
 ---
 <BasePage>
-	<h1>Favourited Recipes</h1>
-	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
-        <span id="no-faves" class="hidden">No Favourited Recipes Found</span>
+    <div class="flex flex-row justify-between">
+        <h1 class="flex-1">Favourited Recipes</h1>
+        <button id="clear-btn" class="hidden p-2 text-white rounded-lg bg-main-400">Clear Favourites</button>
     </div>
+	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
+        { allRecipes.sort((post) => post.frontmatter.title).map((post) =>
+            <fave-wrapper class="hidden" data-id={post.frontmatter.id}>
+                <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine}></RecipePreview>
+            </fave-wrapper>)
+        }
+        </div>
+    </div>
+    <span id="no-faves" class="hidden">You have no saved recipes!</span>
 </BasePage>
-<!-- TODO: make this work -->
 <script>
-	import type { MarkdownInstance } from "astro";
-    import RecipePreview from "../layouts/RecipePreview.astro";
-    import {LOCAL_STORAGE_KEYS, LOCAL_STORAGE_SEPARATOR} from "../utils.ts";
-    await Astro.glob("/eating-memories/src/pages/posts/*.md").then((recipes) => {
-        const favesString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.FAVES);
-        let favesList: MarkdownInstance<Record<string, any>>[] = [];
-        if(favesString){
-            let faveIdList = favesString.split(LOCAL_STORAGE_SEPARATOR).filter(f => f != "");
-            favesList = recipes.filter((recipe) => faveIdList.includes(recipe.frontmatter.id));
-        }
-        if (favesList.length > 0) {
-            let listElement = document.querySelector("#recipe-list");
-            favesList.forEach(f => {
-                listElement?.appendChild(RecipePreview({id: f.frontmatter.id, name:f.frontmatter.title,  description: f.frontmatter.description, link: f.url, dietary: f.frontmatter.dietary, course: f.frontmatter.course, cuisine: f.frontmatter.cuisine}))
-            });
-        } else {
-            document.querySelector("#no-faves")?.classList.remove("hidden");
-        }
+    import {LOCAL_STORAGE_KEYS} from "../utils.ts";
+    const favesString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.FAVES);
+    let favesList: string[] = [];
+    if(favesString){
+        favesList = (JSON.parse(favesString) as string[]).filter(id => id != "");
+    }
+    
+    document.getElementById("clear-btn")?.addEventListener("click", () => {
+        window.localStorage.removeItem(LOCAL_STORAGE_KEYS.FAVES);
+        location.reload();
     });
+
+    class FaveWrapper extends HTMLElement {
+        connectedCallback(){
+            if(this.dataset.id && favesList.includes(this.dataset.id)){
+                this.classList.remove("hidden");
+                document.getElementById("clear-btn")?.classList.remove("hidden");
+            } else {
+                this.remove();
+                if(document.getElementById("recipe-list")?.querySelectorAll("fave-wrapper").length == 0){
+                    document.getElementById("no-faves")?.classList.remove("hidden");
+                }
+            }
+        }
+    }
+    customElements.define("fave-wrapper", FaveWrapper);
 </script>

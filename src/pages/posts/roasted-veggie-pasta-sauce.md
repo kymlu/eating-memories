@@ -1,9 +1,9 @@
 ---
 layout: "../../layouts/Recipe.astro"
 title: "Roasted Veggie Pasta Sauce"
-id: 10
+id: "sauce-1"
 pubDate: 2024-09-13
-description: "Doesn't have the be pasta."
+description: "Doesn't have to be for pasta"
 courseType: "sauce"
 cuisine: "American"
 ingredients:
