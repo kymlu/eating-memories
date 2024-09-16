@@ -6,7 +6,8 @@ export const PAGE_NAMES = {
     SITEMAP: "sitemap",
     ABOUT: "about",
     FAQ: "faq",
-    SAVED: "saved"
+    SAVED: "saved",
+    SUBSTITUTIONS: "substitutions"
 }
 
 export const LOCAL_STORAGE_KEYS = {

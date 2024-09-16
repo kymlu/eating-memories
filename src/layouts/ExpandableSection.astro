@@ -1,0 +1,39 @@
+---
+import {Icon} from "astro-icon/components"
+import { ICONS } from "../const";
+interface Props {
+    title: string;
+    level?: number;
+    icon?: string;
+}
+const { title, icon, level } = Astro.props;
+---
+
+<div>
+    <section-header class="flex flex-row items-center justify-between py-2 cursor-pointer select-none">
+        {level == 2 ? <h2 class="capitalize">{title}</h2> : <h1>{title}</h1>}
+        <span>
+            <Icon class="text-xl" name={ICONS.EXPAND}></Icon>
+        </span>
+        <span class="hidden">
+            <Icon class="text-xl" name={ICONS.COLLAPSE}></Icon>
+        </span>
+    </section-header>
+    <div class="hidden pb-2 landscape:pl-4">
+        <slot/>
+    </div>
+</div>
+
+<script>
+    class SectionHeader extends HTMLElement {
+        connectedCallback() {
+            this.addEventListener("click", () => {
+                Array.from(this.querySelectorAll("span")).forEach((icon) => {
+                    icon.classList.toggle("hidden");
+                });
+                this.parentElement?.querySelector("div")?.classList.toggle("hidden");
+            })
+        }
+    }
+    customElements.define("section-header", SectionHeader);
+</script>

@@ -5,6 +5,7 @@ import MiniRecipePreview from "./MiniRecipePreview.astro";
 import { getPostLink } from "../utils";
 import SaveButton from "./SaveButton.astro";
 import { ICONS } from "../const";
+import "../styles/global.css";
 
 interface Props {
     frontmatter: Recipe;
@@ -157,6 +158,8 @@ interface Ingredient {
 
 
 <script>
+import { getFloatString } from "../utils";
+
     class Ingredient extends HTMLElement {
         constructor(){
             super();
@@ -252,7 +255,7 @@ interface Ingredient {
         }
         
         scaleValue(scale: number){
-            this.innerText = parseFloat((this.defaultValue * scale).toFixed(2)).toString();
+            this.innerText = getFloatString(this.defaultValue * scale, 2);
         }
     }
 

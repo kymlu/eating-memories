@@ -1,0 +1,105 @@
+---
+import ExpandableSection from './ExpandableSection.astro';
+import IngredientInput from './IngredientInput.astro';
+
+interface SubstituteComponent {
+    name: string;
+    proportion: number;
+    unit?: string;
+}
+interface Props {
+    result: string;
+    ingredients: SubstituteComponent[];
+    defaultTotal: number;
+    unit: string;
+    note?: string;
+}
+const{result, ingredients, defaultTotal, unit, note} = Astro.props;
+---
+<ExpandableSection title={result} level={2}>
+    <p>{note}</p>
+    <div class="flex flex-col gap-2 w-fit">
+        { ingredients.map((ingredient, index) => 
+            <substitute-component data-name={ingredient.name} data-proportion={ingredient.proportion}>
+                <IngredientInput name={ingredient.name} unit={ingredient.unit ?? unit} defaultValue={defaultTotal * ingredient.proportion} symbol={index == 0 ? " " : "+"}></IngredientInput>
+            </substitute-component>
+        )}
+        <result-component class="pt-2 border-t-2 border-main-800">
+            <IngredientInput name={result} unit={unit} defaultValue={defaultTotal} symbol={"="}></IngredientInput>
+        </result-component>
+    </div>
+</ExpandableSection>
+
+<script>
+    import { getFloatString } from "../utils";
+    function preventNonNumeric(event: KeyboardEvent){
+        if(!(event.key == "Backspace" || event.key == "Delete" || /\d/.test(event.key) || event.key.includes("Arrow"))){
+            event.preventDefault();
+        }
+    }
+    class SubstituteComponent extends HTMLElement {
+        proportion: number;
+        name: string;
+        constructor(){
+            super();
+            this.proportion = 1;
+            this.name = "";
+        }
+
+        connectedCallback(){
+            if(this.dataset.proportion){
+                this.proportion = parseFloat(this.dataset.proportion) ?? 1;
+            }
+            if(this.dataset.name) {
+                this.name = this.dataset.name;
+            }
+            this.querySelector("input")?.addEventListener("input", (event) => {this.onInput()});
+            this.querySelector("input")?.addEventListener("keypress", preventNonNumeric);
+        }
+
+        onInput(){
+            let resultValue = parseFloat(this.querySelector("input")?.value ?? "1") / this.proportion;
+            (this.parentElement?.querySelector("result-component") as ResultComponent)?.changeValue(resultValue);
+            let allSubstitutes = this.parentElement?.querySelectorAll("substitute-component");
+            if(allSubstitutes){
+                (Array.from(allSubstitutes) as SubstituteComponent[]).forEach((substitute: SubstituteComponent) => {
+                    if (substitute.name != this.name){
+                        substitute.changeValue(resultValue);
+                    }
+                });
+            }
+        }
+
+        changeValue(newResult: number){
+            let input = this.querySelector("input");
+            if(input) {
+                input.value = getFloatString(newResult * this.proportion, 2);
+            }
+        }
+    }
+
+    customElements.define("substitute-component", SubstituteComponent);
+
+    class ResultComponent extends HTMLElement {
+        connectedCallback(){
+            this.querySelector("input")?.addEventListener("input", (event) => {
+                let resultValue = parseFloat(this.querySelector("input")?.value ?? "1");
+                let allSubstitutes = this.parentElement?.querySelectorAll("substitute-component");
+                if(allSubstitutes){
+                    (Array.from(allSubstitutes) as SubstituteComponent[]).forEach((substitute: SubstituteComponent) => {
+                        substitute.changeValue(resultValue);
+                    });
+                }
+            });
+            this.querySelector("input")?.addEventListener("keypress", preventNonNumeric);
+        }
+
+        changeValue(newResult: number){
+            let input = this.querySelector("input");
+            if(input) {
+                input.value = getFloatString(newResult, 2);
+            }
+        }
+    }
+    customElements.define("result-component", ResultComponent);
+</script>

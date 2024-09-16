@@ -1,0 +1,50 @@
+---
+import BasePage from "../layouts/BasePage.astro";
+import ExpandableSection from "../layouts/ExpandableSection.astro";
+import IngredientConverter from "../layouts/IngredientConverter.astro";
+
+---
+<BasePage>
+    <h1>Substitutions</h1>
+    <p>Does a recipe call for an ingredient you don't have?</p>
+    <p>Here is a simple converter for some ingredients.</p>
+    <ExpandableSection title="Flour">
+        <IngredientConverter result="cake flour" 
+            defaultTotal={100} 
+            ingredients={[{name: "all-purpose flour", proportion: 0.93}, {name: "cornstarch", proportion: 0.07}]} 
+            unit="g" 
+            note="Mix together"></IngredientConverter>
+    </ExpandableSection>
+    <hr>
+    <ExpandableSection title="Sugar">
+        <IngredientConverter result="Light brown sugar" 
+            defaultTotal={1} 
+            ingredients={[{name: "granulated white sugar", proportion: 1}, {name: "molasses", proportion: 1, unit: "tbsp"}]} 
+            unit="cup"></IngredientConverter>
+        <hr class="h-[1px]">
+        <IngredientConverter result="Dark brown sugar" 
+            defaultTotal={1} 
+            ingredients={[{name: "granulated white sugar", proportion: 1}, {name: "molasses", proportion: 2, unit: "tbsp"}]} 
+            unit="cup"></IngredientConverter>
+        <hr class="h-[1px]">
+        <IngredientConverter result="Caster sugar" 
+            defaultTotal={100} 
+            ingredients={[{name: "granulated white sugar", proportion: 1}]} 
+            unit="g" 
+            note="Blend in a food processor briefly."></IngredientConverter>
+        <hr class="h-[1px]">
+        <IngredientConverter result="Powdered sugar" 
+            defaultTotal={100} 
+            ingredients={[{name: "granulated white sugar", proportion: 0.93}, {name: "cornstarch", proportion: 0.07}]}
+            unit="g"
+            note="Blend in a food processor until powdery."></IngredientConverter>
+    </ExpandableSection>
+    <hr>
+    <ExpandableSection title="Other">
+        <IngredientConverter result="egg" 
+            defaultTotal={1} 
+            ingredients={[{name: "applesauce", proportion: 0.25, unit: "cup"}]} 
+            unit="" 
+            note="Less protein but also less calories"></IngredientConverter>
+    </ExpandableSection>
+</BasePage>

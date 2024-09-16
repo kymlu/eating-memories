@@ -13,3 +13,7 @@ export function getPostLink(postId: string){
 export function dateSort (a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>){
     return Date.parse(b.frontmatter.pubDate) - Date.parse(a.frontmatter.pubDate);
 }
+
+export function getFloatString(input: number, maxDecimalPrecision: number): string{
+    return parseFloat((input).toFixed(maxDecimalPrecision)).toString();
+}

@@ -3,7 +3,7 @@ layout: "../../layouts/Recipe.astro"
 title: "Teriyaki-ish Sauce"
 id: "sauce-2"
 pubDate: 2024-09-15
-description: "For meats and veggies"
+description: "For sweet and savoury meats and veggies"
 courseType: "sauce"
 cuisine: "Japanese"
 yield: 2
