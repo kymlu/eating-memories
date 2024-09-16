@@ -3,10 +3,10 @@ import { Icon } from "astro-icon/components";
 import { getPageLink } from "../utils.ts";
 import { ICONS, PAGE_NAMES, SITE_TITLE } from "../const.ts";
 const pages = [["Recipes", undefined],
+			["Saved", PAGE_NAMES.SAVED, ICONS.SAVED],
 			["Substitutions", PAGE_NAMES.SUBSTITUTIONS],
 			["About", PAGE_NAMES.ABOUT],
-			["FAQ", PAGE_NAMES.FAQ],
-			["Saved", PAGE_NAMES.SAVED, ICONS.SAVED]];
+			["FAQ", PAGE_NAMES.FAQ]];
 ---
 <div class="flex flex-row items-center justify-between gap-2 px-20 pt-5 pb-1 border-b-4 border-main-600 portrait:px-10">
 	<button id="close-button" class="hidden landscape:hidden"><Icon class="hover:text-main-400" name={ICONS.CLOSE}></Icon></button>
