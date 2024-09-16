@@ -10,8 +10,8 @@ interface Props {
 const {symbol, name, unit, defaultValue} = Astro.props;
 ---
 <div class="flex flex-row items-center gap-1">
-    <span class="w-5 text-center select-none">{symbol}</span>
-    <input class="px-2 border-2 w-30 portrait:w-20 border-main-600" name={name} type="number" inputmode="decimal" min="0" max="10000" value={getFloatString(defaultValue, 2)}>
+    <span class="w-5 text-center select-none min-w-5">{symbol}</span>
+    <input class="px-2 border-2 w-30 portrait:w-15 portrait:min-w-15 border-main-600" name={name} type="number" inputmode="decimal" min="0" max="10000" value={getFloatString(defaultValue, 2)}>
     {unit && <span>{unit}</span>}
     <label for={name} class="lowercase">{name}</label>
 </div>

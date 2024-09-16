@@ -235,3 +235,23 @@
 
 @tailwind components;
 @tailwind utilities;
+
+#post {
+    h1 {
+        @apply text-lg;
+    }
+
+    h2 {
+        @apply text-lg font-medium
+    }
+    
+    blockquote {
+        @apply mb-2;
+    }
+    a {
+        @apply underline;
+    }
+    ul, ol {
+        @apply mb-2;
+    }
+}

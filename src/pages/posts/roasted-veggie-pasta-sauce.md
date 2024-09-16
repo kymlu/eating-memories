@@ -6,31 +6,32 @@ pubDate: 2024-09-13
 description: "Doesn't have to be for pasta"
 courseType: "sauce"
 cuisine: "American"
+yield: 4
+yieldUnit: "serving"
 ingredients:
-    - name: "base"
-      ingredients:
+    - ingredients:
+        - name: "veggies"
+          quantity: 4
+          unit: "cups"
+          note: "any veggies will work (tomato, carrots, zucchini, etc.)"
+        - name: "onion"
+          quantity: 1
+        - name: "garlic"
+          quantity: 4
+          unit: "clove"
         - name: "vegetable oil"
           note: "other oils (sunflower, olive, etc.) are ok too"
-    - name: "seasonings"
-      ingredients:
         - name: "salt"
         - name: "chili pepper flakes"
           note: "for spice"
-    - name: "veggie ideas"
-      ingredients:
-        - name: "onion"
-        - name: "garlic"
-        - name: "roma tomato"
-        - name: "carrot"
-        - name: "zucchini"
 ---
 > **WHAT VEGGIES SHOULD I USE?**
 >
 > Any veggie will work. Experiment. Doesn't have to be tomato.
 >
-> I like having additional 3-4 veggies for a variety of flavour and nutrients.
+> I like having additional 3-4 kinds of veggies for a variety of flavour and nutrients.
 >
-> The onion and garlic are more of a seasoning than veggie. Personally, I like using 1 onion and 3-5 cloves of garlic as a base.
+> The onion and garlic are more of a seasoning than veggie.
 
 Preheat oven to 400F.
 
