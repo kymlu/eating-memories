@@ -33,7 +33,7 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
 <script>
     import { getFloatString } from "../utils";
     function preventNonNumeric(event: KeyboardEvent){
-        if(!(event.key == "Backspace" || event.key == "Delete" || /\d/.test(event.key) || event.key.includes("Arrow"))){
+        if(!(event.key == "Backspace" || event.key == "Delete" || /\d/.test(event.key) || event.key.includes("Arrow") || event.key == ".")){
             event.preventDefault();
         }
     }

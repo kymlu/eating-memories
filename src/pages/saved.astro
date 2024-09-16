@@ -25,6 +25,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
     if(savedString){
         savedList = (JSON.parse(savedString) as string[]).filter(id => id != "");
     }
+    let savedCount = document.querySelectorAll("saved-wrapper").length;
     
     document.getElementById("clear-btn")?.addEventListener("click", () => {
         window.localStorage.removeItem(LOCAL_STORAGE_KEYS.SAVED);
@@ -37,7 +38,8 @@ const allRecipes = await Astro.glob("./posts/*.md");
                 this.classList.remove("hidden");
                 document.getElementById("clear-btn")?.classList.remove("hidden");
             } else {
-                if(document.getElementById("recipe-list")?.querySelectorAll("saved-wrapper").length == 0){
+                savedCount--;
+                if(savedCount == 0){
                     document.getElementById("no-saved")?.classList.remove("hidden");
                 }
                 // Note: there is this weird bug (at least in safari) where if you remove this element, unless the first recipe is in the saved list, all the bookmark icons on the page will not be visible.
