@@ -2,7 +2,7 @@
 import BasePage from "./BasePage.astro";
 import { Icon } from "astro-icon/components"
 import MiniRecipePreview from "./MiniRecipePreview.astro";
-import { getPostLink } from "../utils";
+import { getPostLink, titleSort } from "../utils.ts";
 import SaveButton from "./SaveButton.astro";
 import { ICONS } from "../const";
 import "../styles/global.css";
@@ -115,7 +115,7 @@ interface Ingredient {
                     <hr>
                     <h2>Use this recipe to make</h2>
                     <div class="flex flex-row gap-2 p-2 overflow-y-scroll">
-                        { relatedRecipes.sort((recipe) => recipe.frontmatter.title).map((post: any) =>
+                        { relatedRecipes.sort(titleSort).map((post: any) =>
                             <MiniRecipePreview id={post.frontmatter.id} name={post.frontmatter.title} link={post.url}></MiniRecipePreview>)
                         }
                     </div>

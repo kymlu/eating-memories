@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import BasePage from "../layouts/BasePage.astro";
 import RecipePreview from "../layouts/RecipePreview.astro";
+import { titleSort } from "../utils.ts";
 const allRecipes = await Astro.glob("./posts/*.md");
 ---
 <BasePage>
@@ -10,7 +11,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
         <button id="clear-btn" class="hidden w-32 p-1 text-white portrait:self-end rounded-xl bg-main-400">Clear Saved</button>
     </div>
 	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
-        { allRecipes.sort((post) => post.frontmatter.title).map((post) =>
+        { allRecipes.sort(titleSort).map((post) =>
             <saved-wrapper class="hidden" data-id={post.frontmatter.id}>
                 <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine}></RecipePreview>
             </saved-wrapper>)
