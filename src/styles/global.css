@@ -236,7 +236,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
+/* @layer utilities {
     .post {
         h1 {
             @apply text-lg;
@@ -254,4 +254,4 @@
             @apply underline;
         }
     }
-}
+} */

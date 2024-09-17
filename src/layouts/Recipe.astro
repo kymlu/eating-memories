@@ -6,6 +6,7 @@ import MiniRecipePreview from "./MiniRecipePreview.astro";
 import { getPostLink, titleSort } from "../utils.ts";
 import SaveButton from "./SaveButton.astro";
 import { ICONS } from "../const";
+import RecipeMethod from "./RecipeMethod.astro";
 
 interface Props {
     frontmatter: Recipe;
@@ -105,9 +106,9 @@ interface Ingredient {
         </div>
         <div class="flex-1 portrait:mt-2">
             <h2 class="capitalize landscape:hidden">Method</h2>
-            <div class="post">
+            <RecipeMethod>
                 <slot/>
-            </div>
+            </RecipeMethod>
             {relatedRecipes.length > 0 && 
                 <div>
                     <hr>
