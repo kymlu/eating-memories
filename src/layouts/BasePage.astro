@@ -1,7 +1,7 @@
 ---
 import Navigation from "../components/Navigation.astro";
 import Footer from "../components/Footer.astro";
-import "../styles/global.css";
+// import "../styles/global.css";
 import { SITE_TITLE } from "../const.ts";
 interface Props {
 	title?: string;
@@ -17,6 +17,7 @@ const {title} = Astro.props;
 		<link rel="icon" type="image/png" sizes="32x32" href="/eating-memories/favicon-32x32.png">
 		<link rel="icon" type="image/png" sizes="16x16" href="/eating-memories/favicon-16x16.png">
 		<link rel="manifest" href="/eating-memories/site.webmanifest">
+		<link rel="stylesheet" href="/eating-memories/styles/global.css">
 	</head>
 	<body class="relative flex flex-col h-screen">
 		<Navigation/>
