@@ -12,8 +12,7 @@ import IngredientConverter from "../layouts/IngredientConverter.astro";
         <IngredientConverter result="cake flour" 
             defaultTotal={100} 
             ingredients={[{name: "all-purpose flour", proportion: 0.93}, {name: "cornstarch", proportion: 0.07}]} 
-            unit="g" 
-            note="Mix together"></IngredientConverter>
+            unit="g"></IngredientConverter>
     </ExpandableSection>
     <hr>
     <ExpandableSection title="Sugar">
@@ -27,11 +26,17 @@ import IngredientConverter from "../layouts/IngredientConverter.astro";
             ingredients={[{name: "granulated white sugar", proportion: 1}, {name: "molasses", proportion: 2, unit: "tbsp"}]} 
             unit="cup"></IngredientConverter>
         <hr class="h-[1px]">
+        <IngredientConverter result="turbinado sugar" 
+            defaultTotal={1} 
+            ingredients={[{name: "granulated white sugar", proportion: 0.5}, {name: "brown sugar", proportion: 0.5}]} 
+            unit="cup"
+            note="Will not result in the crunchy texture, only the taste."></IngredientConverter>
+        <hr class="h-[1px]">
         <IngredientConverter result="Caster sugar" 
             defaultTotal={100} 
             ingredients={[{name: "granulated white sugar", proportion: 1}]} 
             unit="g" 
-            note="Blend in a food processor briefly."></IngredientConverter>
+            note="Blend in a food processor briefly until grains get finer."></IngredientConverter>
         <hr class="h-[1px]">
         <IngredientConverter result="Powdered sugar" 
             defaultTotal={100} 
