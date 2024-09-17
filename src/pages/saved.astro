@@ -5,7 +5,7 @@ import RecipePreview from "../layouts/RecipePreview.astro";
 import { titleSort } from "../utils.ts";
 const allRecipes = await Astro.glob("./posts/*.md");
 ---
-<BasePage>
+<BasePage title="Saved Recipes">
     <div class="flex flex-row justify-between mb-2 portrait:flex-col">
         <h1 class="">Saved Recipes</h1>
         <button id="clear-btn" class="hidden w-32 p-1 text-white portrait:self-end rounded-xl bg-main-400">Clear Saved</button>

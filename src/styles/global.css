@@ -236,22 +236,22 @@
 @tailwind components;
 @tailwind utilities;
 
-#post {
-    h1 {
-        @apply text-lg;
-    }
-
-    h2 {
-        @apply text-lg font-medium
-    }
+@layer utilities {
+    .post {
+        h1 {
+            @apply text-lg;
+        }
     
-    blockquote {
-        @apply mb-2;
-    }
-    a {
-        @apply underline;
-    }
-    ul, ol {
-        @apply mb-2;
+        h2 {
+            @apply text-lg font-medium
+        }
+        
+        blockquote, ul, ol {
+            @apply mb-2;
+        }
+
+        a {
+            @apply underline;
+        }
     }
 }

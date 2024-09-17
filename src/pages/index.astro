@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 import RecipePreview from "../layouts/RecipePreview.astro";
 import { Icon } from "astro-icon/components"
 import BasePage from "../layouts/BasePage.astro";
@@ -17,7 +18,6 @@ const allRecipes = await Astro.glob("./posts/*.md");
 		<button class="flex items-center"><span>Cuisine </span><span><Icon name={ICONS.EXPAND}></Icon></span></button>
 		<button class="flex items-center"><span>Course </span><span><Icon name={ICONS.EXPAND}></Icon></span></button>
 		<button class="flex items-center"><span>Dietary </span><span><Icon name={ICONS.EXPAND}></Icon></span></button>
-		<br>
 	</div>
     
 	<div class="grid gap-2 landscape:grid-cols-2">

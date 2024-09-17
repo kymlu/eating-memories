@@ -49,7 +49,7 @@ interface Ingredient {
 }
 ---
 <BasePage title={frontmatter.title}>
-    <div class="flex items-center gap-1">
+    <div class="flex items-center gap-1 mb-2">
         <h1 class="flex items-center gap-2">{frontmatter.title}</h1>
         <SaveButton recipeId={frontmatter.id}></SaveButton>
     </div>
@@ -67,7 +67,6 @@ interface Ingredient {
                     <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.MINUS}></Icon></button>
                     <span>Yield: <span id="yield"></span></span>
                     <button id="plus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.PLUS}></Icon></button>
-                    <br>
                 </yield-component>
             }
             {frontmatter.ingredients && 
@@ -104,10 +103,9 @@ interface Ingredient {
                 </div>
             }
         </div>
-        <div class="flex-1">
-            <br class="landscape:hidden">
+        <div class="flex-1 portrait:mt-2">
             <h2 class="capitalize landscape:hidden">Method</h2>
-            <div id="post">
+            <div class="post">
                 <slot/>
             </div>
             {relatedRecipes.length > 0 && 
