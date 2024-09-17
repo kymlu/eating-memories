@@ -1,10 +1,11 @@
 ---
 // Test to maintain the styling in all recipes
-import "../styles/global.css";
+// import "../styles/global.css";
 ---
-<slot/>
+<slot class="post"/>
 
 <style>
+    .post {
     h1 {
         @apply text-lg text-main-400;
     }
@@ -19,5 +20,5 @@ import "../styles/global.css";
 
     a {
         @apply underline;
-    }
+    }}
 </style>
