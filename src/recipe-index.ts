@@ -7,6 +7,7 @@ export const recipeIndex: RecipeIndex = {
     "pastry-1": "chinese-puff-pastry",
     "pastry-2": "char-siu-so",
     "pastry-3": "rainbow-flaky-mooncake",
+    "cookie-1": "citrus shortbread",
     "filling-1": "bean-paste",
     "filling-2": "custard-moon-cakes",
     "filling-3": "chestnut-paste",

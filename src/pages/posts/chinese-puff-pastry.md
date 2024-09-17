@@ -43,6 +43,7 @@ ingredients:
           recipeId: "filling-1"
         - name: "mung bean paste"
         - name: "chestnut paste"
+          recipeId: "filling-3"
         - name: "char siu"
         - name: "curry"
         - name: "anything you want, really"
@@ -59,7 +60,7 @@ ingredients:
 ---
 # MIX WATER AND OIL DOUGHS
 1. Knead the water dough.
-> There are many ways to combine the doughs together. You could combine them in portioned sections, or combine it all at once. Additionally, you could **[fold it into thirds](#folding)**, or **[roll them](#rolling)**. I don't see anything wrong with mixing and matching.
+> There are many ways to combine the doughs together. You could combine them in portioned sections, or combine it all at once. Additionally, you could **[fold it into thirds](#folding)**, or **[roll them (see the rainbow flaky pastry for reference)](./rainbow-flaky-mooncake)**. I don't see anything wrong with mixing and matching.
 
 > If portioning:
 >> 1. Divide the water dough into 47g portions.
@@ -77,13 +78,6 @@ ingredients:
 2. Fold the left and right on top of each other, overlapping the middle section to create 3 layers.
 3. Wait 20 min. 
 4. *Optional* Repeat step 1-3 two more times, but in step 3, fold the top and bottom over each other the second time, and then left and right again the third.
-
-## ROLLING
-1. Roll out the dough into a rectangular(ish) shape.
-> Don't worry if it rips a little. No one will notice (probably).
-2. From the bottom, tightly roll up the dough.
-3. Wait 20 min. 
-4. *Optional* Repeat step 1-3 two more times, rotating the dough 90 degrees each time.
 
 # FILL AND COOK
 1. Roll out the dough.
