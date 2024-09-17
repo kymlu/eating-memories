@@ -9,5 +9,9 @@ import icon from 'astro-icon';
 export default defineConfig({
   site: 'https://kymlu.github.io',
   base: 'eating-memories',
-  integrations: [tailwind(), icon()],
+  integrations: [
+    tailwind({
+      nesting: true
+    }), 
+    icon()],
 });

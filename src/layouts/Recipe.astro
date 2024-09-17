@@ -1,11 +1,11 @@
 ---
+import "../styles/global.css";
 import BasePage from "./BasePage.astro";
 import { Icon } from "astro-icon/components"
 import MiniRecipePreview from "./MiniRecipePreview.astro";
 import { getPostLink, titleSort } from "../utils.ts";
 import SaveButton from "./SaveButton.astro";
 import { ICONS } from "../const";
-import "../styles/global.css";
 
 interface Props {
     frontmatter: Recipe;
