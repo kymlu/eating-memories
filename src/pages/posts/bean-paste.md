@@ -43,7 +43,7 @@ Cover the pot but leave the lid slightly ajar. Simmer on low heat until beans be
 - **Foam?** Skim it
 - **Insufficient water?** Add more to cover beans
 
-When you can ~~annihilate~~ crush beans between two fingers, it is done.
+When you can ~~destroy~~ crush beans between two fingers, it is done.
 
 Drain the beans, but keep the bean water for the next steps.
 

@@ -186,72 +186,51 @@
         @apply font-sans;
         @apply bg-white text-main-950;
         /* @apply dark:bg-main-950 dark:text-white; */
-    }
-
-    button, a {
-        Icon, svg {
-            @apply text-2xl;
+        button, a {
+            Icon, svg {
+                @apply text-2xl;
+            }
         }
-    }
-
-    blockquote {
-        @apply bg-main-100 pt-2 pb-1 px-5 border-l-4 border-l-main-600;
+    
         blockquote {
-            @apply border-none pb-0;
+            @apply bg-main-100 pt-2 pb-1 px-5 border-l-4 border-l-main-600;
+            blockquote {
+                @apply border-none pb-0;
+            }
         }
-    }
-
-    p {
-        @apply mb-2;
-    }
-
-    h1 {
-        @apply font-bold text-xl capitalize;
-    }
-
-    h2 {
-        @apply text-lg;
-    }
-
-    h3, h4, h5 {
-        @apply mt-3;
-    }
-
-    ul {
-        @apply pl-6;
-        li {
-            @apply list-disc;
+    
+        p {
+            @apply mb-2;
         }
-    }
-
-    ol {
-        @apply list-decimal pl-6;
-    }
-
-    hr {
-        @apply bg-main-600 h-[2px] border-none my-3;
+    
+        h1 {
+            @apply font-bold text-xl capitalize;
+        }
+    
+        h2 {
+            @apply text-lg;
+        }
+    
+        h3, h4, h5 {
+            @apply mt-3;
+        }
+    
+        ul {
+            @apply pl-6;
+            li {
+                @apply list-disc;
+            }
+        }
+    
+        ol {
+            @apply list-decimal pl-6;
+        }
+    
+        hr {
+            @apply bg-main-600 h-[2px] border-none my-3;
+        }
     }
 }
 
 @tailwind components;
 @tailwind utilities;
-
-/* @layer utilities {
-    .post {
-        h1 {
-            @apply text-lg;
-        }
-    
-        h2 {
-            @apply text-lg font-medium
-        }
-        
-        blockquote, ul, ol {
-            @apply mb-2;
-        }
-
-        a {
-            @apply underline;
-        }
-    }
-} */

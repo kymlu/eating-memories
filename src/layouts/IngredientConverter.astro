@@ -53,7 +53,7 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
             if(this.dataset.name) {
                 this.name = this.dataset.name;
             }
-            this.querySelector("input")?.addEventListener("input", (event) => {this.onInput()});
+            this.querySelector("input")?.addEventListener("input", () => {this.onInput()});
             this.querySelector("input")?.addEventListener("keypress", preventNonNumeric);
         }
 
@@ -82,7 +82,7 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
 
     class ResultComponent extends HTMLElement {
         connectedCallback(){
-            this.querySelector("input")?.addEventListener("input", (event) => {
+            this.querySelector("input")?.addEventListener("input", () => {
                 let resultValue = parseFloat(this.querySelector("input")?.value ?? "1");
                 let allSubstitutes = this.parentElement?.querySelectorAll("substitute-component");
                 if(allSubstitutes){

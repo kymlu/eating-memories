@@ -9,7 +9,7 @@ const pages = [["Recipes", undefined],
 			["FAQ", PAGE_NAMES.FAQ]];
 ---
 <header class="sticky top-0 z-50">
-	<div class="flex flex-row items-center justify-between gap-2 px-20 pt-5 pb-1 bg-white border-b-4 portrait:justify-start border-main-600 portrait:px-10">
+	<div class="flex flex-row items-center justify-between gap-2 px-20 pt-5 h-20 pb-1 bg-white border-b-4 portrait:justify-start border-main-600 portrait:px-10">
 		<button id="close-button" class="hidden landscape:hidden"><Icon class="hover:text-main-400" name={ICONS.CLOSE}></Icon></button>
 		<button id="menu-button" class="landscape:hidden"><Icon class="hover:text-main-400" name={ICONS.MENU}></Icon></button>
 		<a href={getPageLink()} class="flex flex-row items-center gap-2 portrait:justify-center">
@@ -18,7 +18,7 @@ const pages = [["Recipes", undefined],
 		</a>
 		<div class="flex flex-row items-center gap-2 portrait:hidden">
 			{pages.map(([title, slug, icon]) => (
-				<a href={getPageLink(slug)} class="flex flex-row items-center gap-1 px-2 py-1 transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">
+				<a href={getPageLink(slug)} class="flex flex-row items-center gap-1 px-2 py-1 transition-all rounded-full border-white hover:border-main-500 border-2 hover:shadow-custom hover:shadow-main-400">
 					<span>{title}</span>
 					{ icon && <Icon class="text-lg" name={icon}></Icon>}
 				</a>
@@ -30,7 +30,7 @@ const pages = [["Recipes", undefined],
 		<div id="menu-background" class="absolute w-screen h-screen opacity-50 bg-main-950"></div>
 		<div class="absolute left-0 flex gap-5 flex-col w-[75vw] h-screen p-10 bg-white">
 			{pages.map(([title, slug, icon]) => (
-				<a href={getPageLink(slug)} class="flex flex-row items-center gap-1 px-2 py-1 text-xl transition-colors duration-300 rounded-full hover:text-white hover:bg-main-400">
+				<a href={getPageLink(slug)} class="h-10 flex flex-row items-center gap-1 px-2 py-1 text-xl transition-all rounded-full border-white hover:border-main-500 border-2 hover:shadow-custom hover:shadow-main-400">
 					<span>{title}</span>
 					{ icon && <Icon class="text-lg" name={icon}></Icon>}
 				</a>))}
