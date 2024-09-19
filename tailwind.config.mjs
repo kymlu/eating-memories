@@ -2,7 +2,7 @@ import defaultTheme from "tailwindcss/defaultTheme"
 
 /** @type {import("tailwindcss").Config} */
 export default {
-	darkMode: "media",
+	darkMode: "class",
 	content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
 	theme: {
 		colors: {
@@ -20,7 +20,8 @@ export default {
 				700: "#ad3c21",
 				800: "#812e1f",
 				900: "#702b1e",
-				950: "#3c140e"
+				950: "#3c140e",
+				1000: "#100504"
 			}
 		},
 		fontFamily: {

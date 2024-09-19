@@ -1,7 +1,9 @@
 ---
+import "../styles/global.css";
 import { Icon } from "astro-icon/components";
 import { getPageLink } from "../utils.ts";
 import { ICONS, PAGE_NAMES, SITE_TITLE } from "../const.ts";
+import ThemeToggle from "./ThemeToggle.astro";
 const pages = [["Recipes", undefined],
 			["Saved", PAGE_NAMES.SAVED, ICONS.SAVED],
 			["Substitutions", PAGE_NAMES.SUBSTITUTIONS],
@@ -9,51 +11,76 @@ const pages = [["Recipes", undefined],
 			["FAQ", PAGE_NAMES.FAQ]];
 ---
 <header class="sticky top-0 z-50">
-	<div class="flex flex-row items-center justify-between gap-2 px-20 pt-5 h-20 pb-1 bg-white border-b-4 portrait:justify-start border-main-600 portrait:px-10">
-		<button id="close-button" class="hidden landscape:hidden"><Icon class="hover:text-main-400" name={ICONS.CLOSE}></Icon></button>
-		<button id="menu-button" class="landscape:hidden"><Icon class="hover:text-main-400" name={ICONS.MENU}></Icon></button>
-		<a href={getPageLink()} class="flex flex-row items-center gap-2 portrait:justify-center">
-			<Icon name={ICONS.LOGO} class="text-3xl text-main-500"></Icon>
-			<div class="text-xl font-bold">{ SITE_TITLE }</div>
-		</a>
-		<div class="flex flex-row items-center gap-2 portrait:hidden">
-			{pages.map(([title, slug, icon]) => (
-				<a href={getPageLink(slug)} class="flex flex-row items-center gap-1 px-2 py-1 transition-all rounded-full border-white hover:border-main-500 border-2 hover:shadow-custom hover:shadow-main-400">
-					<span>{title}</span>
-					{ icon && <Icon class="text-lg" name={icon}></Icon>}
-				</a>
-			))}
-			<button><Icon class="hover:text-main-400" name={ICONS.SUN}></Icon></button>
+	<div class="sticky top-0 z-50">
+		<div id="navigation" class="flex flex-row items-center gap-2 px-20 pt-5 h-20 pb-1 border-b-4 border-main-600 portrait:px-10">
+			<button id="menu-button" class="landscape:hidden">
+				<Icon id="close-icon" class="hidden hover:text-main-400" name={ICONS.CLOSE}></Icon>
+				<Icon id="menu-icon" class="hover:text-main-400" name={ICONS.MENU}></Icon>
+			</button>
+			<a href={getPageLink()} class="flex flex-row items-center gap-2 portrait:justify-center">
+				<Icon name={ICONS.LOGO} class="text-3xl text-main-500"></Icon>
+				<div class="text-xl font-bold">{ SITE_TITLE }</div>
+			</a>
+			<div class="flex flex-row items-center flex-1 gap-2 justify-end">
+				<div class="flex flex-row items-center gap-2 portrait:hidden">
+					{pages.map(([title, slug, icon]) => (
+						<a href={getPageLink(slug)} class="nav hover-shadow">
+							<span>{title}</span>
+							{ icon && <Icon class="text-lg" name={icon}></Icon>}
+						</a>
+					))}
+				</div>
+				<ThemeToggle></ThemeToggle>
+			</div>
+		</div>
+		<div id="menu" class="hidden">
+			<div class="flex gap-5 flex-col w-screen h-1/2 py-4 px-10 z-10">
+				{pages.map(([title, slug, icon]) => (
+					<a href={getPageLink(slug)} class="h-10 text-xl nav hover-shadow">
+						<span>{title}</span>
+						{ icon && <Icon class="text-lg" name={icon}></Icon>}
+					</a>))}
+			</div>
 		</div>
 	</div>
-	<div id="menu" class="absolute left-0 z-10 hidden">
-		<div id="menu-background" class="absolute w-screen h-screen opacity-50 bg-main-950"></div>
-		<div class="absolute left-0 flex gap-5 flex-col w-[75vw] h-screen p-10 bg-white">
-			{pages.map(([title, slug, icon]) => (
-				<a href={getPageLink(slug)} class="h-10 flex flex-row items-center gap-1 px-2 py-1 text-xl transition-all rounded-full border-white hover:border-main-500 border-2 hover:shadow-custom hover:shadow-main-400">
-					<span>{title}</span>
-					{ icon && <Icon class="text-lg" name={icon}></Icon>}
-				</a>))}
-			<button><Icon class="hover:text-main-400" name={ICONS.SUN}></Icon></button>
-		</div>
-	</div>
-
+	<div id="menu-background" class="hidden absolute w-screen h-screen opacity-50 bg-main-950 z-0"></div>
 </header>
 
+<style>
+	:global(.dark) #navigation {
+		@apply border-main-900
+	}
+
+	header { @apply bg-white }
+    :global(.dark) header { @apply bg-main-1000; }
+
+	.nav {
+		@apply flex flex-row items-center gap-1 px-2 py-1 transition-all rounded-full border-white border-2 hover:border-main-500;
+	}
+    :global(.dark) .nav { @apply border-main-1000 hover:border-main-900 }
+</style>
+
 <script>
+	let isOpen = false;
+	
 	function toggleMenu(){
+		isOpen = !isOpen;
 		document.getElementById("menu")?.classList.toggle("hidden");
-		document.getElementById("close-button")?.classList.toggle("hidden");
-		document.getElementById("menu-button")?.classList.toggle("hidden");
+		document.getElementById("close-icon")?.classList.toggle("hidden");
+		document.getElementById("menu-icon")?.classList.toggle("hidden");
+		document.getElementById("menu-background")?.classList.toggle("hidden");
+		document.documentElement.style.overflow = isOpen ? "hidden" : "auto";
 	}
 	
 	function hideMenu(){
+		isOpen = false;
 		document.getElementById("menu")?.classList.add("hidden");
-		document.getElementById("close-button")?.classList.add("hidden");
-		document.getElementById("menu-button")?.classList.remove("hidden");
+		document.getElementById("close-icon")?.classList.add("hidden");
+		document.getElementById("menu-icon")?.classList.remove("hidden");
+		document.getElementById("menu-background")?.classList.add("hidden");
+		document.documentElement.style.overflow = "auto";
 	}
 
 	document.getElementById("menu-button")?.addEventListener("click", toggleMenu);
 	document.getElementById("menu-background")?.addEventListener("click", hideMenu);
-	document.getElementById("close-button")?.addEventListener("click", hideMenu);
 </script>

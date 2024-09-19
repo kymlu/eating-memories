@@ -56,13 +56,13 @@ interface Ingredient {
     </div>
     <div class="flex flex-col gap-x-16 landscape:flex-row">
         <div class="landscape:max-w-[40%] landscape:min-w-[25%] flex flex-col gap-2">
-            <div class="text-main-900">{frontmatter.description}</div>
+            <div class="subtitle">{frontmatter.description}</div>
             <div class="flex flex-row flex-wrap items-center gap-2">
-                {frontmatter.cuisine && <span class="px-2 py-1 capitalize whitespace-nowrap rounded-xl bg-main-300">{frontmatter.cuisine }</span>}
-                {frontmatter.courseType && <span class="px-2 py-1 capitalize whitespace-nowrap rounded-xl bg-main-300">{frontmatter.courseType }</span>}
-                {frontmatter.dietary && <div class="flex flex-row gap-2">{frontmatter.dietary.map((diet) => <span class="px-2 py-1 capitalize whitespace-nowrap rounded-xl bg-main-300">{ diet }</span>)}</div>}
+                {frontmatter.cuisine && <span class="tag">{frontmatter.cuisine }</span>}
+                {frontmatter.courseType && <span class="tag">{frontmatter.courseType }</span>}
+                {frontmatter.dietary && <div class="flex flex-row gap-2">{frontmatter.dietary.map((diet) => <span class=" tag">{ diet }</span>)}</div>}
             </div>
-            {frontmatter.adaptedFrom && <a target="_blank" rel="noopener noreferrer" href={frontmatter.adaptedFromURL} class="text-main-900">Adapted from {frontmatter.adaptedFrom}</a>}
+            {frontmatter.adaptedFrom && <a target="_blank" rel="noopener noreferrer" href={frontmatter.adaptedFromURL} class="subtitle">Adapted from {frontmatter.adaptedFrom}</a>}
             {frontmatter.yield && 
                 <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="flex flex-row gap-2">
                     <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.MINUS}></Icon></button>
@@ -72,11 +72,11 @@ interface Ingredient {
             }
             {frontmatter.ingredients && 
                 <div id="ingredients-list">
-                    <h2 class="capitalize">Ingredients</h2>
+                    <h2 id="ingredients" class="capitalize">Ingredients</h2>
                     <div class="flex flex-col gap-1">
                         {frontmatter.ingredients.map((group: IngredientsGroup) => (
                             <div>
-                                {group.name && <div>{group.recipeId ? <a href={getPostLink(group.recipeId)} class="underline text-main-500"><h3 class="capitalize">{group.name}</h3></a> : <h3 class="capitalize">{group.name}</h3>}</div>}
+                                {group.name && <div id={group.name.replaceAll(" ", "-").toLowerCase()}>{group.recipeId ? <a href={getPostLink(group.recipeId)} class="underline text-main-500"><h3 class="capitalize">{group.name}</h3></a> : <h3 class="capitalize">{group.name}</h3>}</div>}
                                 <ul class="pl-4">
                                     {
                                         group.ingredients.map((ingredient: Ingredient) => 
@@ -85,7 +85,7 @@ interface Ingredient {
                                                         {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity}></ingredient-quantity>}
                                                         {ingredient.unit && <span>{ingredient.unit} </span>}
                                                         {ingredient.name && <span>{ingredient.name} </span>}
-                                                        {ingredient.note && <span class="text-xs italic text-main-800">{ingredient.note}</span>}
+                                                        {ingredient.note && <span class="text-xs italic subtitle">{ingredient.note}</span>}
                                                     </span>
                                                 return <ingredient-component>
                                                             <li class="flex items-center gap-2 list-none">
@@ -125,7 +125,7 @@ interface Ingredient {
 </BasePage>
 
 <script>
-import { getFloatString } from "../utils";
+    import { getFloatString } from "../utils";
 
     class Ingredient extends HTMLElement {
         constructor(){

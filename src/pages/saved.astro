@@ -8,7 +8,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
 <BasePage title="Saved Recipes">
     <div class="flex flex-row justify-between mb-2 portrait:flex-col">
         <h1 class="">Saved Recipes</h1>
-        <button id="clear-btn" class="hidden w-32 p-1 text-white portrait:self-end rounded-xl bg-main-400">Clear Saved</button>
+        <button id="clear-btn" class="hidden w-32 p-1 text-white portrait:self-end rounded-xl bg-main-500 hover:bg-main-400">Clear Saved</button>
     </div>
 	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
         { allRecipes.sort(titleSort).map((post) =>
@@ -19,6 +19,13 @@ const allRecipes = await Astro.glob("./posts/*.md");
     </div>
     <span id="no-saved" class="hidden">You have no saved recipes!</span>
 </BasePage>
+
+<style>
+    :global(.dark) #clear-btn {
+        @apply bg-main-900 hover:bg-main-800;
+    }
+</style>
+
 <script>
     import {LOCAL_STORAGE_KEYS} from "../const.ts";
     const savedString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);

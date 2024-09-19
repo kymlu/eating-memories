@@ -37,7 +37,7 @@ Put **beans** into a pot and pour cold water over it to just cover the beans.
 
 On medium heat, bring beans to a boil. Boil for ~2 minutes while foam appears.
 
-Drain the beans. Wash the pot quickly and put the beans back into the pot. Pour enough cold water to cover the beans.
+Drain the beans. Rinse the pot and put the beans back in. Pour enough cold water to cover the beans.
 
 Cover the pot but leave the lid slightly ajar. Simmer on low heat until beans become tender (~1.5 – 2 hours). Check on beans occasionally for:
 - **Foam?** Skim it
@@ -56,7 +56,7 @@ To mash the beans, blend it using a food processor. Add some bean liquid if it i
 >
 > If you don't have a blender, use the sieve method or use a mashing tool of your choice.
 ---
-# FLAVOUR BEANS
+# THICKEN BEANS
 Put paste in a clean saucepan. Add **oil**, **sugar** and **salt**, and mix.
 > When adding sugar and salt, it's better to undersalt if you're concerned about flavour. You can add more if it's not to your taste.
 

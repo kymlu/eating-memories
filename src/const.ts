@@ -28,4 +28,5 @@ export const ICONS = {
     CLOSE: "mingcute:close-line",
     MENU: "mingcute:menu-line",
     SUN: "mingcute:sun-line",
+    MOON: "mingcute:moon-line",
 }

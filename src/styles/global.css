@@ -185,7 +185,6 @@
     html {
         @apply font-sans;
         @apply bg-white text-main-950;
-        /* @apply dark:bg-main-950 dark:text-white; */
         button, a {
             Icon, svg {
                 @apply text-2xl;
@@ -228,6 +227,50 @@
     
         hr {
             @apply bg-main-600 h-[2px] border-none my-3;
+        }
+
+        .subtitle {
+            @apply text-main-900;
+        }
+
+        .tag {
+            @apply px-2 py-1 rounded-xl bg-main-300 capitalize whitespace-nowrap;
+        }
+
+        img.placeholder {
+            @apply w-20 h-20 rounded-lg bg-main-100;
+        }
+
+        .hover-shadow {
+            @apply border-main-500 hover:shadow-custom hover:shadow-main-400
+        }
+    }
+
+    html.dark {
+        @apply bg-main-1000 text-white;
+
+        blockquote {
+            @apply bg-main-950 pt-2 pb-1 px-5 border-l-4 border-l-main-300;
+        }
+
+        .subtitle {
+            @apply text-main-300
+        }
+
+        .tag {
+            @apply bg-main-800;
+        }
+
+        input {
+            @apply bg-main-950 border-main-900
+        }
+
+        img.placeholder {
+            @apply bg-main-950
+        }
+
+        .hover-shadow {
+            @apply border-main-900 hover:shadow-main-800
         }
     }
 }
