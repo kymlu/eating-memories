@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getPageLink } from "../utils";
-import { SITE_TITLE, ICONS, PAGE_NAMES } from "../const.ts";
+import { SITE_TITLE, ICONS } from "../const.ts";
 ---
 
 <div class="flex items-center py-2 text-white justify-evenly bg-main-700">
@@ -10,8 +10,6 @@ import { SITE_TITLE, ICONS, PAGE_NAMES } from "../const.ts";
             <Icon name={ICONS.LOGO} class="text-3xl"></Icon>
             <div class="font-bold">{ SITE_TITLE }</div>
         </a>
-        <!-- <span class="cursor-default select-none">|</span> -->
-        <!-- <a href={getPageLink(PAGE_NAMES.ABOUT)} class="p-2">Sitemap</a> -->
     </div>
     <a target="_blank" rel="noopener noreferrer" href=`https://github.com/kymlu/eating-memories`>
         <div class="flex flex-row items-center gap-1 p-2">
