@@ -6,7 +6,6 @@ import MiniRecipePreview from "./MiniRecipePreview.astro";
 import { getPostLink, titleSort } from "../utils.ts";
 import SaveButton from "./SaveButton.astro";
 import { ICONS } from "../const";
-import RecipeMethod from "./RecipeMethod.astro";
 
 interface Props {
     frontmatter: Recipe;
@@ -88,7 +87,7 @@ interface Ingredient {
                                                         {ingredient.note && <span class="text-xs italic subtitle">{ingredient.note}</span>}
                                                     </span>
                                                 return <ingredient-component>
-                                                            <li class="flex items-center gap-2 list-none">
+                                                            <li class="flex items-center gap-2 list-none decoration-main-600">
                                                                 <input type="checkbox">
                                                                 {ingredient.recipeId ? <a href={getPostLink(ingredient.recipeId)} class="underline text-main-500">{text}</a> : text}
                                                             </li>
@@ -106,9 +105,9 @@ interface Ingredient {
         </div>
         <div class="flex-1 portrait:mt-2">
             <h2 class="capitalize landscape:hidden">Method</h2>
-            <RecipeMethod>
+            <div class="recipe-method">
                 <slot/>
-            </RecipeMethod>
+            </div>
             {relatedRecipes.length > 0 && 
                 <div>
                     <hr>
@@ -125,7 +124,7 @@ interface Ingredient {
 </BasePage>
 
 <script>
-    import { getFloatString } from "../utils";
+    import { getFraction } from "../utils.ts";
 
     class Ingredient extends HTMLElement {
         constructor(){
@@ -134,8 +133,7 @@ interface Ingredient {
         connectedCallback(){
             this.querySelector("input")?.addEventListener("change", () => {
                 this.querySelector("li")?.classList.toggle("line-through");
-                this.querySelector("li")?.classList.toggle("decoration-2");
-                this.querySelector("li")?.classList.toggle("decoration-main-600");
+                this.querySelector("li")?.classList.toggle("opacity-50");
             })
         }
     }
@@ -217,12 +215,12 @@ interface Ingredient {
         connectedCallback(){
             if(this.dataset.defaultValue){
                 this.defaultValue = parseFloat(this.dataset.defaultValue);
-                this.innerText = this.defaultValue.toString();
+                this.innerText = getFraction(this.defaultValue);
             }
         }
         
         scaleValue(scale: number){
-            this.innerText = getFloatString(this.defaultValue * scale, 2);
+            this.innerText = getFraction(this.defaultValue * scale);
         }
     }
 

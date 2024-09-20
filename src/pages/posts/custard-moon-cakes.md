@@ -1,9 +1,9 @@
 ---
 layout: "../../layouts/Recipe.astro"
-title: "Custard"
+title: "Custard Filling"
 id: "filling-2"
 pubDate: 2024-09-16
-description: "Eggy."
+description: "For mooncakes."
 courseType: "dessert"
 cuisine: "Chinese"
 yield: 400
@@ -46,11 +46,11 @@ Mix the **wet ingredients** together.
 
 Add the **dry ingredients** and combine.
 
-Put the mixture onto a double boiler and mix in the **butter** until melted.
+Put the mixture onto a double boiler. Add **butter** and mix until melted.
 > To make a double boiler:
 > 
-> Add some water (not too much) to the pot and heat on high. Put the metal bowl on top of the pot.
+> Add some water (don't need too much) to the pot and heat on high. Put the metal bowl containing the mixture on top of the pot.
 
-Strain through a sieve into a saucepan and heat on medium, constantly stirring and folding until it becomes a thick paste. Can turn off the heat towards the end.
+Strain mixture through a sieve into a saucepan and heat on medium, constantly stirring and folding until it becomes a thick paste. Can turn off the heat towards the end.
 
 Let cool before using.

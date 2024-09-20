@@ -3,6 +3,8 @@ layout: "../../layouts/Recipe.astro"
 title: "Rainbow Puff Pastry"
 id: "pastry-3"
 pubDate: 2024-09-16
+adaptedFrom: "SugarVine"
+adaptedromURL: "https://www.youtube.com/watch?v=Gm3FdmrR3E4"
 description: "Taste the rainbow"
 courseType: "dessert"
 cuisine: "Chinese"
@@ -45,6 +47,8 @@ ingredients:
         - name: "mung bean paste"
         - name: "chestnut paste"
           recipeId: "filling-3"
+        - name: "coconut filling"
+          recipeId: "filling-4"
         - name: "char siu"
         - name: "curry"
         - name: "anything you want, really"
@@ -68,9 +72,8 @@ ingredients:
 > CAUTION: when adding gel food colouring, make sure to add a little at a time until you get the target colour because food colouring is very powerful.
 ---
 # MIX WATER AND OIL DOUGHS
-1. Knead the water dough.
-2. Divide the water dough into 47g portions.
-3. Weight each colour of the oil dough and divide evenly among the target number of mooncakes/2. The sum of each colour together should be around 36g.
+1. Knead the water dough briefly and then divide it into 47g portions.
+2. Weigh each colour of the oil dough and divide evenly among the target number of mooncakes/2. The sum of each colour together should be around 36g.
 
 For each individual portion:
 
@@ -78,7 +81,7 @@ For each individual portion:
 2. Shape the coloured oil dough into little logs and place them vertically in order on the water dough to fit half of the rectangle.
 3. Fold the uncovered water dough overtop the oil dough. Seal the edges tightly, avoiding bubbles.
 4. Cover with cling wrap and rest for 15 minutes.
-5. Roll out the dough with a rolling pin vertically to 25-30 cm long. Roll the dough up with your hands from left-right.
+5. Roll out the dough with a rolling pin vertically to 25-30 cm long. Roll the dough up with your hands from left-right so that you can still see the gradient top to bottom.
 6. Roll out the dough with a rolling pin vertically to 60-70 cm long. Starting from the side with the colour you would like to see at the top, roll the dough up tightly with your hands. 
 7. Cover with cling wrap and rest for 15 minutes. If the ambient temperature is warm, put it in the fridge in that time.
 

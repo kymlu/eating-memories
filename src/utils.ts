@@ -28,3 +28,23 @@ export function dateSort (a: MarkdownInstance<Record<string, any>>, b: MarkdownI
 export function getFloatString(input: number, maxDecimalPrecision: number): string{
     return parseFloat((input).toFixed(maxDecimalPrecision)).toString();
 }
+
+export function getFraction(input: number): string {
+    const allFractions: { [key: string]: string } = {
+        "0.125": "⅛",
+        "0.2": "⅕",
+        "0.25": "¼",
+        "0.33": "⅓",
+        "0.375": "⅜",
+        "0.4": "⅖",
+        "0.5": "½",
+        "0.6": "⅗",
+        "0.625": "⅝",
+        "0.67": "⅔",
+        "0.75": "¾",
+        "0.85": "⅘",
+        "0.875": "⅞"
+    } 
+    
+    return allFractions[getFloatString(input, 3)] ?? getFloatString(input, 2); 
+}

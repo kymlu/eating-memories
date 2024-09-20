@@ -31,7 +31,7 @@ ingredients:
 >
 > I like having additional 3-4 kinds of veggies for a variety of flavour and nutrients.
 >
-> The onion and garlic are more of a seasoning than veggie.
+> The onion and garlic are for the flavour.
 
 Preheat oven to 400F.
 

@@ -207,7 +207,7 @@
         }
     
         h2 {
-            @apply text-lg;
+            @apply text-lg font-medium;
         }
     
         h3, h4, h5 {
@@ -243,6 +243,24 @@
 
         .hover-shadow {
             @apply border-main-500 hover:shadow-custom hover:shadow-main-400
+        }
+
+        .recipe-method {
+            h1 {
+                @apply text-lg text-main-400;
+            }
+    
+            h2 {
+                @apply text-lg font-normal;
+            }
+            
+            blockquote, ul, ol {
+                @apply mb-2;
+            }
+    
+            a {
+                @apply underline;
+            }
         }
     }
 
