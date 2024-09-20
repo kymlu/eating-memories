@@ -2,7 +2,7 @@
 layout: "../../layouts/Recipe.astro"
 title: "Char Siu So"
 id: "pastry-2"
-pubDate: 2024-09-01
+pubDate: 2024-09-19
 description: "Pork."
 cuisine: "Chinese"
 courseType: "main"
@@ -51,7 +51,7 @@ Mix together the **cold water** and **cornstarch**. Let reduce until it become a
 
 Take off the heat and let cool.
 
-Preheat the oven to 400F.
+Preheat the oven to 400F/205C.
 
 Portion the puff pastry into the number of servings you are making. Add a spoonful of the filling onto the middle. Fold the pastry and seal (or shape however you want).
 

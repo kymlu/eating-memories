@@ -3,7 +3,7 @@ layout: "../../layouts/Recipe.astro"
 title: "Roasted Veggie Pasta Sauce"
 id: "sauce-1"
 pubDate: 2024-09-13
-description: "Doesn't have to be for pasta"
+description: "Doesn't have to be for pasta."
 courseType: "sauce"
 cuisine: "American"
 yield: 4
@@ -33,7 +33,7 @@ ingredients:
 >
 > The onion and garlic are for the flavour.
 
-Preheat oven to 400F.
+Preheat oven to 400F/205C.
 
 Chop veggies into large pieces. 
 > Generally around the size of half a fist but everyone's fists are different. 

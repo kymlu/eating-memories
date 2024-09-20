@@ -2,7 +2,7 @@
 layout: "../../layouts/Recipe.astro"
 title: "Chicken Coconut Soup"
 id: "soup-1"
-pubDate: 2024-09-15
+pubDate: 2024-09-19
 description: "My mom's recipe."
 courseType: "soup"
 cuisine: "Chinese"

@@ -44,9 +44,9 @@ ingredients:
     - name: "food colouring (optional)"
       ingredients:
         - name: "gel food colouring"
-          note: any colour(s)
+          note: "any colour(s)"
 ---
-Preheat oven to 320F.
+Preheat oven to 320F/160C.
 
 Cream the **butter** and **sugar** together by hand or with a hand mixer/stand mixer.
 

@@ -4,8 +4,8 @@ title: "Sweet Coconut Filling"
 id: "filling-4"
 adaptedFrom: "Qiong Cooking"
 adaptedFromURL: "https://www.youtube.com/watch?v=4rpZUC4-GHo"
-pubDate: 2024-09-16
-description: "Coconutty"
+pubDate: 2024-09-19
+description: "Coconutty."
 courseType: "dessert"
 cuisine: "Chinese"
 yield: 130

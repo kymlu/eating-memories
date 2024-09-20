@@ -3,7 +3,7 @@ layout: "../../layouts/Recipe.astro"
 title: "Chinese Puff Pastry"
 id: "pastry-1"
 pubDate: 2024-09-13
-description: "Layered goodness"
+description: "Layered goodness."
 courseType: "dessert"
 cuisine: "Chinese"
 yield: 8
