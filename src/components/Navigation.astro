@@ -34,7 +34,7 @@ const pages = [["Recipes", undefined],
 			</div>
 		</div>
 		<div id="menu" class="hidden relative">
-			<div class="absolute top-0 flex gap-5 flex-col w-screen h-fit pt-4 pb-6 px-8 z-10 rounded-b-xl bg-white">
+			<div id="menu-contents" class="absolute top-0 flex gap-5 flex-col w-screen h-fit pt-4 pb-6 px-8 z-10 rounded-b-xl bg-white">
 				{pages.map(([title, slug, icon]) => (
 					<a href={getPageLink(slug)} class="h-10 text-xl nav hover-shadow">
 						<span class="pl-2">{title}</span>
@@ -47,11 +47,14 @@ const pages = [["Recipes", undefined],
 </header>
 
 <style>
+	:global(.dark) #menu-contents {
+		@apply bg-main-1000;
+	}
 	:global(.dark) #navigation {
-		@apply border-main-900
+		@apply border-main-900;
 	}
 
-	header { @apply bg-white }
+	header { @apply bg-white; }
     :global(.dark) header { @apply bg-main-1000; }
 
 	.nav {
