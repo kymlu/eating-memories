@@ -13,7 +13,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
 	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
         { allRecipes.sort(titleSort).map((post) =>
             <saved-wrapper class="hidden" data-id={post.frontmatter.id}>
-                <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine}></RecipePreview>
+                <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.courseType} cuisine={post.frontmatter.cuisine}></RecipePreview>
             </saved-wrapper>)
         }
     </div>

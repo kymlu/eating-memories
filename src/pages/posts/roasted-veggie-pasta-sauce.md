@@ -18,7 +18,7 @@ ingredients:
           quantity: 1
         - name: "garlic"
           quantity: 4
-          unit: "clove"
+          unit: "cloves"
         - name: "vegetable oil"
           note: "other oils (sunflower, olive, etc.) are ok too"
         - name: "salt"

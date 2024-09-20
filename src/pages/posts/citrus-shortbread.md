@@ -44,7 +44,7 @@ ingredients:
     - name: "food colouring (optional)"
       ingredients:
         - name: "gel food colouring"
-        - note: any colour(s)
+          note: any colour(s)
 ---
 Preheat oven to 320F.
 
@@ -52,7 +52,8 @@ Cream the **butter** and **sugar** together by hand or with a hand mixer/stand m
 
 Add **salt** and **orange zest** and combine briefly. If using **food colouring**, add that now.
 
-Add the **flour** and combine. May need to add extra flour if the food colouring made it too wet.
+Add the **flour** and combine. May need to add extra flour if the food colouring made it too wet. 
+> You can alternatively add food colouring at this step, but gently knead it and be careful to not overwork the dough.
 
 Line the cookie sheet with the parchment paper.
 

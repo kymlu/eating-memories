@@ -11,7 +11,7 @@ const pages = [["Recipes", undefined],
 			["FAQ", PAGE_NAMES.FAQ]];
 ---
 <header class="sticky top-0 z-50">
-	<div class="sticky top-0 z-50">
+	<div>
 		<div id="navigation" class="flex flex-row items-center gap-2 px-20 pt-5 h-20 pb-1 border-b-4 border-main-600 portrait:px-10">
 			<button id="menu-button" class="landscape:hidden">
 				<Icon id="close-icon" class="hidden hover:text-main-400" name={ICONS.CLOSE}></Icon>
@@ -33,11 +33,11 @@ const pages = [["Recipes", undefined],
 				<ThemeToggle></ThemeToggle>
 			</div>
 		</div>
-		<div id="menu" class="hidden">
-			<div class="flex gap-5 flex-col w-screen h-1/2 py-4 px-10 z-10">
+		<div id="menu" class="hidden relative">
+			<div class="absolute top-0 flex gap-5 flex-col w-screen h-fit pt-4 pb-6 px-8 z-10 rounded-b-xl bg-white">
 				{pages.map(([title, slug, icon]) => (
 					<a href={getPageLink(slug)} class="h-10 text-xl nav hover-shadow">
-						<span>{title}</span>
+						<span class="pl-2">{title}</span>
 						{ icon && <Icon class="text-lg" name={icon}></Icon>}
 					</a>))}
 			</div>
@@ -55,32 +55,23 @@ const pages = [["Recipes", undefined],
     :global(.dark) header { @apply bg-main-1000; }
 
 	.nav {
-		@apply flex flex-row items-center gap-1 px-2 py-1 transition-all rounded-full border-white border-2 hover:border-main-500;
+		@apply flex flex-row items-center gap-1 px-2 py-1 transition-all rounded-full border-transparent border-2 hover:border-main-500;
 	}
-    :global(.dark) .nav { @apply border-main-1000 hover:border-main-900 }
+    :global(.dark) .nav { @apply border-transparent hover:border-main-900 }
 </style>
 
 <script>
 	let isOpen = false;
 	
-	function toggleMenu(){
-		isOpen = !isOpen;
-		document.getElementById("menu")?.classList.toggle("hidden");
-		document.getElementById("close-icon")?.classList.toggle("hidden");
-		document.getElementById("menu-icon")?.classList.toggle("hidden");
-		document.getElementById("menu-background")?.classList.toggle("hidden");
+	function toggleMenu(isClosing?: boolean){
+		isOpen = isClosing ? false : !isOpen;
+		document.getElementById("menu")?.classList.toggle("hidden", !isOpen);
+		document.getElementById("close-icon")?.classList.toggle("hidden", !isOpen);
+		document.getElementById("menu-icon")?.classList.toggle("hidden", isOpen);
+		document.getElementById("menu-background")?.classList.toggle("hidden", !isOpen);
 		document.documentElement.style.overflow = isOpen ? "hidden" : "auto";
 	}
-	
-	function hideMenu(){
-		isOpen = false;
-		document.getElementById("menu")?.classList.add("hidden");
-		document.getElementById("close-icon")?.classList.add("hidden");
-		document.getElementById("menu-icon")?.classList.remove("hidden");
-		document.getElementById("menu-background")?.classList.add("hidden");
-		document.documentElement.style.overflow = "auto";
-	}
 
-	document.getElementById("menu-button")?.addEventListener("click", toggleMenu);
-	document.getElementById("menu-background")?.addEventListener("click", hideMenu);
+	document.getElementById("menu-button")?.addEventListener("click", () => {toggleMenu()});
+	document.getElementById("menu-background")?.addEventListener("click", () => {toggleMenu(true)});
 </script>

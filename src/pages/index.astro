@@ -22,7 +22,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
     
 	<div class="grid gap-2 landscape:grid-cols-2">
         { allRecipes.sort(titleSort).map((post) =>
-            <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine}></RecipePreview>)
+            <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.courseType} cuisine={post.frontmatter.cuisine}></RecipePreview>)
         }
     </div>
 	<div class="hidden">No recipes match your filter :(</div>

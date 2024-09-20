@@ -13,6 +13,8 @@ export const recipeIndex: RecipeIndex = {
     "filling-3": "chestnut-paste",
     "sauce-1": "roasted-veggie-pasta-sauce",
     "sauce-2": "teriyaki-sauce",
+    "soup-1": "chicken-coconut-soup",
+    "soup-2": "cashew-vegetable-soup",
     "dessert-1": "snow-skin-mooncake",
     "dessert-2": "apple-crumble",
 };
