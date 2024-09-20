@@ -14,7 +14,7 @@ ingredients:
         - name: "apples"
           quantity: 6
           unit: "cups"
-          note: "diced"
+          note: "peeled and diced"
         - name: "sugar"
           quantity: 0.25
           unit: "cup"

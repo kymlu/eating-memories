@@ -41,7 +41,7 @@ ingredients:
           quantity: 2
           unit: "batches"
           recipeId: "pastry-1"
-          note: "store-bought is also fine"
+          note: "store-bought is also fine, though I don't know how much..."
 ---
 Heat some **oil** in a pan and add the diced **onion**. Heat until translucent. 
 

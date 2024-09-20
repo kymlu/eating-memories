@@ -14,6 +14,7 @@ export const recipeIndex: RecipeIndex = {
     "filling-2": "custard-moon-cakes",
     "filling-3": "chestnut-paste",
     "filling-4": "sweet-coconut-filling",
+    "filling-5": "lemon-custard",
     "sauce-1": "roasted-veggie-pasta-sauce",
     "sauce-2": "teriyaki-sauce",
     "soup-1": "chicken-coconut-soup",

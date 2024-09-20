@@ -21,7 +21,7 @@ const pages = [["Recipes", undefined],
 				<Icon name={ICONS.LOGO} class="text-3xl text-main-500"></Icon>
 				<div class="text-xl font-bold">{ SITE_TITLE }</div>
 			</a>
-			<div class="flex flex-row items-center flex-1 gap-2 justify-end">
+			<div class="flex flex-row items-center flex-1 gap-4 justify-end">
 				<div class="flex flex-row items-center gap-2 portrait:hidden">
 					{pages.map(([title, slug, icon]) => (
 						<a href={getPageLink(slug)} class="nav hover-shadow">

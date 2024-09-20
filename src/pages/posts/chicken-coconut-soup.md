@@ -14,7 +14,7 @@ ingredients:
           quantity: 1
         - name: "coconut chunks"
           quantity: 0.5
-          unit: "pounds"
+          unit: "pound"
         - name: "red dates"
           quantity: 4
         - name: "goji berries"
