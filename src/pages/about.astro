@@ -1,10 +1,12 @@
 ---
 import "../styles/global.css";
 import BasePage from "../layouts/BasePage.astro";
+import { Icon } from "astro-icon/components";
+import { ICONS } from "../const";
 ---
 <BasePage title="About" contentTitle="About this site">
 	<p>I am an amateur homecook.</p>
-	<p>I created this site as an archive for the things I"ve made in my kitchen at home.</p>
-	<p>I hope you can find a recipe you like here.</p>
-	<p>Thank you for entertaining my silliness.</p>
+	<p>I created this site as an archive for the things I've made in my kitchen at home.</p>
+	<p>Many recipes are adapted from or inspired by recipesI've found online. I list the sources for such recipes.</p>
+	<p class="flex items-center gap-1">That is all. Please enjoy. <Icon name={ICONS.HAPPY}></Icon></p>
 </BasePage>

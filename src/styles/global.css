@@ -247,7 +247,7 @@
 
         .recipe-method {
             h1 {
-                @apply text-lg text-main-400;
+                @apply text-lg text-main-500;
             }
     
             h2 {
