@@ -30,3 +30,12 @@ export const ICONS = {
     SUN: "mingcute:sun-line",
     MOON: "mingcute:moon-line",
 }
+
+export const YIELD_MULTIPLIERS : {key: string, value: number, displayValue: string}[] = 
+    [
+        {key: "half", value: 0.5, displayValue: "½"},
+        {key: "original", value: 1, displayValue: "1"},
+        {key: "double", value: 2, displayValue: "2"},
+        {key: "triple", value: 3, displayValue: "3"},
+        {key: "quadruple", value: 4, displayValue: "4"},
+    ];

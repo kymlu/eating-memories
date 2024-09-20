@@ -5,7 +5,7 @@ import { Icon } from "astro-icon/components"
 import MiniRecipePreview from "./MiniRecipePreview.astro";
 import { getPostLink, titleSort } from "../utils.ts";
 import SaveButton from "./SaveButton.astro";
-import { ICONS } from "../const";
+import { ICONS, YIELD_MULTIPLIERS } from "../const";
 
 interface Props {
     frontmatter: Recipe;
@@ -63,10 +63,17 @@ interface Ingredient {
             </div>
             {frontmatter.adaptedFrom && <a target="_blank" rel="noopener noreferrer" href={frontmatter.adaptedFromURL} class="subtitle">Adapted from {frontmatter.adaptedFrom}</a>}
             {frontmatter.yield && 
-                <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="flex flex-row gap-2">
-                    <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.MINUS}></Icon></button>
-                    <span>Yield: <span id="yield"></span></span>
-                    <button id="plus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.PLUS}></Icon></button>
+                <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit}>
+                    <div class="flex flex-row gap-2">
+                        <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.MINUS}></Icon></button>
+                        <span>Yield: <span id="yield"></span></span>
+                        <button id="plus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.PLUS}></Icon></button>
+                    </div>
+                    <div class="flex flex-row gap-2">
+                        {YIELD_MULTIPLIERS.map((multiplier) => 
+                            <button id={multiplier.key} class="w-8 h-8 hover-shadow border-2 border-solid rounded-lg ">{multiplier.displayValue}x</button>
+                        )}
+                    </div>
                 </yield-component>
             }
             {frontmatter.ingredients && 
@@ -124,6 +131,7 @@ interface Ingredient {
 </BasePage>
 
 <script>
+    import { YIELD_MULTIPLIERS } from "../const.ts";
     import { getFraction } from "../utils.ts";
 
     class Ingredient extends HTMLElement {
@@ -143,11 +151,13 @@ interface Ingredient {
         defaultValue: number;
         currentValue: number;
         unit: string;
+        maxMultiplier: number;
         constructor(){
             super();
             this.defaultValue = 1;
             this.currentValue = 1;
             this.unit = "";
+            this.maxMultiplier = 10;
         }
         
         connectedCallback(){
@@ -157,6 +167,9 @@ interface Ingredient {
                 }
                 
                 this.currentValue = this.defaultValue = parseInt(this.dataset.defaultValue);
+                if(this.defaultValue > 5){
+                    this.maxMultiplier = 4;
+                }
                 this.setYieldString();
                 this.checkButtons();
             }
@@ -167,23 +180,39 @@ interface Ingredient {
                 this.checkButtons();
             });
             (this.querySelector("#plus-yield") as HTMLElement).addEventListener("click", () => {
-                this.currentValue++;
+                this.currentValue == this.defaultValue / 2 ? this.currentValue = this.defaultValue : this.currentValue++;
                 this.updateScale();
                 this.checkButtons();
             });
+            
+            YIELD_MULTIPLIERS.forEach((multiplier) => {
+                this.querySelector(`#${multiplier.key}`)?.addEventListener("click", this.setMultiplier.bind(this, multiplier.value));
+            });
+        }
+
+        setMultiplier(multiplier: number) {
+            this.currentValue = this.defaultValue * multiplier;
+            this.updateScale();
+            this.checkButtons();
         }
 
         checkButtons() {
-            if(this.currentValue == 1) {
+            if (this.currentValue <= 1) {
                 this.querySelector("#minus-yield")?.setAttribute("disabled", "");
             } else {
                 this.querySelector("#minus-yield")?.removeAttribute("disabled");
             }
             
-            if(this.currentValue == 100){
+            if (this.currentValue >= this.defaultValue * this.maxMultiplier) {
                 this.querySelector("#plus-yield")?.setAttribute("disabled", "");
             } else {
                 this.querySelector("#plus-yield")?.removeAttribute("disabled");
+            }
+            
+            if (this.currentValue == this.defaultValue) {
+                this.querySelector("#reset")?.classList.add("hidden");
+            } else {
+                this.querySelector("#reset")?.classList.remove("hidden");
             }
         }
 

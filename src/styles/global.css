@@ -185,6 +185,7 @@
     html {
         @apply font-sans;
         @apply bg-white text-main-950;
+        
         button, a {
             Icon, svg {
                 @apply text-2xl;
@@ -268,7 +269,7 @@
         @apply bg-main-1000 text-white;
 
         blockquote {
-            @apply bg-main-950 pt-2 pb-1 px-5 border-l-4 border-l-main-300;
+            @apply bg-main-950 pt-2 pb-1 px-5 border-l-4 border-l-main-400;
         }
 
         .subtitle {

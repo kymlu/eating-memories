@@ -46,6 +46,7 @@ ingredients:
           unit: "g"
         - name: "egg"
           quantity: 1
+          note: "I like using apple sauce instead (0.25 cup/egg)"
         - name: "vanilla extract"
           quantity: 1
           unit: "tsp"

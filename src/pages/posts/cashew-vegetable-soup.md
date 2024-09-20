@@ -33,4 +33,4 @@ Add ingredients to a 4L pot and fill the pot up with cold water.
 Put pot on a stove on high.
 
 Once the water boils, turn the stove down to low and simmer for 1.5 hours.
->The flavour does end up being sweet!
+>The flavour will be sweet!
