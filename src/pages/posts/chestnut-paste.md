@@ -4,7 +4,7 @@ title: "Chestnut Paste"
 id: "filling-3"
 pubDate: 2024-09-16
 description: "Nutty."
-courseType: "dessert"
+course: "dessert"
 cuisine: "Chinese"
 yield: 400
 yieldUnit: "gram"

@@ -4,7 +4,7 @@ title: "Apple Crumble"
 id: "dessert-2"
 pubDate: 2024-09-15
 description: "Called 'apple crisp' for the Americans out there."
-courseType: "dessert"
+course: "dessert"
 cuisine: "American"
 yield: 1
 yieldUnit: "9x5 pan"
@@ -45,7 +45,7 @@ ingredients:
           quantity: 0.25
           unit: "cup"
 ---
-Preheat the oven at 350F/175C.
+Preheat the oven to 350F/175C.
 
 Combine the ingredients for the **filling** in a bowl. Put in the pan.
 > Experiment with other fruits like peaches and pears! Mix multiple fruit to make a fruit salad!

@@ -6,7 +6,7 @@ pubDate: 2024-09-16
 adaptedFrom: "SugarVine"
 adaptedromURL: "https://www.youtube.com/watch?v=Gm3FdmrR3E4"
 description: "Taste the rainbow."
-courseType: "dessert"
+course: "dessert"
 cuisine: "Chinese"
 yield: 8
 yieldUnit: "pastry"

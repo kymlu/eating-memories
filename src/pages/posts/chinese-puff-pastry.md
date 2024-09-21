@@ -4,7 +4,7 @@ title: "Chinese Puff Pastry"
 id: "pastry-1"
 pubDate: 2024-09-13
 description: "Layered goodness."
-courseType: "dessert"
+course: "dessert"
 cuisine: "Chinese"
 yield: 8
 yieldUnit: "pastry"

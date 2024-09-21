@@ -4,7 +4,7 @@ title: "Teriyaki-ish Sauce"
 id: "sauce-2"
 pubDate: 2024-09-15
 description: "For sweet and savoury meats and veggies."
-courseType: "sauce"
+course: "sauce"
 cuisine: "Japanese"
 yield: 2
 yieldUnit: "serving"

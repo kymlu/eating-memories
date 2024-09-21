@@ -4,7 +4,7 @@ title: "Cashew Vegetable Soup"
 id: "soup-2"
 pubDate: 2024-09-19
 description: "My grandma's recipe."
-courseType: "soup"
+course: "soup"
 yield: 4
 yieldUnit: "litre"
 ingredients:

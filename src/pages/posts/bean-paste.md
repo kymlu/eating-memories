@@ -7,7 +7,7 @@ description: "Any bean works."
 adaptedFrom: "Just One Cookbook"
 adaptedFromURL: "https://www.justonecookbook.com/anko-red-bean-paste/"
 cuisine: "Asian"
-courseType: "dessert"
+course: "dessert"
 yield: 450
 yieldUnit: "gram"
 ingredients:

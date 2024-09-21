@@ -26,7 +26,7 @@ interface Recipe {
     adaptedFrom?: string;
     adaptedFromURL?: string;
     cuisine?: string;
-    courseType?: string;
+    course?: string;
     dietary?: string[];
     yield?: number;
     yieldUnit?: string;
@@ -58,12 +58,12 @@ interface Ingredient {
             <div class="subtitle">{frontmatter.description}</div>
             <div class="flex flex-row flex-wrap items-center gap-2">
                 {frontmatter.cuisine && <span class="tag">{frontmatter.cuisine }</span>}
-                {frontmatter.courseType && <span class="tag">{frontmatter.courseType }</span>}
+                {frontmatter.course && <span class="tag">{frontmatter.course }</span>}
                 {frontmatter.dietary && <div class="flex flex-row gap-2">{frontmatter.dietary.map((diet) => <span class=" tag">{ diet }</span>)}</div>}
             </div>
             {frontmatter.adaptedFrom && <a target="_blank" rel="noopener noreferrer" href={frontmatter.adaptedFromURL} class="subtitle">Adapted from {frontmatter.adaptedFrom}</a>}
             {frontmatter.yield && 
-                <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="w-60 flex flex-col gap-2">
+                <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="w-60 flex flex-col gap-1">
                     <div class="flex flex-row gap-2 justify-between">
                         <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.MINUS}></Icon></button>
                         <span class="text-nowrap">Yield: <span id="yield"></span></span>

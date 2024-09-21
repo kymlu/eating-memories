@@ -4,7 +4,7 @@ title: "Gingersnap Cookies"
 id: "cookie-2"
 pubDate: 2024-09-20
 description: "Tastes warm."
-courseType: "dessert"
+course: "dessert"
 cuisine: "American"
 yield: 12
 yieldUnit: "cookie"

@@ -4,7 +4,7 @@ title: "Chicken Coconut Soup"
 id: "soup-1"
 pubDate: 2024-09-19
 description: "My mom's recipe."
-courseType: "soup"
+course: "soup"
 cuisine: "Chinese"
 yield: 4
 yieldUnit: "litre"

@@ -4,7 +4,7 @@ title: "Custard Filling"
 id: "filling-2"
 pubDate: 2024-09-16
 description: "For mooncakes."
-courseType: "dessert"
+course: "dessert"
 cuisine: "Chinese"
 yield: 400
 yieldUnit: "gram"

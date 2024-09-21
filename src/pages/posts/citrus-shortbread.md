@@ -4,7 +4,7 @@ title: "Citrus Shortbread"
 id: "cookie-1"
 pubDate: 2024-09-16
 description: "Fruity."
-courseType: "dessert"
+course: "dessert"
 cuisine: "American"
 yield: 30
 yieldUnit: "tiny cookie"

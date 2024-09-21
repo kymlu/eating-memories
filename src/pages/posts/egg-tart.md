@@ -4,7 +4,7 @@ title: "Egg tarts"
 id: "pastry-4"
 pubDate: 2024-09-20
 description: "My grandma's recipe."
-courseType: "dessert"
+course: "dessert"
 cuisine: "Chinese"
 yield: 9
 yieldUnit: "tart"
@@ -22,7 +22,7 @@ ingredients:
           quantity: 9
           note: "I use frozen"
 ---
-Preheat the oven at 350F/175C.
+Preheat the oven to 350F/175C.
 
 Whisk the **egg**, **sugar**, and **milk** together until well combined.
 

@@ -4,7 +4,7 @@ title: "Roasted Veggie Pasta Sauce"
 id: "sauce-1"
 pubDate: 2024-09-13
 description: "Doesn't have to be for pasta."
-courseType: "sauce"
+course: "sauce"
 cuisine: "American"
 yield: 4
 yieldUnit: "serving"

@@ -5,7 +5,7 @@ id: "pastry-2"
 pubDate: 2024-09-19
 description: "Pork."
 cuisine: "Chinese"
-courseType: "main"
+course: "main"
 yield: 16
 yieldUnit: "pastry"
 ingredients:

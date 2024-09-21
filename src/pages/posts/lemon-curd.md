@@ -4,7 +4,7 @@ title: "Lemon curd"
 id: "filling-5"
 pubDate: 2024-09-20
 description: "Pretty tart."
-courseType: "filling"
+course: "filling"
 cuisine: "English"
 yield: 250
 yieldUnit: "ml"

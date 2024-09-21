@@ -6,7 +6,7 @@ adaptedFrom: "Qiong Cooking"
 adaptedFromURL: "https://www.youtube.com/watch?v=4rpZUC4-GHo"
 pubDate: 2024-09-19
 description: "Coconutty."
-courseType: "dessert"
+course: "dessert"
 cuisine: "Chinese"
 yield: 130
 yieldUnit: "gram"
