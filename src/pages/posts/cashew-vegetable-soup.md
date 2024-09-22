@@ -23,14 +23,19 @@ ingredients:
           quantity: 1
           unit: "stalk"
           note: "diced"
+        - name: "dried figs"
+          quantity: 4
         - name: "cashews"
           quantity: 0.25
           unit: "cup"
         - name: "water"
+        - name: "salt"
 ---
 Add ingredients to a 4L pot and fill the pot up with cold water.
 
 Put pot on a stove on high.
 
 Once the water boils, turn the stove down to low and simmer for 1.5 hours.
->The flavour will be sweet!
+
+Add a sprinkle of salt, stir, and taste. Repeat until the flavour is right.
+> Even after adding salt, the flavour will generally be sweet!

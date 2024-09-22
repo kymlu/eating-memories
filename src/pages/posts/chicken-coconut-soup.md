@@ -21,9 +21,13 @@ ingredients:
           quantity: 0.25
           unit: "cup"
         - name: "water"
+        - name: "salt"
+          note: "to taste"
 ---
 Add ingredients to a 4L pot and fill the pot up with cold water.
 
 Put pot on a stove on high.
 
 Once the water boils, turn the stove down to low and simmer for 1.5 hours.
+
+Add a sprinkle of salt, stir, and taste. Repeat until the flavour is right.
