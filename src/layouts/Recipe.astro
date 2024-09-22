@@ -152,6 +152,7 @@ interface Ingredient {
         currentValue: number;
         unit: string;
         maxMultiplier: number;
+
         constructor(){
             super();
             this.defaultValue = 1;
@@ -174,20 +175,56 @@ interface Ingredient {
                 this.checkButtons();
             }
 
-            (this.querySelector("#minus-yield") as HTMLElement).addEventListener("click", () => {
-                this.currentValue--;
-                this.updateScale();
-                this.checkButtons();
+            (this.querySelector("#minus-yield") as HTMLElement).addEventListener("mousedown", () => {
+                this.adjustYield(false);
+                const minusInterval = setInterval(() => {
+                    if(!this.adjustYield(false)){
+                        clearInterval(minusInterval);
+                    }
+                }, 200);
+
+                document.body.addEventListener('mouseup', () => {
+                    clearInterval(minusInterval);
+                }, { once: true });
             });
-            (this.querySelector("#plus-yield") as HTMLElement).addEventListener("click", () => {
-                this.currentValue = Math.floor(this.currentValue + 1);
-                this.updateScale();
-                this.checkButtons();
+            
+            (this.querySelector("#plus-yield") as HTMLElement).addEventListener("mousedown", () => {
+                this.adjustYield(true);
+                const plusInterval = setInterval(() => {
+                    if(!this.adjustYield(true)){
+                        clearInterval(plusInterval);
+                    }
+                }, 200);
+
+                document.body.addEventListener('mouseup', () => {
+                    clearInterval(plusInterval);
+                }, { once: true });
             });
             
             YIELD_MULTIPLIERS.forEach((multiplier) => {
                 this.querySelector(`#${multiplier.key}`)?.addEventListener("click", this.setMultiplier.bind(this, multiplier.value));
             });
+        }
+
+        adjustYield(isIncrement: boolean): boolean{
+            let isInBounds = true;
+            if(isIncrement){
+                if(this.currentValue < this.defaultValue * this.maxMultiplier){
+                    this.currentValue = Math.floor(this.currentValue + 1);
+                } else {
+                    isInBounds = false;
+                }
+            } else {
+                if(this.currentValue > 1){
+                    this.currentValue--;
+                } else {
+                    isInBounds = false;
+                }
+            }
+            this.updateScale();
+            this.checkButtons();
+
+            return isInBounds;
         }
 
         setMultiplier(multiplier: number) {
@@ -207,12 +244,6 @@ interface Ingredient {
                 this.querySelector("#plus-yield")?.setAttribute("disabled", "");
             } else {
                 this.querySelector("#plus-yield")?.removeAttribute("disabled");
-            }
-            
-            if (this.currentValue == this.defaultValue) {
-                this.querySelector("#reset")?.classList.add("hidden");
-            } else {
-                this.querySelector("#reset")?.classList.remove("hidden");
             }
         }
 
