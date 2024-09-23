@@ -174,21 +174,20 @@ interface Ingredient {
                 this.setYieldString();
                 this.checkButtons();
             }
-
-            (this.querySelector("#minus-yield") as HTMLElement).addEventListener("mousedown", () => {
+            (this.querySelector("#minus-yield") as HTMLElement).addEventListener("pointerdown", () => {
                 this.adjustYield(false);
                 const minusInterval = setInterval(() => {
                     if(!this.adjustYield(false)){
                         clearInterval(minusInterval);
                     }
                 }, 200);
-
-                document.body.addEventListener('mouseup', () => {
+                
+                document.body.addEventListener("pointerup", () => {
                     clearInterval(minusInterval);
                 }, { once: true });
             });
             
-            (this.querySelector("#plus-yield") as HTMLElement).addEventListener("mousedown", () => {
+            (this.querySelector("#plus-yield") as HTMLElement).addEventListener("pointerdown", () => {
                 this.adjustYield(true);
                 const plusInterval = setInterval(() => {
                     if(!this.adjustYield(true)){
@@ -196,7 +195,7 @@ interface Ingredient {
                     }
                 }, 200);
 
-                document.body.addEventListener('mouseup', () => {
+                document.body.addEventListener("pointerup", () => {
                     clearInterval(plusInterval);
                 }, { once: true });
             });
