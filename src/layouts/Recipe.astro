@@ -175,6 +175,8 @@ interface Ingredient {
                 this.checkButtons();
             }
             (this.querySelector("#minus-yield") as HTMLElement).addEventListener("pointerdown", () => {
+                // include to prevent selection on touchscreen
+                document.body.classList.add("select-none"); 
                 this.adjustYield(false);
                 const minusInterval = setInterval(() => {
                     if(!this.adjustYield(false)){
@@ -183,11 +185,14 @@ interface Ingredient {
                 }, 200);
                 
                 document.body.addEventListener("pointerup", () => {
+                    document.body.classList.remove("select-none");
                     clearInterval(minusInterval);
                 }, { once: true });
             });
             
             (this.querySelector("#plus-yield") as HTMLElement).addEventListener("pointerdown", () => {
+                // include to prevent selection on touchscreen
+                document.body.classList.add("select-none");
                 this.adjustYield(true);
                 const plusInterval = setInterval(() => {
                     if(!this.adjustYield(true)){
@@ -196,6 +201,7 @@ interface Ingredient {
                 }, 200);
 
                 document.body.addEventListener("pointerup", () => {
+                    document.body.classList.remove("select-none");
                     clearInterval(plusInterval);
                 }, { once: true });
             });
