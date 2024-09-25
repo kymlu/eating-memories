@@ -18,11 +18,32 @@ const allRecipes = await Astro.glob("./posts/*.md");
         }
     </div>
     <span id="no-saved" class="hidden">You have no saved recipes!</span>
+
+    <div id="popup-container" class="absolute left-0 top-0 flex items-center justify-center w-svw h-svh hidden">
+        <div id="popup-bg" class="popup-bg"></div>
+        <div id="popup" class="z-10 w-auto max-w-[70%] portrait:max-w-[80%] h-auto bg-white border-main-600 border-2 border-solid rounded-xl p-5 flex flex-col gap-4">
+            <h1>Are you sure you want to clear your saved recipes?</h1>
+            <div class="flex justify-around w-full">
+                <button id="no" class="hover-shadow option-button">No</button>
+                <button id="yes" class="hover-shadow option-button">Yes</button>
+            </div>
+        </div>
+    </div>
 </BasePage>
 
 <style>
     :global(.dark) #clear-btn {
         @apply bg-main-900 hover:bg-main-800;
+    }
+    :global(.dark) #popup {
+        @apply bg-main-1000 border-main-900;
+    }
+    :global(.dark) #popup-bg {
+        @apply bg-main-1000;
+    }
+
+    .option-button {
+        @apply w-14 px-2 py-1 transition-all rounded-full border-white;
     }
 </style>
 
@@ -36,10 +57,20 @@ const allRecipes = await Astro.glob("./posts/*.md");
     let savedCount = document.querySelectorAll("saved-wrapper").length;
     
     document.getElementById("clear-btn")?.addEventListener("click", () => {
+        document.getElementById("popup-container")?.classList.remove("hidden");
+    });
+    
+    ["no", "popup-bg"].forEach((elementId: string) => {
+        document.getElementById(elementId)?.addEventListener("click", () => {
+            document.getElementById("popup-container")?.classList.add("hidden");
+        });
+    })
+
+    document.getElementById("yes")?.addEventListener("click", () => {
         window.localStorage.removeItem(LOCAL_STORAGE_KEYS.SAVED);
         location.reload();
     });
-
+    
     class SavedWrapper extends HTMLElement {
         connectedCallback(){
             if(this.dataset.id && savedList.includes(this.dataset.id)){

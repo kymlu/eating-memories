@@ -233,6 +233,10 @@
             @apply bg-main-600 h-[1px] border-none my-3;
         }
 
+        .popup-bg{
+            @apply z-0 absolute w-svw h-svh bg-main-950 opacity-50;
+        }
+
         .subtitle {
             @apply text-main-900;
         }
@@ -246,7 +250,7 @@
         }
 
         .hover-shadow {
-            @apply border-main-500 hover:shadow-custom hover:shadow-main-400
+            @apply border-main-500 hover:shadow-custom hover:shadow-main-400 border-2 border-solid;
         }
 
         .recipe-method {
@@ -300,7 +304,7 @@
         }
 
         .hover-shadow {
-            @apply border-main-950 hover:shadow-main-900
+            @apply border-main-900 hover:shadow-main-700
         }
 
         .recipe-method {

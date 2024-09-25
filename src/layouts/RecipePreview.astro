@@ -15,7 +15,7 @@ interface Props {
 const { id, name, description, link, imageLink, cuisine, course, dietary} = Astro.props;
 ---
 
-<div class="hover-shadow box-content relative flex flex-row justify-between p-2 transition-all duration-100 border-2 border-solid rounded-lg min-w-60 min-h-5">
+<div class="hover-shadow box-content relative flex flex-row justify-between p-2 transition-all duration-100 rounded-lg min-w-60 min-h-5">
     <a href={link} class="flex flex-row flex-1 gap-4 pr-7">
         <img src={imageLink ?? "/eating-memories/favicon.svg"} class="placeholder">
         <div class="flex-1">

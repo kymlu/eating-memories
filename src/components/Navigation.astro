@@ -43,7 +43,7 @@ const pages = [["Recipes", undefined],
 			</div>
 		</div>
 	</div>
-	<div id="menu-background" class="hidden absolute w-screen h-screen opacity-50 bg-main-950 z-0"></div>
+	<div id="menu-background" class="hidden popup-bg"></div>
 </header>
 
 <style>
@@ -58,7 +58,7 @@ const pages = [["Recipes", undefined],
     :global(.dark) header { @apply bg-main-1000; }
 
 	.nav {
-		@apply flex flex-row items-center gap-1 px-2 py-1 transition-all rounded-full border-transparent border-2 hover:border-main-500;
+		@apply flex flex-row items-center gap-1 px-2 py-1 transition-all rounded-full border-transparent hover:border-main-500;
 	}
     :global(.dark) .nav { @apply border-transparent hover:border-main-900 }
 </style>
