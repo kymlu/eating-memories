@@ -185,6 +185,9 @@
     html {
         @apply font-sans;
         @apply bg-white text-main-950;
+        span, del {
+            @apply decoration-2;
+        }
         
         button, a {
             Icon, svg {
@@ -227,7 +230,7 @@
         }
     
         hr {
-            @apply bg-main-600 h-[2px] border-none my-3;
+            @apply bg-main-600 h-[1px] border-none my-3;
         }
 
         .subtitle {
@@ -248,11 +251,15 @@
 
         .recipe-method {
             h1 {
-                @apply text-lg text-main-500;
+                @apply text-lg text-main-600;
             }
     
             h2 {
-                @apply text-lg font-normal;
+                @apply text-lg font-semibold text-main-600;
+            }
+
+            h3 {
+                @apply font-medium text-main-600;
             }
             
             blockquote, ul, ol {
@@ -260,7 +267,7 @@
             }
     
             a {
-                @apply underline;
+                @apply underline text-main-600 hover:text-main-500;
             }
         }
     }
@@ -280,6 +287,10 @@
             @apply bg-main-800;
         }
 
+        hr {
+            @apply bg-main-900;
+        }
+
         input {
             @apply bg-main-950 border-main-900
         }
@@ -290,6 +301,16 @@
 
         .hover-shadow {
             @apply border-main-950 hover:shadow-main-900
+        }
+
+        .recipe-method {
+            h2, h3, a {
+                @apply text-main-400;
+            }
+
+            a {
+                @apply hover:text-main-300;
+            }
         }
     }
 }

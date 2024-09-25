@@ -76,6 +76,7 @@ interface Ingredient {
                     </div>
                 </yield-component>
             }
+            <hr>
             {frontmatter.ingredients && 
                 <div id="ingredients-list">
                     <h2 id="ingredients" class="capitalize">Ingredients</h2>
@@ -88,7 +89,7 @@ interface Ingredient {
                                         group.ingredients.map((ingredient: Ingredient) => 
                                             {
                                                 const text = <span>
-                                                        {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity}></ingredient-quantity>}
+                                                        {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity} class="decoration-2"></ingredient-quantity>}
                                                         {ingredient.unit && <span>{ingredient.unit} </span>}
                                                         {ingredient.name && <span>{ingredient.name} </span>}
                                                         {ingredient.note && <span class="text-xs italic subtitle">{ingredient.note}</span>}
@@ -110,6 +111,7 @@ interface Ingredient {
                 </div>
             }
         </div>
+        <hr class="landscape:hidden">
         <div class="flex-1 portrait:mt-2">
             <h2 class="capitalize landscape:hidden">Method</h2>
             <div class="recipe-method">
