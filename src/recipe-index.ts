@@ -4,6 +4,7 @@ interface RecipeIndex {
 
 // Example usage
 export const recipeIndex: RecipeIndex = {
+    "bread-1": "quick-flatbread",
     "pastry-1": "chinese-puff-pastry",
     "pastry-2": "char-siu-so",
     "pastry-3": "rainbow-flaky-mooncake",

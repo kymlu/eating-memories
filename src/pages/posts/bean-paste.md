@@ -49,9 +49,7 @@ Drain the beans, but keep the bean water for the next steps.
 
 ---
 # MASH BEANS
-To mash the beans, blend it using a food processor. Add some bean liquid if it is thick.
-> It shouldn't be watery, but maybe a little thicker than apple sauce (can't think of other things to compare it to).
->
+To mash the beans, blend it into a purée using a food processor. Add some bean liquid if it is thick.
 > Optionally press the beans through a sieve using a spatula to ensure extra-smoothness. 
 >
 > If you don't have a blender, use the sieve method or use a mashing tool of your choice.

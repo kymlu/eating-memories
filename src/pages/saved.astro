@@ -19,7 +19,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
     </div>
     <span id="no-saved" class="hidden">You have no saved recipes!</span>
 
-    <div id="popup-container" class="absolute left-0 top-0 flex items-center justify-center w-svw h-svh hidden">
+    <div id="popup-container" class="absolute left-0 top-0 items-center justify-center w-svw h-svh hidden">
         <div id="popup-bg" class="popup-bg"></div>
         <div id="popup" class="z-10 w-auto max-w-[70%] portrait:max-w-[80%] h-auto bg-white border-main-600 border-2 border-solid rounded-xl p-5 flex flex-col gap-4">
             <h1>Are you sure you want to clear your saved recipes?</h1>
@@ -58,6 +58,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
     
     document.getElementById("clear-btn")?.addEventListener("click", () => {
         document.getElementById("popup-container")?.classList.remove("hidden");
+        document.getElementById("popup-container")?.classList.add("flex");
     });
     
     ["no", "popup-bg"].forEach((elementId: string) => {

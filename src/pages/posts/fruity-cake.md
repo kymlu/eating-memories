@@ -77,7 +77,7 @@ Pour the batter into the pan.
 
 > For some extra tang to elevate the cake, you can add lemon curd.
 > 
-> 1. Make a batch of [lemon curd]("../../lemon-curd) or buy some.
+> 1. Make a batch of lemon curd or buy some.
 > 2. Layer the batter and lemon curd in the following order. Make sure the previous layer is flat by gently tapping the pan onto the counter a few times:
 >>  - 1/3 of the batter
 >>  - Lemon curd 
