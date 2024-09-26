@@ -14,6 +14,7 @@ ingredients:
           quantity: 150
           unit: "g"
           note: "softened"
+          inRecipe: "butter"
         - name: "powdered sugar"
           quantity: 120
           unit: "g"
@@ -27,7 +28,9 @@ ingredients:
           quantity: 1
           unit: "tsp"
           note: "10g milk powder if no vanilla extract"
+          inRecipe: "vanilla"
     - name: "dry"
+      inRecipe: "dry ingredients"
       ingredients:
         - name: "all-purpose flour"
           quantity: 280
@@ -51,21 +54,23 @@ ingredients:
         - name: "white granulated sugar"
           quantity: 75
           unit: "g"
+          inRecipe: "sugar"
         - name: "apple"
           quantity: 250
           unit: "g"
           note: "peeled and diced finely"
+          inRecipe: "apples"
         - name: "lemon juice"
           quantity: 2
           unit: "tbsp"
           note: "or around 1 lemon per 2 tbsp"
 ---
 # Making the dough
-Cream **butter** and then add **powdered sugar** and **salt**. Whip the mixture until light and fluffy for a crispy cookie.
+Cream <b class="ingredient">butter</b> and then add <b class=ingredient>powdered sugar</b> and <b class="ingredient">salt</b>. Whip the mixture until light and fluffy for a crispy cookie.
 
-Add **vanilla** and **egg** and mix.
+Add <b class="ingredient">vanilla</b> and <b class="ingredient">egg</b> and mix.
 
-Sift the **dry ingredients** in. Mix thoroughly.
+Sift the <b class="ingredient-group">dry ingredients</b> in. Mix thoroughly.
 
 # Decorating the dough
 ## Planning
@@ -127,10 +132,10 @@ Take a pinch of the yellow beak dough and make a triangle for the beak.
 Take a pinch of the red dough and make a teardrop for the wattle, placing it below the beak.
 
 # Baking
-Bake at 320F/160C for 15 min. Let cool completely before creating the sandwiches.
+Bake at 320°F/160°C for 15 min. Let cool completely before creating the sandwiches.
 
 # Making the jam
-Dice the **apples** and put in a pot with the **sugar**. Boil on medium heat. When the water is almost all evaporated, add **lemon juice**. Turn off the heat and keep it on the stove until the mixture is thickened. 
+Dice the <b class="ingredient">apples</b> and put in a pot with the <b class="ingredient">sugar</b>. Boil on medium heat. When the water is almost all evaporated, add <b class="ingredient">lemon juice</b>. Turn off the heat and keep it on the stove until the mixture is thickened. 
 
 # Sandwiching the cookie
 Once the cookies have been cooled, pair up cookies that have similar shapes (the cookies will likely not be uniform). Some cookies might have a darker side, which you may or may not want to hide.

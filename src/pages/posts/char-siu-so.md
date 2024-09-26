@@ -15,6 +15,7 @@ ingredients:
         - quantity: 1
           name: "small onion"
           note: "diced"
+          inRecipe: "onion"
         - quantity:  385
           unit: "g"
           name: "charsiu"
@@ -25,7 +26,9 @@ ingredients:
         - quantity: 2
           unit: "tsp"
           name: "white sugar"
+          inRecipe: "sugar"
         - name: "black pepper"
+          unit: "some"
         - quantity:  1
           unit: "tsp"
           name: "cornstarch"
@@ -43,21 +46,21 @@ ingredients:
           recipeId: "pastry-1"
           note: "store-bought is also fine, though I don't know how much..."
 ---
-Heat some **oil** in a pan and add the diced **onion**. Heat until translucent. 
+Heat some <b class="ingredient">oil</b> in a pan and add the diced <b class="ingredient">onion</b>. Heat until translucent. 
 
-Add the **charsiu**, **soy sauce**, **sugar**, and **black pepper** and stir fry a bit. 
+Add the <b class="ingredient">charsiu</b>, <b class="ingredient">soy sauce</b>, <b class="ingredient">sugar</b>, and <b class="ingredient">black pepper</b> and stir fry a bit. 
 
-Mix together the **cold water** and **cornstarch**. Let reduce until it become a little thick and saucy. If there isn't enough sauce to your liking, you can add more water. 
+Mix together the <b class="ingredient">cold water</b> and <b class="ingredient">cornstarch</b>. Let reduce until it become a little thick and saucy. If there isn't enough sauce to your liking, you can add more water. 
 
 Take off the heat and let cool.
 
-Preheat the oven to 400F/205C.
+Preheat the oven to 400°F/205°C.
 
 Portion the puff pastry into the number of servings you are making. Add a spoonful of the filling onto the middle. Fold the pastry and seal (or shape however you want).
 
 Line a sheet pan with parchment paper. Line the pastries onto the pan.
 
-Whisk the **egg** to create the egg wash. Brush on the egg wash.
+Whisk the <b class="ingredient">egg</b> to create the egg wash. Brush on the egg wash.
 > For a some extra flair, add sesame seeds on top!
 
 Bake for 30 mins. Let cool for 10 minutes before eating.

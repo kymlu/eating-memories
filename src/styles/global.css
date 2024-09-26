@@ -234,7 +234,7 @@
         }
 
         .popup-bg{
-            @apply z-0 absolute w-svw h-svh bg-main-950 opacity-50;
+            @apply z-0 absolute w-svw h-svh bg-main-950/50;
         }
 
         .subtitle {
@@ -251,6 +251,14 @@
 
         .hover-shadow {
             @apply border-main-500 hover:shadow-custom hover:shadow-main-400 border-2 border-solid;
+        }
+
+        input.decimal-input {
+            @apply border-2 w-32 portrait:w-14 portrait:min-w-14 border-solid border-main-600;
+        }
+
+        .filled-background {
+            @apply bg-white;
         }
 
         .recipe-method {
@@ -272,6 +280,10 @@
     
             a {
                 @apply underline text-main-600 hover:text-main-500;
+            }
+
+            .ingredient, .ingredient-group {
+                @apply bg-main-200/50 px-3 rounded-xl;
             }
         }
     }
@@ -305,6 +317,10 @@
 
         .hover-shadow {
             @apply border-main-900 hover:shadow-main-700
+        }
+
+        .filled-background {
+            @apply bg-main-1000;
         }
 
         .recipe-method {

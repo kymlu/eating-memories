@@ -33,7 +33,7 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
 <script>
     import { getFloatString } from "../utils";
     function preventNonNumeric(event: KeyboardEvent){
-        if(!(event.key == "Backspace" || event.key == "Delete" || /\d/.test(event.key) || event.key.includes("Arrow") || event.key == ".")){
+        if (!(event.key == "Backspace" || event.key == "Delete" || /\d/.test(event.key) || event.key.includes("Arrow") || event.key == ".")){
             event.preventDefault();
         }
     }
@@ -47,10 +47,10 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
         }
 
         connectedCallback(){
-            if(this.dataset.proportion){
+            if (this.dataset.proportion){
                 this.proportion = parseFloat(this.dataset.proportion) ?? 1;
             }
-            if(this.dataset.name) {
+            if (this.dataset.name) {
                 this.name = this.dataset.name;
             }
             this.querySelector("input")?.addEventListener("input", () => {this.onInput()});
@@ -61,7 +61,7 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
             let resultValue = parseFloat(this.querySelector("input")?.value ?? "1") / this.proportion;
             (this.parentElement?.querySelector("result-component") as ResultComponent)?.changeValue(resultValue);
             let allSubstitutes = this.parentElement?.querySelectorAll("substitute-component");
-            if(allSubstitutes){
+            if (allSubstitutes){
                 (Array.from(allSubstitutes) as SubstituteComponent[]).forEach((substitute: SubstituteComponent) => {
                     if (substitute.name != this.name){
                         substitute.changeValue(resultValue);
@@ -72,7 +72,7 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
 
         changeValue(newResult: number){
             let input = this.querySelector("input");
-            if(input) {
+            if (input) {
                 input.value = getFloatString(newResult * this.proportion, 2);
             }
         }
@@ -85,7 +85,7 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
             this.querySelector("input")?.addEventListener("input", () => {
                 let resultValue = parseFloat(this.querySelector("input")?.value ?? "1");
                 let allSubstitutes = this.parentElement?.querySelectorAll("substitute-component");
-                if(allSubstitutes){
+                if (allSubstitutes){
                     (Array.from(allSubstitutes) as SubstituteComponent[]).forEach((substitute: SubstituteComponent) => {
                         substitute.changeValue(resultValue);
                     });
@@ -96,7 +96,7 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
 
         changeValue(newResult: number){
             let input = this.querySelector("input");
-            if(input) {
+            if (input) {
                 input.value = getFloatString(newResult, 2);
             }
         }

@@ -4,8 +4,9 @@ import BasePage from "./BasePage.astro";
 import { Icon } from "astro-icon/components"
 import MiniRecipePreview from "./MiniRecipePreview.astro";
 import { getPostLink, titleSort } from "../utils.ts";
-import SaveButton from "./SaveButton.astro";
 import { ICONS, YIELD_MULTIPLIERS } from "../const";
+import SaveButton from "./SaveButton.astro";
+import UnitConverter from "../components/UnitConverter.astro";
 
 interface Props {
     frontmatter: Recipe;
@@ -38,6 +39,7 @@ interface IngredientsGroup {
     name?: string;
     ingredients: Ingredient[];
     recipeId?: string;
+    inRecipe?: string;
 }
 
 interface Ingredient {
@@ -46,6 +48,7 @@ interface Ingredient {
     name: string;
     note?: string;
     recipeId?: string;
+    inRecipe?: string;
 }
 ---
 <BasePage title={frontmatter.title}>
@@ -81,15 +84,25 @@ interface Ingredient {
                 <div id="ingredients-list">
                     <h2 id="ingredients" class="capitalize">Ingredients</h2>
                     <div class="flex flex-col gap-1">
-                        {frontmatter.ingredients.map((group: IngredientsGroup) => (
-                            <div>
-                                {group.name && <div id={group.name.replaceAll(" ", "-").toLowerCase()}>{group.recipeId ? <a href={getPostLink(group.recipeId)} class="underline text-main-500"><h3 class="capitalize">{group.name}</h3></a> : <h3 class="capitalize">{group.name}</h3>}</div>}
-                                <ul class="pl-4">
+                        {frontmatter.ingredients.map((group: IngredientsGroup) => {
+                            const groupId = group.name ? group.name.replaceAll(" ", "-").toLowerCase() : "all";
+                            return <div>
+                                {group.name && 
+                                    <div id={groupId}>
+                                        {group.recipeId ? 
+                                            <a href={getPostLink(group.recipeId)} class="underline text-main-500">
+                                                <h3 class="capitalize" data-group-id={groupId} data-in-recipe={group.inRecipe ?? group.name}>{group.name}</h3>
+                                            </a> :
+                                            <div>
+                                                <h3 class="capitalize" data-group-id={groupId} data-in-recipe={group.inRecipe ?? group.name}>{group.name}</h3>
+                                            </div>
+                                        }</div>}
+                                <ul id={`${groupId}-ingredients`} class="pl-4">
                                     {
                                         group.ingredients.map((ingredient: Ingredient) => 
                                             {
                                                 const text = <span>
-                                                        {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity} class="decoration-2"></ingredient-quantity>}
+                                                        {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity} data-unit={ingredient.unit} data-in-recipe={ingredient.inRecipe ?? ingredient.name} class="decoration-2"></ingredient-quantity>}
                                                         {ingredient.unit && <span>{ingredient.unit} </span>}
                                                         {ingredient.name && <span>{ingredient.name} </span>}
                                                         {ingredient.note && <span class="text-xs italic subtitle">{ingredient.note}</span>}
@@ -105,7 +118,7 @@ interface Ingredient {
                                 }
                                 </ul>
                             </div>
-                            ))
+                            })
                         }
                     </div>
                 </div>
@@ -130,11 +143,57 @@ interface Ingredient {
             }
         </div>
     </div>
+    <UnitConverter/>
+    <div id="ingredient-tooltip" class="fixed p-2 text-center min-h-6 min-w-10 rounded-xl bg-main-300 text-main-950"></div>
 </BasePage>
 
 <script>
     import { YIELD_MULTIPLIERS } from "../const.ts";
     import { getFraction } from "../utils.ts";
+
+    (Array.from(document.querySelectorAll(".ingredient")) as HTMLElement[]).forEach((element) => {
+        element.addEventListener("mouseover", (event) => {
+            const quantity = (Array.from(document.querySelectorAll("ingredient-quantity")) as HTMLElement[]).find((ingredient) => ingredient.dataset.inRecipe == element.innerText);
+            if(quantity){
+                document.getElementById("ingredient-tooltip")!.classList.remove("hidden");
+                document.getElementById("ingredient-tooltip")!.innerText = `${quantity.innerText} ${quantity.dataset.unit ?? ""}`;
+                moveTooltip(event);
+            }
+            element.addEventListener("mouseout", () => {
+                document.getElementById("ingredient-tooltip")!.classList.add("hidden");
+            }, {once: true});
+        });
+    });
+
+    (Array.from(document.querySelectorAll(".ingredient-group")) as HTMLElement[]).forEach((element) => {
+        element.addEventListener("mouseover", (event) => {
+            const allHeaders = document.getElementById("ingredients-list")?.querySelectorAll("h3");
+            if (allHeaders){
+                const group = (Array.from(allHeaders) as HTMLElement[]).find((group) => group.dataset.inRecipe == element.innerText);
+                if(group){
+                    const ingredientList = document.getElementById(`${group.dataset.groupId}-ingredients`);
+                    if (ingredientList){
+                        const a = (Array.from(ingredientList.querySelectorAll("ingredient-quantity")) as HTMLElement[]).map(ingredient => `${ingredient.innerText} ${ingredient.dataset.unit ?? ""} ${ingredient.dataset.inRecipe ?? ""}`)
+                        document.getElementById("ingredient-tooltip")!.classList.remove("hidden");
+                        document.getElementById("ingredient-tooltip")!.innerText = a.join(", ");
+                        moveTooltip(event);
+                    }
+                    element.addEventListener("mouseout", () => {
+                        document.getElementById("ingredient-tooltip")!.classList.add("hidden");
+                    }, {once: true});
+                }
+            }
+        });
+    });
+
+    function moveTooltip(event: MouseEvent) {
+        const { clientX, clientY } = event;
+        const tooltip = document.getElementById("ingredient-tooltip");
+        if(tooltip){
+            tooltip.style.left = `${clientX - 20}px`;
+            tooltip.style.top = `${clientY - 50}px`;
+        }
+    }
 
     class Ingredient extends HTMLElement {
         constructor(){
@@ -164,13 +223,13 @@ interface Ingredient {
         }
         
         connectedCallback(){
-            if(this.dataset.defaultValue){
-                if(this.dataset.unit){
+            if (this.dataset.defaultValue){
+                if (this.dataset.unit){
                     this.unit = this.dataset.unit;
                 }
                 
                 this.currentValue = this.defaultValue = parseInt(this.dataset.defaultValue);
-                if(this.defaultValue > 5){
+                if (this.defaultValue > 5){
                     this.maxMultiplier = 4;
                 }
                 this.setYieldString();
@@ -181,7 +240,7 @@ interface Ingredient {
                 document.body.classList.add("select-none"); 
                 this.adjustYield(false);
                 const minusInterval = setInterval(() => {
-                    if(!this.adjustYield(false)){
+                    if (!this.adjustYield(false)){
                         clearInterval(minusInterval);
                     }
                 }, 200);
@@ -197,7 +256,7 @@ interface Ingredient {
                 document.body.classList.add("select-none");
                 this.adjustYield(true);
                 const plusInterval = setInterval(() => {
-                    if(!this.adjustYield(true)){
+                    if (!this.adjustYield(true)){
                         clearInterval(plusInterval);
                     }
                 }, 200);
@@ -215,14 +274,14 @@ interface Ingredient {
 
         adjustYield(isIncrement: boolean): boolean{
             let isInBounds = true;
-            if(isIncrement){
-                if(this.currentValue < this.defaultValue * this.maxMultiplier){
+            if (isIncrement){
+                if (this.currentValue < this.defaultValue * this.maxMultiplier){
                     this.currentValue = Math.floor(this.currentValue + 1);
                 } else {
                     isInBounds = false;
                 }
             } else {
-                if(this.currentValue > 1){
+                if (this.currentValue > 1){
                     this.currentValue--;
                 } else {
                     isInBounds = false;
@@ -280,7 +339,7 @@ interface Ingredient {
         }
 
         connectedCallback(){
-            if(this.dataset.defaultValue){
+            if (this.dataset.defaultValue){
                 this.defaultValue = parseFloat(this.dataset.defaultValue);
                 this.innerText = getFraction(this.defaultValue);
             }

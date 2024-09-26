@@ -19,6 +19,7 @@ ingredients:
         - quantity:  150
           unit: "g"
           name: "granulated sugar"
+          inRecipe: "sugar"
         - name: "oil"
           quantity: 20
           unit: "g"
@@ -33,7 +34,7 @@ ingredients:
 # COOK BEANS
 > Optionally, soak beans overnight (8-12 hrs) if you want to cook faster or remove the skin beforehand.
 
-Put **beans** into a pot and pour cold water over it to just cover the beans.
+Put <b class="ingredient">beans</b> into a pot and pour cold water over it to just cover the beans.
 
 On medium heat, bring beans to a boil. Boil for ~2 minutes while foam appears.
 
@@ -55,7 +56,7 @@ To mash the beans, blend it into a purée using a food processor. Add some bean 
 > If you don't have a blender, use the sieve method or use a mashing tool of your choice.
 ---
 # THICKEN BEANS
-Put paste in a clean saucepan. Add **oil**, **sugar** and **salt**, and mix.
+Put paste in a clean saucepan. Add <b class="ingredient">oil</b>, <b class="ingredient">sugar</b> and <b class="ingredient">salt</b>, and mix.
 > When adding sugar and salt, it's better to undersalt if you're concerned about flavour. You can add more if it's not to your taste.
 
 On medium-low heat, let the sugar dissolve. 

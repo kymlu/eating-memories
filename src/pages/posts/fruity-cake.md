@@ -42,8 +42,6 @@ ingredients:
     - name: "fruit"
       ingredients:
         - name: "flour"
-          quantity: 0.2
-          unit: "cup"
           note: "helps the fruit not sink"
         - name: "fruit"
           quantity: 200
@@ -59,15 +57,15 @@ ingredients:
         - name: "oil/butter"
         - name: "flour"
 ---
-Preheat oven to 350F/175C.
+Preheat oven to 350°F/175°C.
 
-In a bowl, whisk the **wet** ingredients together.
+In a bowl, whisk the <b class="ingredient-group">wet</b> ingredients together.
 
-Sift the **dry** ingredients into the wet. Mix until the batter is just combined.
+Sift the <b class="ingredient-group">dry</b> ingredients into the wet. Mix until the batter is just combined.
 
 If you rinsed the fruit, dry them with a paper towel.
 
-In a separate bowl, add the **flour** and the **fruit**. Toss together until all the fruit is covered.
+In a separate bowl, add some **flour** and the  <b class="ingredient">fruit</b>. Toss together until all the fruit is covered.
 
 Add the flour-covered fruit to the batter and mix briefly.
 

@@ -30,7 +30,7 @@ const { recipeId } = Astro.props;
             // TODO: see if I can set this as a global var
             const savedString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
             try{
-                if(savedString && (JSON.parse(savedString) as string[]).includes(this.recipeId)) {
+                if (savedString && (JSON.parse(savedString) as string[]).includes(this.recipeId)) {
                     this.toggleButton(true);
                 }
             } catch(e) {
@@ -53,7 +53,7 @@ const { recipeId } = Astro.props;
                     this.#removeAllSaved();
                 }
             }
-            if(!savedList.includes(this.recipeId)){
+            if (!savedList.includes(this.recipeId)){
                 let newSaved = JSON.stringify(savedList.concat(this.recipeId));
                 window.localStorage.setItem(LOCAL_STORAGE_KEYS.SAVED, newSaved);
                 this.toggleButton(true);
@@ -62,12 +62,12 @@ const { recipeId } = Astro.props;
         
         removeSaved(){
             let currentSaved = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
-            if(!currentSaved){
+            if (!currentSaved){
                 return;
             }
             try {
                 let savedList = (JSON.parse(currentSaved) as string[]).filter(saved => saved != "");
-                if(savedList.includes(this.recipeId)){
+                if (savedList.includes(this.recipeId)){
                     let newSaved = JSON.stringify(savedList.toSpliced(savedList.indexOf(this.recipeId), 1));
                     window.localStorage.setItem(LOCAL_STORAGE_KEYS.SAVED, newSaved);
                     this.toggleButton(false);

@@ -13,7 +13,7 @@ export function getPostLink(postId: string){
 export function titleSort(a: MarkdownInstance<Record<string, any>>, b: MarkdownInstance<Record<string, any>>){
     let aTitle = (a.frontmatter.title ?? "" as string).toLowerCase();
     let bTitle = (b.frontmatter.title ?? "" as string).toLowerCase();
-    if(bTitle < aTitle) {
+    if (bTitle < aTitle) {
         return 1;
     } else if (bTitle > aTitle) {
         return -1;

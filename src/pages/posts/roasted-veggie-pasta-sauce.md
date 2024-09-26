@@ -33,7 +33,7 @@ ingredients:
 >
 > The onion and garlic are for the flavour.
 
-Preheat oven to 400F/205C.
+Preheat oven to 400°F/205°C.
 
 Chop veggies into large pieces. 
 > Generally around the size of half a fist but everyone's fists are different. 

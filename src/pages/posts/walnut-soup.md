@@ -19,6 +19,8 @@ ingredients:
         - name: "chinese rock sugar"
           quantity: 75
           unit: "g"
+          inRecipe: "rock sugar"
+          note: "Chinese yellow sugar slabs also work"
         - name: "evaporated milk"
           quantity: 0.5
           unit: "cup"
@@ -26,12 +28,12 @@ ingredients:
           quantity: 1400
           unit: "ml"
 ---
-Wash and dry the **walnuts**. Bake at 375F/190C for 8-10 minutes.
+Wash and dry the <b class="ingredient">walnuts</b>. Bake at 375°F/190°C for 8-10 minutes.
 
-Add the walnuts, the **rice flour**, and **half of the water** to a blender/food processor and blend until well combined.
+Add the walnuts, the <b class="ingredient">rice flour</b>, and **half of the <span class="ingredient">water</span>** to a blender/food processor and blend until well combined.
 
-In a pot, add the walnut mixture, the **remaining water**, and **sugar**. Heat on low for 10 minutes. If the mixture is too thick for you, add more water.
+In a pot, add the walnut mixture, the **remaining <span class="ingredient">water</span>**, and <b class="ingredient">rock sugar</b>. Heat on low for 10 minutes. If the mixture is too thick for you, add more water.
 
-Add the **evaporated milk** and cook for another minute.
+Add the <b class="ingredient">evaporated milk</b> and cook for another minute.
 
 Serve immediately.

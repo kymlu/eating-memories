@@ -29,6 +29,55 @@ export const ICONS = {
     MENU: "mingcute:menu-line",
     SUN: "mingcute:sun-line",
     MOON: "mingcute:moon-line",
+    CALCULATOR: "mingcute:counter-2-line",
+    THERMOMETER: "mingcute:thermometer-line",
+    BALANCE: "mingcute:balance-line",
+    RULER: "mingcute:ruler-line",
+}
+
+export const CONVERTER_TYPES = {
+    WEIGHT: "weight",
+    TEMPERATURE: "temperature",
+    LENGTH: "length",
+}
+
+export const WEIGHT_TYPES = {
+    POUND: {
+        name: "pound",
+        multiplier: 453.592,
+    },
+    KILOGRAM: {
+        name: "kilogram",
+        multiplier: 1000,
+    },
+    OUNCE: {
+        name: "ounce",
+        multiplier: 28.3495
+    },
+    GRAM: {
+        name: "gram",
+        multiplier: 1,
+    },
+}
+
+export const TEMPERATURE_TYPES = {
+    FAHRENHEIT: { name: "fahrenheit"},
+    CELCIUS: {name: "celcius"},
+}
+
+export const LENGTH_TYPES = {
+    INCH: {
+        name: "inch",
+        multiplier: 254,
+    },
+    CENTIMETRE: {
+        name: "centimetre",
+        multiplier: 10
+    },
+    MILLIMETRE: {
+        name: "millimetre",
+        multiplier: 1,
+    },
 }
 
 export const YIELD_MULTIPLIERS : {key: string, value: number, displayValue: string}[] = 

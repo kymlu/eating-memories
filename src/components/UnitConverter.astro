@@ -1,0 +1,165 @@
+---
+import { Icon } from "astro-icon/components";
+import { CONVERTER_TYPES, ICONS, WEIGHT_TYPES, TEMPERATURE_TYPES, LENGTH_TYPES } from "../const.ts";
+
+const unitTabs = [
+    {
+        unitType: CONVERTER_TYPES.WEIGHT,
+        units: [{
+            name: WEIGHT_TYPES.POUND.name,
+            displayValue: "lbs.",
+            defaultValue: "1"
+        },
+        {
+            name: WEIGHT_TYPES.OUNCE.name,
+            displayValue: "oz.",
+            defaultValue: "16"
+        },
+        {
+            name: WEIGHT_TYPES.KILOGRAM.name,
+            displayValue: "kg",
+            defaultValue: "0.45"
+        },
+        {
+            name: WEIGHT_TYPES.GRAM.name,
+            displayValue: "g",
+            defaultValue: "453.59"
+        }]
+    },
+    {
+        unitType: CONVERTER_TYPES.TEMPERATURE,
+        units: [{
+            name: TEMPERATURE_TYPES.CELCIUS.name,
+            displayValue: "°C",
+            defaultValue: "176.67"
+        },
+        {
+            name: TEMPERATURE_TYPES.FAHRENHEIT.name,
+            displayValue: "°F",
+            defaultValue: "350"
+        }]
+    },
+    {
+        unitType: CONVERTER_TYPES.LENGTH,
+        units: [{
+            name: LENGTH_TYPES.INCH.name,
+            displayValue: "in.",
+            defaultValue: "1"
+        },
+        {
+            name: LENGTH_TYPES.CENTIMETRE.name,
+            displayValue: "cm",
+            defaultValue: "2.54"
+        },
+        {
+            name: LENGTH_TYPES.MILLIMETRE.name,
+            displayValue: "mm",
+            defaultValue: "254"
+        }]
+    }
+];
+---
+
+<div class="fixed flex flex-col gap-3 items-end bottom-10 right-10">
+    <div id="converter" class="hidden flex-col rounded-xl w-60 h-64 filled-background border-main-800 border-solid border-2">
+        <div id="tabs" class="flex min-h-10 h-10 justify-around items-center border-b-2 border-main-800">
+            <button id=`${CONVERTER_TYPES.WEIGHT}-button` class="text-main-500"><Icon class=" m-auto text-xl" name={ICONS.BALANCE}/></button>
+            <button id=`${CONVERTER_TYPES.TEMPERATURE}-button` class=""><Icon class="m-auto text-xl" name={ICONS.THERMOMETER}/></button>
+            <button id=`${CONVERTER_TYPES.LENGTH}-button` class=""><Icon class="m-auto text-xl" name={ICONS.RULER}/></button>
+        </div>
+        {
+            unitTabs.map((tab) => 
+                <div id={`${tab.unitType}-converter`} 
+                        class:list={["flex-1 flex-col p-3 ml-6 justify-center items-center", 
+                                    {hidden: tab.unitType != unitTabs[0].unitType}, 
+                                    {flex: tab.unitType == unitTabs[0].unitType}]}>
+                    {
+                        tab.units.map((unit) => 
+                            <div class="flex flex-col w-full items-center">
+                                <div class="flex justify-start w-full items-center gap-1">
+                                    <input id={unit.name} class="decimal-input px-2" type="number" inputmode="decimal" min="0" max="10000" value={unit.defaultValue}>
+                                    <span>{unit.displayValue}</span>
+                                </div>
+                                {tab.units[tab.units.length - 1] != unit && <span>=</span>}
+                            </div>
+                        )
+                    }
+                </div>
+            )
+        }
+    </div>
+    <button id="converter-button" class="w-10 h-10 rounded-full bg-main-500 text-white">
+        <Icon class="m-auto" name={ICONS.CALCULATOR}/>
+        <Icon class="m-auto hidden" name={ICONS.CLOSE}/>
+    </button>
+</div>
+
+<script>
+    import { CONVERTER_TYPES, LENGTH_TYPES, TEMPERATURE_TYPES, WEIGHT_TYPES } from "../const.ts";
+    import { getFloatString } from "../utils.ts";
+
+    let currentTab = CONVERTER_TYPES.WEIGHT;
+
+    document.getElementById("converter-button")?.addEventListener("click", () => {
+        document.getElementById("converter")?.classList.toggle("hidden");
+        document.getElementById("converter")?.classList.toggle("flex");
+        (Array.from(document.getElementById("converter-button")!.children) as HTMLElement[]).forEach((button) => {
+            button.classList.toggle("hidden");
+        });
+    });
+    
+    Object.values(CONVERTER_TYPES).forEach((type)=> {
+        document.getElementById(`${type}-button`)?.addEventListener("click", () => {
+            if (currentTab != type) {
+                document.getElementById(`${type}-button`)?.classList.add("text-main-500");
+                document.getElementById(`${type}-converter`)?.classList.remove("hidden");
+                document.getElementById(`${type}-converter`)?.classList.add("flex");
+                document.getElementById(`${currentTab}-button`)?.classList.remove("text-main-500");
+                document.getElementById(`${currentTab}-converter`)?.classList.add("hidden");
+                document.getElementById(`${currentTab}-converter`)?.classList.remove("flex");
+                currentTab = type;
+            }
+        });
+    });
+
+    Object.values(WEIGHT_TYPES).forEach((type) => {
+        document.getElementById(type.name)?.addEventListener("input", () => {
+            convertWeight(type, parseFloat((document.getElementById(type.name) as HTMLInputElement).value));
+        });
+    });
+
+    Object.values(LENGTH_TYPES).forEach((type) => {
+        document.getElementById(type.name)?.addEventListener("input", () => {
+            convertLength(type, parseFloat((document.getElementById(type.name) as HTMLInputElement).value));
+        });
+    });
+
+    function convertWeight(changedUnit: any, value: number) {
+        Object.values(WEIGHT_TYPES).forEach((type) => {
+            if (type.name != changedUnit.name) {
+                convertUnit(changedUnit, type, value);
+            }
+        })
+    }
+
+    function convertLength(changedUnit: any, value: number) {
+        Object.values(LENGTH_TYPES).forEach((type) => {
+            if (type.name != changedUnit.name) {
+                convertUnit(changedUnit, type, value);
+            }
+        })
+    }
+
+    function convertUnit(fromUnit: any, toUnit: any, value: number){
+        const inBaseValue = value * fromUnit.multiplier;
+        const inToUnit = inBaseValue / toUnit.multiplier;
+        (document.getElementById(toUnit.name) as HTMLInputElement).value = getFloatString(inToUnit, 2);
+    }
+
+    document.getElementById(TEMPERATURE_TYPES.FAHRENHEIT.name)?.addEventListener("input", () => {
+        (document.getElementById(TEMPERATURE_TYPES.CELCIUS.name) as HTMLInputElement).value = getFloatString((parseFloat((document.getElementById(TEMPERATURE_TYPES.FAHRENHEIT.name) as HTMLInputElement).value) - 32) * 5/9, 2);
+    });
+    document.getElementById(TEMPERATURE_TYPES.CELCIUS.name)?.addEventListener("input", () => {
+        (document.getElementById(TEMPERATURE_TYPES.FAHRENHEIT.name) as HTMLInputElement).value = getFloatString(parseFloat((document.getElementById(TEMPERATURE_TYPES.CELCIUS.name) as HTMLInputElement).value) * 9/5 + 32, 2);
+    });
+</script>

@@ -21,7 +21,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
 
     <div id="popup-container" class="absolute left-0 top-0 items-center justify-center w-svw h-svh hidden">
         <div id="popup-bg" class="popup-bg"></div>
-        <div id="popup" class="z-10 w-auto max-w-[70%] portrait:max-w-[80%] h-auto bg-white border-main-600 border-2 border-solid rounded-xl p-5 flex flex-col gap-4">
+        <div id="popup" class="filled-background z-10 w-auto max-w-[70%] portrait:max-w-[80%] h-auto border-main-600 border-2 border-solid rounded-xl p-5 flex flex-col gap-4">
             <h1>Are you sure you want to clear your saved recipes?</h1>
             <div class="flex justify-around w-full">
                 <button id="no" class="hover-shadow option-button">No</button>
@@ -36,14 +36,11 @@ const allRecipes = await Astro.glob("./posts/*.md");
         @apply bg-main-900 hover:bg-main-800;
     }
     :global(.dark) #popup {
-        @apply bg-main-1000 border-main-900;
-    }
-    :global(.dark) #popup-bg {
-        @apply bg-main-1000;
+        @apply border-main-900;
     }
 
     .option-button {
-        @apply w-14 px-2 py-1 transition-all rounded-full border-white;
+        @apply w-14 px-2 py-1 transition-all rounded-full border-main-500;
     }
 </style>
 
@@ -51,7 +48,7 @@ const allRecipes = await Astro.glob("./posts/*.md");
     import {LOCAL_STORAGE_KEYS} from "../const.ts";
     const savedString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
     let savedList: string[] = [];
-    if(savedString){
+    if (savedString){
         savedList = (JSON.parse(savedString) as string[]).filter(id => id != "");
     }
     let savedCount = document.querySelectorAll("saved-wrapper").length;
@@ -74,12 +71,12 @@ const allRecipes = await Astro.glob("./posts/*.md");
     
     class SavedWrapper extends HTMLElement {
         connectedCallback(){
-            if(this.dataset.id && savedList.includes(this.dataset.id)){
+            if (this.dataset.id && savedList.includes(this.dataset.id)){
                 this.classList.remove("hidden");
                 document.getElementById("clear-btn")?.classList.remove("hidden");
             } else {
                 savedCount--;
-                if(savedCount == 0){
+                if (savedCount == 0){
                     document.getElementById("no-saved")?.classList.remove("hidden");
                 }
                 // Note: there is this weird bug (at least in safari) where if you remove this element, unless the first recipe is in the saved list, all the bookmark icons on the page will not be visible.

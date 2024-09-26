@@ -45,7 +45,7 @@ ingredients:
           quantity: 0.25
           unit: "cup"
 ---
-Preheat the oven to 350F/175C.
+Preheat the oven to 350°F/175°C.
 
 Combine the ingredients for the **filling** in a bowl. Put in the pan, distributing evenly.
 > Experiment with other fruits like peaches and pears! Mix multiple fruit to make a fruit salad!

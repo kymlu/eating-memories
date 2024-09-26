@@ -59,7 +59,7 @@ ingredients:
           quantity: 0.5
           unit: "tsp"
 ---
-Preheat oven to 350F/175C.
+Preheat oven to 350°F/175°C.
 
 Sift all the **dry ingredients** into a bowl and whisk together until combined.
 

@@ -25,6 +25,7 @@ ingredients:
         - name: "garlic cloves"
           quantity: 3
           note: "minced"
+          inRecipe: "minced garlic"
         - name: "cornstarch"
           quantity: 1
           unit: "tbsp"
@@ -35,6 +36,7 @@ ingredients:
       ingredients: 
         - name: "vegetable oil"
           note: "other oils (sunflower, olive, etc.) are ok"
+          inRecipe: "oil"
         - name: "brown sugar"
           quantity: 1
           unit: "tbsp"
@@ -45,23 +47,23 @@ ingredients:
         - name: "cornstarch"
 ---
 # Prepare the meat
-Cut the pork into bit-sized chunks against the grain.
+Cut the <b class="ingredient">pork</b> into bit-sized chunks against the grain.
 > The **grain** is the direction in which muscle fibers run. You can tell by setting your meat down flatly and seeing where the line go. 
 >
 > To **cut against the grain** means to cut perpendicular to the grain.
 
-Mix together the **soy sauce**, **oyster sauce**, and **minced garlic**. Add the pork chunks and massage the seasoning in with the pork.
+Mix together the <b class="ingredient">soy sauce</b>, <b class="ingredient">oyster sauce</b>, and <b class="ingredient">minced garlic</b>. Add the pork chunks and massage the seasoning in with the pork.
 
-In a separate bowl, mix together the **cold water** and **cornstarch** to make a slurry. Add it to the pork and massage together.
+In a separate bowl, mix together the <b class="ingredient">cold water</b> and <b class="ingredient">cornstarch</b> to make a slurry. Add it to the pork and massage together.
 
 Cover the bowl with plastic wrap or a lid and refrigerate for over an hour.
 
 # Cook the meat
-Add some **oil** to a frying pan and set the heat to high.
+Add some <b class="ingredient">oil</b> to a frying pan and set the heat to high.
 
-When the oil is heated, add some **brown sugar** and mix the sugar and the oil.
+When the oil is heated, add some <b class="brown sugar"></b> and mix the sugar and the oil.
 
-When the mixture starts bubbling, add the **garlic cloves** and let cook, mixing occasionally. 
+When the mixture starts bubbling, add the <b class="ingredient">garlic cloves</b> and let cook, mixing occasionally. 
 
 When the colour of the garlic starts changing, add the pork and seasoning mixture.
 

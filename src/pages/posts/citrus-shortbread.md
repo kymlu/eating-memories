@@ -27,10 +27,13 @@ ingredients:
           quantity: 50
           unit: "g"
         - name: "salt"
+          quantity: 1
+          unit: "g"
           note: "to taste"
         - name: "all-purpose flour"
           quantity: 160
           unit: "g"
+          inRecipe: "flour"
     - name: "flavouring (one of the following)"
       ingredients:
         - name: "orange zest"
@@ -45,14 +48,15 @@ ingredients:
       ingredients:
         - name: "gel food colouring"
           note: "any colour(s)"
+          inRecipe: "food colouring"
 ---
-Preheat oven to 320F/160C.
+Preheat oven to 320°F/160°C.
 
-Cream the **butter** and **sugar** together by hand or with a hand mixer/stand mixer.
+Cream the <b class="ingredient">butter</b> and <b class="ingredient">powdered sugar</b> together by hand or with a hand mixer/stand mixer.
 
-Add **salt** and **orange zest** and combine briefly. If using **food colouring**, add that now.
+Add <b class="ingredient">salt</b> and <b class="ingredient">orange zest</b> and combine briefly. If using <b class="ingredient">food colouring</b>, add that now.
 
-Add the **flour** and combine. May need to add extra flour if the food colouring made it too wet. 
+Add the <b class="ingredient">flour</b> and combine. May need to add extra flour if the food colouring made it too wet. 
 > You can alternatively add food colouring at this step, but gently knead it and be careful to not overwork the dough.
 
 Line the cookie sheet with the parchment paper.

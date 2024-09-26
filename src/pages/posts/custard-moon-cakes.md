@@ -19,7 +19,7 @@ ingredients:
       ingredients:
         - name: "large eggs"
           quantity: 3
-          unit: "using double the egg yolks, no whites will yield a richer flavour"
+          note: "using double if just egg yolks, no whites will yield a richer flavour"
         - name: "milk"
           quantity: 120
           unit: "ml"
@@ -38,15 +38,16 @@ ingredients:
           unit: "g"
     - name: "butter"
       ingredients:
-        - name: "butter"
+        - name: "unsalted butter"
           quantity: 50
           unit: "g"
+          inRecipe: "butter"
 ---
-Mix the **wet ingredients** together.
+Mix the <b class="ingredient-group">wet ingredients</b> together.
 
-Add the **dry ingredients** and combine.
+Add the <b class="ingredient-group">dry ingredients</b> and combine.
 
-Put the mixture onto a double boiler. Add **butter** and mix until melted.
+Put the mixture onto a double boiler. Add <b class="ingredient">butter</b> and mix until melted.
 > To make a double boiler:
 > 
 > Add some water (don't need too much) to the pot and heat on high. Put the metal bowl containing the mixture on top of the pot.

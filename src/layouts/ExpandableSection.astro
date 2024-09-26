@@ -27,7 +27,7 @@ const { title, level, startOpen } = Astro.props;
 <script>
     class SectionHeader extends HTMLElement {
         connectedCallback() {
-            if(this.dataset.startOpen === "true"){
+            if (this.dataset.startOpen === "true"){
                 this.toggleContents();
             }
 

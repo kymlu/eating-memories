@@ -80,7 +80,7 @@ Take 4 tiny bits of plain dough and shape them into balls.
 Place them underneath the body where feet should be. It might be better to put them closer to the edge of the body rather than the middle as the shape of the cookie will melt down a little.
 
 # Baking the cookie
-Preheat the oven to 320F/160C.
+Preheat the oven to 320°F/160°C.
 
 Place the cookies in the fridge to keep cool and maximize shape retention when baking. 
 

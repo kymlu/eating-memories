@@ -91,6 +91,6 @@ For each individual portion:
 3. Fill the dough with a spoonful of filling and seal the opening.
 
 # BAKING
-1. Preheat the oven to 300F/150C.
+1. Preheat the oven to 300°F/150°C.
 2. Line a sheet with parchment paper and arrange the pastries onto the sheet seal-side down.
 3. Bake for 20-25 minutes.
