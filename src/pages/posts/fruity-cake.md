@@ -59,9 +59,9 @@ ingredients:
 ---
 Preheat oven to 350°F/175°C.
 
-In a bowl, whisk the <b class="ingredient-group">wet</b> ingredients together.
+In a bowl, whisk the **wet ingredients** together.
 
-Sift the <b class="ingredient-group">dry</b> ingredients into the wet. Mix until the batter is just combined.
+Sift the **dry ingredients** into the wet. Mix until the batter is just combined.
 
 If you rinsed the fruit, dry them with a paper towel.
 

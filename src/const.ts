@@ -142,6 +142,7 @@ export const UNIT_TYPES: unitType[] = [
 
 export const YIELD_MULTIPLIERS: { key: string, value: number, displayValue: string }[] =
     [
+        { key: "quarter", value: 0.25, displayValue: "¼" },
         { key: "half", value: 0.5, displayValue: "½" },
         { key: "original", value: 1, displayValue: "1" },
         { key: "double", value: 2, displayValue: "2" },

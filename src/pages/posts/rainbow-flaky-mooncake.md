@@ -15,7 +15,7 @@ ingredients:
       ingredients:
         - quantity: 38
           unit: "g"
-          name: "butter"
+          name: "unsalted butter"
           note: "room temperature"
         - quantity: 30
           unit: "g"
@@ -29,7 +29,7 @@ ingredients:
           note: "room temperature at least, not boiling hot though"
     - name: "oil dough"
       ingredients:
-        - name: "butter"
+        - name: "unsalted butter"
           quantity: 55
           unit: "g"
         - name: "all-purpose flour"

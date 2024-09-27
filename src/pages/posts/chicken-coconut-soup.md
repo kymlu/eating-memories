@@ -24,7 +24,7 @@ ingredients:
         - name: "salt"
           note: "to taste"
 ---
-Add ingredients to a 4L pot and fill the pot up with cold water.
+Add **all the ingredients** to a 4L pot and fill the pot up with cold water.
 
 Put pot on a stove on high.
 

@@ -43,9 +43,9 @@ ingredients:
           unit: "g"
           inRecipe: "butter"
 ---
-Mix the <b class="ingredient-group">wet ingredients</b> together.
+Mix the **wet ingredients** together.
 
-Add the <b class="ingredient-group">dry ingredients</b> and combine.
+Add the **dry ingredients** and combine.
 
 Put the mixture onto a double boiler. Add <b class="ingredient">butter</b> and mix until melted.
 > To make a double boiler:

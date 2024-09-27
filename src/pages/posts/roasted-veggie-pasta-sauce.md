@@ -22,8 +22,9 @@ ingredients:
         - name: "vegetable oil"
           note: "other oils (sunflower, olive, etc.) are ok too"
         - name: "salt"
+        - name: "black pepper"
         - name: "chili pepper flakes"
-          note: "for spice"
+          note: "optional, for spice"
 ---
 > **WHAT VEGGIES SHOULD I USE?**
 >
@@ -35,16 +36,16 @@ ingredients:
 
 Preheat oven to 400°F/205°C.
 
-Chop veggies into large pieces. 
+Chop **veggies** and **onion** into large pieces. 
 > Generally around the size of half a fist but everyone's fists are different. 
 >
 > For reference, I cut onions and large tomatoes into quarters, roma tomatoes into halves.
 > Garlic cloves should be separated but whole.
 
-Put all the veggies into a bowl and dizzle oil onto it. Mix to coat all the veggies.
+Put all the **chopped veggies**, **onions**, and **garlic cloves** into a bowl and dizzle **oil** onto it. Mix to coat all the veggies.
 > Oil prevents burning.
 
-Distribute the veggies onto the sheet pan evenly. Shake seasonings onto the veggies as you see fit.
+Distribute the veggies onto the sheet pan evenly. Shake **salt**, **black pepper** and **chili pepper flakes** onto the veggies as you see fit.
 
 Bake for 30-35 minutes if the veggies are generally small and thin, or 45-50 minutes if they are round and chunky.
 

@@ -70,7 +70,7 @@ Cream <b class="ingredient">butter</b> and then add <b class=ingredient>powdered
 
 Add <b class="ingredient">vanilla</b> and <b class="ingredient">egg</b> and mix.
 
-Sift the <b class="ingredient-group">dry ingredients</b> in. Mix thoroughly.
+Sift the **dry ingredients** in. Mix thoroughly.
 
 # Decorating the dough
 ## Planning
