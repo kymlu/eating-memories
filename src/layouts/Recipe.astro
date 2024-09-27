@@ -177,10 +177,11 @@ interface Ingredient {
                         document.getElementById("ingredient-tooltip")!.classList.remove("hidden");
                         document.getElementById("ingredient-tooltip")!.innerText = a.join(", ");
                         moveTooltip(event);
+                        
+                        element.addEventListener("mouseout", () => {
+                            document.getElementById("ingredient-tooltip")!.classList.add("hidden");
+                        }, {once: true});
                     }
-                    element.addEventListener("mouseout", () => {
-                        document.getElementById("ingredient-tooltip")!.classList.add("hidden");
-                    }, {once: true});
                 }
             }
         });

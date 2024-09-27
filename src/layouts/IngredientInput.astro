@@ -11,7 +11,7 @@ const {symbol, name, unit, defaultValue} = Astro.props;
 ---
 <div class="flex flex-row items-center gap-1">
     <span class="w-5 text-center select-none min-w-5">{symbol}</span>
-    <input class="decimal-input px-2" name={name} type="number" inputmode="decimal" min="0" max="10000" value={getFloatString(defaultValue, 2)}>
+    <input class="w-32 portrait:w-24 portrait:min-w-24 decimal-input px-2" name={name} type="number" inputmode="decimal" min="0" max="10000" value={getFloatString(defaultValue, 2)}>
     {unit && <span>{unit}</span>}
     <label for={name} class="lowercase">{name}</label>
 </div>

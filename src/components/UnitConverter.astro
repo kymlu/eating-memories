@@ -1,92 +1,59 @@
 ---
 import { Icon } from "astro-icon/components";
-import { CONVERTER_TYPES, ICONS, WEIGHT_TYPES, TEMPERATURE_TYPES, LENGTH_TYPES } from "../const.ts";
+import { UNIT_TYPE_NAMES, UNIT_TYPES, ICONS } from "../const.ts";
 
-const unitTabs = [
-    {
-        unitType: CONVERTER_TYPES.WEIGHT,
-        units: [{
-            name: WEIGHT_TYPES.POUND.name,
-            displayValue: "lbs.",
-            defaultValue: "1"
-        },
-        {
-            name: WEIGHT_TYPES.OUNCE.name,
-            displayValue: "oz.",
-            defaultValue: "16"
-        },
-        {
-            name: WEIGHT_TYPES.KILOGRAM.name,
-            displayValue: "kg",
-            defaultValue: "0.45"
-        },
-        {
-            name: WEIGHT_TYPES.GRAM.name,
-            displayValue: "g",
-            defaultValue: "453.59"
-        }]
-    },
-    {
-        unitType: CONVERTER_TYPES.TEMPERATURE,
-        units: [{
-            name: TEMPERATURE_TYPES.CELCIUS.name,
-            displayValue: "°C",
-            defaultValue: "176.67"
-        },
-        {
-            name: TEMPERATURE_TYPES.FAHRENHEIT.name,
-            displayValue: "°F",
-            defaultValue: "350"
-        }]
-    },
-    {
-        unitType: CONVERTER_TYPES.LENGTH,
-        units: [{
-            name: LENGTH_TYPES.INCH.name,
-            displayValue: "in.",
-            defaultValue: "1"
-        },
-        {
-            name: LENGTH_TYPES.CENTIMETRE.name,
-            displayValue: "cm",
-            defaultValue: "2.54"
-        },
-        {
-            name: LENGTH_TYPES.MILLIMETRE.name,
-            displayValue: "mm",
-            defaultValue: "254"
-        }]
-    }
-];
+const unitTypes = Object.values(UNIT_TYPES);
 ---
 
 <div class="fixed flex flex-col gap-3 items-end bottom-10 right-10">
-    <div id="converter" class="hidden flex-col rounded-xl w-60 h-64 filled-background border-main-800 border-solid border-2">
-        <div id="tabs" class="flex min-h-10 h-10 justify-around items-center border-b-2 border-main-800">
-            <button id=`${CONVERTER_TYPES.WEIGHT}-button` class="text-main-500"><Icon class=" m-auto text-xl" name={ICONS.BALANCE}/></button>
-            <button id=`${CONVERTER_TYPES.TEMPERATURE}-button` class=""><Icon class="m-auto text-xl" name={ICONS.THERMOMETER}/></button>
-            <button id=`${CONVERTER_TYPES.LENGTH}-button` class=""><Icon class="m-auto text-xl" name={ICONS.RULER}/></button>
+    <div id="converter" class="hidden flex-col rounded-xl w-80 portrait:w-60 h-auto filled-background border-main-800 border-solid border-2">
+        <div id="tabs" class="flex min-h-10 h-10 justify-evenly items-center border-b-2 border-main-800">
+            <button id=`${UNIT_TYPE_NAMES.WEIGHT}-button` class="text-main-500"><Icon class=" m-auto text-xl" name={ICONS.BALANCE}/></button>
+            <button id=`${UNIT_TYPE_NAMES.TEMPERATURE}-button` class=""><Icon class="m-auto text-xl" name={ICONS.THERMOMETER}/></button>
+            <button id=`${UNIT_TYPE_NAMES.LENGTH}-button` class=""><Icon class="m-auto text-xl" name={ICONS.RULER}/></button>
+            <button id=`${UNIT_TYPE_NAMES.VOLUME}-button` class=""><Icon class="m-auto text-xl" name={ICONS.FLASK}/></button>
         </div>
         {
-            unitTabs.map((tab) => 
-                <div id={`${tab.unitType}-converter`} 
-                        class:list={["flex-1 flex-col p-3 ml-6 justify-center items-center", 
-                                    {hidden: tab.unitType != unitTabs[0].unitType}, 
-                                    {flex: tab.unitType == unitTabs[0].unitType}]}>
-                    {
-                        tab.units.map((unit) => 
-                            <div class="flex flex-col w-full items-center">
-                                <div class="flex justify-start w-full items-center gap-1">
-                                    <input id={unit.name} class="decimal-input px-2" type="number" inputmode="decimal" min="0" max="10000" value={unit.defaultValue}>
-                                    <span>{unit.displayValue}</span>
-                                </div>
-                                {tab.units[tab.units.length - 1] != unit && <span>=</span>}
-                            </div>
-                        )
-                    }
+            unitTypes.map((unitType) => 
+                <div id={`${unitType.name}-converter`} 
+                     class:list={["flex portrait:flex-col gap-1 portrait:gap-2 px-3 py-4 justify-center items-center",
+                     {hidden: !unitType.isDefault}, 
+                     {flex: unitType.isDefault}]}>
+                    <div id={`${unitType.name}-converter-1`} class="w-full ">
+                        <input class="px-2 w-full decimal-input rounded-t-xl rounded-b-none border-b-0" 
+                                type="number" inputmode="decimal" min="0" max="10000" 
+                                value={unitType.units.find(u => u.isFirstDefault)?.defaultValue ?? 0}>
+                        <select class="rounded-b-xl rounded-t-none border-t-0" disabled={unitType.name == UNIT_TYPE_NAMES.TEMPERATURE}>
+                            {
+                                Object.values(unitType.units).map((type) =>
+                                    <option value={type.name} 
+                                            selected={type.isFirstDefault}
+                                            disabled={type.isSecondDefault}>
+                                        {type.display}
+                                    </option>
+                            )}
+                        </select>
+                    </div>
+
+                    <span>=</span>
+
+                    <div id={`${unitType.name}-converter-2`} class="w-full ">
+                        <input class="px-2 w-full decimal-input rounded-t-xl rounded-b-none border-b-0" 
+                                type="number" inputmode="decimal" min="0" max="10000" 
+                                value={unitType.units.find(u => u.isSecondDefault)?.defaultValue ?? 0}>
+                        <select class="rounded-b-xl rounded-t-none border-t-0" disabled={unitType.name == UNIT_TYPE_NAMES.TEMPERATURE}>
+                            {
+                                Object.values(unitType.units).map((type) =>
+                                    <option value={type.name} 
+                                            selected={type.isSecondDefault}
+                                            disabled={type.isFirstDefault}>
+                                        {type.display}
+                                    </option>
+                            )}
+                        </select>
+                    </div>
                 </div>
-            )
-        }
+        )}
     </div>
     <button id="converter-button" class="w-10 h-10 rounded-full bg-main-500 text-white">
         <Icon class="m-auto" name={ICONS.CALCULATOR}/>
@@ -95,10 +62,11 @@ const unitTabs = [
 </div>
 
 <script>
-    import { CONVERTER_TYPES, LENGTH_TYPES, TEMPERATURE_TYPES, WEIGHT_TYPES } from "../const.ts";
+    import { UNIT_TYPES, UNIT_TYPE_NAMES } from "../const.ts";
+    import type { unit, unitType } from "../interface.ts";
     import { getFloatString } from "../utils.ts";
 
-    let currentTab = CONVERTER_TYPES.WEIGHT;
+    let currentTab = UNIT_TYPE_NAMES.WEIGHT;
 
     document.getElementById("converter-button")?.addEventListener("click", () => {
         document.getElementById("converter")?.classList.toggle("hidden");
@@ -108,58 +76,85 @@ const unitTabs = [
         });
     });
     
-    Object.values(CONVERTER_TYPES).forEach((type)=> {
-        document.getElementById(`${type}-button`)?.addEventListener("click", () => {
-            if (currentTab != type) {
-                document.getElementById(`${type}-button`)?.classList.add("text-main-500");
-                document.getElementById(`${type}-converter`)?.classList.remove("hidden");
-                document.getElementById(`${type}-converter`)?.classList.add("flex");
+    Object.values(UNIT_TYPES).forEach((type)=> {
+        document.getElementById(`${type.name}-button`)?.addEventListener("click", () => {
+            if (currentTab != type.name) {
+                document.getElementById(`${type.name}-button`)?.classList.add("text-main-500");
+                document.getElementById(`${type.name}-converter`)?.classList.remove("hidden");
+                document.getElementById(`${type.name}-converter`)?.classList.add("flex");
                 document.getElementById(`${currentTab}-button`)?.classList.remove("text-main-500");
                 document.getElementById(`${currentTab}-converter`)?.classList.add("hidden");
                 document.getElementById(`${currentTab}-converter`)?.classList.remove("flex");
-                currentTab = type;
+                currentTab = type.name;
             }
         });
+
+        document.getElementById(`${type.name}-converter`);
     });
 
-    Object.values(WEIGHT_TYPES).forEach((type) => {
-        document.getElementById(type.name)?.addEventListener("input", () => {
-            convertWeight(type, parseFloat((document.getElementById(type.name) as HTMLInputElement).value));
-        });
-    });
-
-    Object.values(LENGTH_TYPES).forEach((type) => {
-        document.getElementById(type.name)?.addEventListener("input", () => {
-            convertLength(type, parseFloat((document.getElementById(type.name) as HTMLInputElement).value));
-        });
-    });
-
-    function convertWeight(changedUnit: any, value: number) {
-        Object.values(WEIGHT_TYPES).forEach((type) => {
-            if (type.name != changedUnit.name) {
-                convertUnit(changedUnit, type, value);
+    function onConvertValue(type: unitType, fromConverter: HTMLElement, toConverter: HTMLElement, newValue: number){
+        const unit1 = fromConverter.querySelector("select")?.value;
+        const unit2 = toConverter.querySelector("select")?.value;
+        if(unit1 && unit2){
+            const type1 = type.units.find((u: any) => u.name == unit1);
+            const type2 = type.units.find((u: any) => u.name == unit2);
+            if(type1 && type2){
+                if (type.name == UNIT_TYPE_NAMES.TEMPERATURE) {
+                    convertTemperature(type1.name == "celcius", newValue, 
+                        toConverter.querySelector("input") as HTMLInputElement);
+                } else {
+                    convertUnit(type1, type2, newValue,
+                        toConverter.querySelector("input") as HTMLInputElement);
+                }
             }
-        })
+        }
     }
 
-    function convertLength(changedUnit: any, value: number) {
-        Object.values(LENGTH_TYPES).forEach((type) => {
-            if (type.name != changedUnit.name) {
-                convertUnit(changedUnit, type, value);
+    function convertUnit(fromUnit: unit, toUnit: unit, value: number, destInputElement: HTMLInputElement){
+        const inBaseValue = value * (fromUnit.multiplier ?? 1);
+        const inToUnit = inBaseValue / (toUnit.multiplier ?? 1);
+        destInputElement.value = getFloatString(inToUnit, 2);
+    }
+
+    function convertTemperature(isCToF: boolean, value: number, destInputElement: HTMLInputElement){
+        if(isCToF){
+            destInputElement.value = getFloatString(value * 9/5 + 32, 2);
+        } else {
+            destInputElement.value = getFloatString((value- 32) * 5/9, 2);
+        }
+    }
+
+    function onChangeUnit(newUnitName: string, toConverter: HTMLSelectElement){
+        toConverter.querySelectorAll("option").forEach((option) => {
+            if(option.hasAttribute("disabled")){
+                option.removeAttribute("disabled");
+            } else if (option.value == newUnitName){
+                option.setAttribute("disabled", "");
             }
-        })
+        });
     }
 
-    function convertUnit(fromUnit: any, toUnit: any, value: number){
-        const inBaseValue = value * fromUnit.multiplier;
-        const inToUnit = inBaseValue / toUnit.multiplier;
-        (document.getElementById(toUnit.name) as HTMLInputElement).value = getFloatString(inToUnit, 2);
-    }
+    UNIT_TYPES.forEach((type) => {
+        const c1 = document.getElementById(`${type.name}-converter-1`);
+        const c2 = document.getElementById(`${type.name}-converter-2`);
+        if(c1 && c2){
+            c1.querySelector("input")?.addEventListener("input", (e) => {
+                onConvertValue(type, c1, c2, parseFloat((e.target as HTMLInputElement).value));
+            });
+            
+            c2.querySelector("input")?.addEventListener("input", (e) => {
+                onConvertValue(type, c2, c1, parseFloat((e.target as HTMLInputElement).value));
+            });
 
-    document.getElementById(TEMPERATURE_TYPES.FAHRENHEIT.name)?.addEventListener("input", () => {
-        (document.getElementById(TEMPERATURE_TYPES.CELCIUS.name) as HTMLInputElement).value = getFloatString((parseFloat((document.getElementById(TEMPERATURE_TYPES.FAHRENHEIT.name) as HTMLInputElement).value) - 32) * 5/9, 2);
-    });
-    document.getElementById(TEMPERATURE_TYPES.CELCIUS.name)?.addEventListener("input", () => {
-        (document.getElementById(TEMPERATURE_TYPES.FAHRENHEIT.name) as HTMLInputElement).value = getFloatString(parseFloat((document.getElementById(TEMPERATURE_TYPES.CELCIUS.name) as HTMLInputElement).value) * 9/5 + 32, 2);
+            c1.querySelector("select")?.addEventListener("change", (e) => {
+                onChangeUnit((e.target as HTMLSelectElement).value, c2.querySelector("select") as HTMLSelectElement);
+                onConvertValue(type, c2, c1, parseFloat((c2.querySelector("input")?.value) ?? "1"));
+            });
+            
+            c2.querySelector("select")?.addEventListener("change", (e) => {
+                onChangeUnit((e.target as HTMLSelectElement).value, c1.querySelector("select") as HTMLSelectElement);
+                onConvertValue(type, c1, c2, parseFloat((c1.querySelector("input")?.value) ?? "1"));
+            });
+        }
     });
 </script>

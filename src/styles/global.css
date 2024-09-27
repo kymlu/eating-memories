@@ -254,7 +254,11 @@
         }
 
         input.decimal-input {
-            @apply border-2 w-32 portrait:w-14 portrait:min-w-14 border-solid border-main-600;
+            @apply border-solid border-main-600 border-2;
+        }
+
+        input:focus, select:focus {
+            @apply outline-none;
         }
 
         .filled-background {
@@ -286,6 +290,10 @@
                 @apply bg-main-200/50 px-3 rounded-xl;
             }
         }
+
+        select {
+            @apply w-full px-2 py-1 border-2 border-solid border-main-600 bg-main-50 appearance-none cursor-pointer;
+        }
     }
 
     html.dark {
@@ -307,7 +315,7 @@
             @apply bg-main-900;
         }
 
-        input {
+        input, select {
             @apply bg-main-950 border-main-900
         }
 
