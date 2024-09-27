@@ -54,6 +54,9 @@ interface Ingredient {
     <div class="flex items-center gap-1 mb-2">
         <h1 class="flex items-center gap-2">{frontmatter.title}</h1>
         <SaveButton recipeId={frontmatter.id}></SaveButton>
+        <button onclick="window.print()">
+            <Icon name={ICONS.PRINT} class="print:hidden"/>
+        </button>
     </div>
     <div class="flex flex-col gap-x-16 landscape:flex-row print:flex-col">
         <div class="w-[40%] min-w-[25%] portrait:w-full portrait:min-w-full flex flex-col gap-2 print:w-full">

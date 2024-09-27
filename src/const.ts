@@ -35,6 +35,7 @@ export const ICONS = {
     BALANCE: "mingcute:balance-line",
     RULER: "mingcute:ruler-line",
     FLASK: "mingcute:flask-2-line",
+    PRINT: "mingcute:print-line",
 }
 
 export const UNIT_TYPE_NAMES = {
