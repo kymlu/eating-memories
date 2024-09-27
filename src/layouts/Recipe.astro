@@ -39,7 +39,6 @@ interface IngredientsGroup {
     name?: string;
     ingredients: Ingredient[];
     recipeId?: string;
-    inRecipe?: string;
 }
 
 interface Ingredient {
@@ -48,7 +47,7 @@ interface Ingredient {
     name: string;
     note?: string;
     recipeId?: string;
-    inRecipe?: string;
+    id?: string;
 }
 ---
 <BasePage title={frontmatter.title}>
@@ -56,8 +55,8 @@ interface Ingredient {
         <h1 class="flex items-center gap-2">{frontmatter.title}</h1>
         <SaveButton recipeId={frontmatter.id}></SaveButton>
     </div>
-    <div class="flex flex-col gap-x-16 landscape:flex-row">
-        <div class="landscape:max-w-[40%] landscape:min-w-[25%] flex flex-col gap-2">
+    <div class="flex flex-col gap-x-16 landscape:flex-row print:flex-col">
+        <div class="w-[40%] min-w-[25%] portrait:w-full portrait:min-w-full flex flex-col gap-2 print:w-full">
             <div class="subtitle">{frontmatter.description}</div>
             <div class="flex flex-row flex-wrap items-center gap-2">
                 {frontmatter.cuisine && <span class="tag">{frontmatter.cuisine }</span>}
@@ -68,18 +67,18 @@ interface Ingredient {
             {frontmatter.yield && 
                 <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="w-60 flex flex-col gap-1">
                     <div class="flex flex-row gap-2 justify-between">
-                        <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.MINUS}></Icon></button>
+                        <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default print:hidden"><Icon name={ICONS.MINUS}></Icon></button>
                         <span class="text-nowrap">Yield: <span id="yield"></span></span>
-                        <button id="plus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default"><Icon name={ICONS.PLUS}></Icon></button>
+                        <button id="plus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default print:hidden"><Icon name={ICONS.PLUS}></Icon></button>
                     </div>
-                    <div class="flex flex-row gap-2 justify-between">
+                    <div class="flex flex-row gap-2 justify-between print:hidden">
                         {YIELD_MULTIPLIERS.map((multiplier) => 
-                            <button id={multiplier.key} class="w-8 h-8 select-none hover-shadow rounded-lg ">{multiplier.displayValue}x</button>
+                            <button id={multiplier.key} class="w-8 h-8 select-none hover-shadow rounded-lg">{multiplier.displayValue}x</button>
                         )}
                     </div>
                 </yield-component>
             }
-            <hr>
+            <hr class="print:hidden">
             {frontmatter.ingredients && 
                 <div id="ingredients-list">
                     <h2 id="ingredients" class="capitalize">Ingredients</h2>
@@ -91,19 +90,16 @@ interface Ingredient {
                                     <div id={groupId}>
                                         {group.recipeId ? 
                                             <a href={getPostLink(group.recipeId)} class="underline text-main-500">
-                                                <h3 class="capitalize" data-group-id={groupId} data-in-recipe={group.inRecipe ?? group.name}>{group.name}</h3>
+                                                <h3 class="capitalize" data-group-id={groupId}>{group.name}</h3>
                                             </a> :
-                                            <div>
-                                                <h3 class="capitalize" data-group-id={groupId} data-in-recipe={group.inRecipe ?? group.name}>{group.name}</h3>
-                                            </div>
+                                            <h3 class="capitalize" data-group-id={groupId}>{group.name}</h3>
                                         }</div>}
                                 <ul id={`${groupId}-ingredients`} class="pl-4">
                                     {
                                         group.ingredients.map((ingredient: Ingredient) => 
                                             {
                                                 const text = <span>
-                                                        {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity} data-unit={ingredient.unit} data-in-recipe={ingredient.inRecipe ?? ingredient.name} class="decoration-2"></ingredient-quantity>}
-                                                        {ingredient.unit && <span>{ingredient.unit} </span>}
+                                                        {ingredient.quantity && <ingredient-quantity data-default-value={ingredient.quantity} data-unit={ingredient.unit} data-id={ingredient.id}></ingredient-quantity>}
                                                         {ingredient.name && <span>{ingredient.name} </span>}
                                                         {ingredient.note && <span class="text-xs italic subtitle">{ingredient.note}</span>}
                                                     </span>
@@ -124,14 +120,14 @@ interface Ingredient {
                 </div>
             }
         </div>
-        <hr class="landscape:hidden">
+        <hr class="landscape:hidden print:block">
         <div class="flex-1 portrait:mt-2">
-            <h2 class="capitalize landscape:hidden">Method</h2>
+            <h2 class="capitalize hidden portrait:block print:block">Method</h2>
             <div class="recipe-method">
                 <slot/>
             </div>
             {relatedRecipes.length > 0 && 
-                <div>
+                <div class="print:hidden">
                     <hr>
                     <h2>Use this recipe to make</h2>
                     <div class="flex flex-row gap-2 p-2 overflow-y-scroll">
@@ -144,57 +140,11 @@ interface Ingredient {
         </div>
     </div>
     <UnitConverter/>
-    <div id="ingredient-tooltip" class="fixed p-2 text-center min-h-6 min-w-10 rounded-xl bg-main-300 text-main-950"></div>
 </BasePage>
 
 <script>
     import { YIELD_MULTIPLIERS } from "../const.ts";
     import { getFraction } from "../utils.ts";
-
-    (Array.from(document.querySelectorAll(".ingredient")) as HTMLElement[]).forEach((element) => {
-        element.addEventListener("mouseover", (event) => {
-            const quantity = (Array.from(document.querySelectorAll("ingredient-quantity")) as HTMLElement[]).find((ingredient) => ingredient.dataset.inRecipe == element.innerText);
-            if(quantity){
-                document.getElementById("ingredient-tooltip")!.classList.remove("hidden");
-                document.getElementById("ingredient-tooltip")!.innerText = `${quantity.innerText} ${quantity.dataset.unit ?? ""}`;
-                moveTooltip(event);
-            }
-            element.addEventListener("mouseout", () => {
-                document.getElementById("ingredient-tooltip")!.classList.add("hidden");
-            }, {once: true});
-        });
-    });
-
-    (Array.from(document.querySelectorAll(".ingredient-group")) as HTMLElement[]).forEach((element) => {
-        element.addEventListener("mouseover", (event) => {
-            const allHeaders = document.getElementById("ingredients-list")?.querySelectorAll("h3");
-            if (allHeaders){
-                const group = (Array.from(allHeaders) as HTMLElement[]).find((group) => group.dataset.inRecipe == element.innerText);
-                if(group){
-                    const ingredientList = document.getElementById(`${group.dataset.groupId}-ingredients`);
-                    if (ingredientList){
-                        const a = (Array.from(ingredientList.querySelectorAll("ingredient-quantity")) as HTMLElement[]).map(ingredient => `${ingredient.innerText} ${ingredient.dataset.unit ?? ""} ${ingredient.dataset.inRecipe ?? ""}`)
-                        document.getElementById("ingredient-tooltip")!.classList.remove("hidden");
-                        document.getElementById("ingredient-tooltip")!.innerText = a.join(", ");
-                        moveTooltip(event);
-                        
-                        element.addEventListener("mouseout", () => {
-                            document.getElementById("ingredient-tooltip")!.classList.add("hidden");
-                        }, {once: true});
-                    }
-                }
-            }
-        });
-    });
-
-    function moveTooltip(event: MouseEvent) {
-        const { clientX, clientY } = event;
-        const tooltip = document.getElementById("ingredient-tooltip");
-        if(tooltip){
-            tooltip.style.left = `${clientX - 20}px`;
-            tooltip.style.top = `${clientY - 50}px`;
-        }
-    }
 
     class Ingredient extends HTMLElement {
         constructor(){
@@ -333,23 +283,49 @@ interface Ingredient {
     customElements.define('yield-component', Yield);
 
     class IngredientQuantity extends HTMLElement {
-        defaultValue: number;
+        defaultValue?: number;
+        unit?: string;
         constructor(){
             super();
-            this.defaultValue = 1;
         }
 
         connectedCallback(){
             if (this.dataset.defaultValue){
                 this.defaultValue = parseFloat(this.dataset.defaultValue);
-                this.innerText = getFraction(this.defaultValue);
             }
+            if (this.dataset.unit){
+                this.unit = this.dataset.unit;
+            }
+            this.scaleValue(1);
+        }
+
+        setValues(newDefault?: number, newUnit?: string){
+            if(newDefault == undefined || (newDefault && newDefault > 0)) {
+                this.defaultValue = newDefault;
+            }
+            this.unit = newUnit;
+            this.scaleValue(1);
         }
         
         scaleValue(scale: number){
-            this.innerText = getFraction(this.defaultValue * scale);
+            this.innerText = [this.defaultValue ? getFraction(this.defaultValue * scale): undefined, this.unit].join(" ");
         }
     }
 
     customElements.define('ingredient-quantity', IngredientQuantity);
+
+    let allIngredients = Array.from(document.querySelectorAll("ingredient-quantity")) as IngredientQuantity[];
+
+    (Array.from(document.querySelectorAll(".ingredient")) as HTMLElement[]).forEach((element) => {
+        let tempQuantity = new IngredientQuantity();
+        let associatedIngredient = allIngredients.find((ingredient) => ingredient.dataset.id == element.dataset.id);
+        if(associatedIngredient){
+            tempQuantity.setValues(associatedIngredient.defaultValue ? associatedIngredient.defaultValue * (parseFloat(element.dataset.proportion ?? "1")) : undefined, associatedIngredient.unit ? `${associatedIngredient.unit} ` : undefined);
+            element.prepend(tempQuantity);
+        }
+        element.addEventListener("click", () => {
+            element.classList.toggle("line-through");
+            element.classList.toggle("opacity-50");
+        })
+    });
 </script>

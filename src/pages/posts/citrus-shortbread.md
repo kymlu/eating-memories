@@ -19,44 +19,49 @@ tools:
 ingredients:
     - name: "basic shortbread"
       ingredients:
-        - name: "butter"
+        - name: "unsalted butter"
           quantity: 150
           unit: "g"
           note: "room temperature"
+          id: "1"
         - name: "powdered sugar"
           quantity: 50
           unit: "g"
+          id: "2"
         - name: "salt"
           quantity: 1
           unit: "g"
           note: "to taste"
+          id: "3"
         - name: "all-purpose flour"
           quantity: 160
           unit: "g"
-          inRecipe: "flour"
+          id: "4"
     - name: "flavouring (one of the following)"
       ingredients:
         - name: "orange zest"
           quantity: 1
           unit: "orange"
+          id: "5"
         - name: "lemon zest"
           quantity: 1
           unit: "lemon"
           note: "add a little lemon juice for an extra punch!"
+          id: "6"
         - name: "other citrus zest"
     - name: "food colouring (optional)"
       ingredients:
         - name: "gel food colouring"
           note: "any colour(s)"
-          inRecipe: "food colouring"
+          id: "food colouring"
 ---
 Preheat oven to 320°F/160°C.
 
-Cream the <b class="ingredient">butter</b> and <b class="ingredient">powdered sugar</b> together by hand or with a hand mixer/stand mixer.
+Cream the <span class="ingredient" data-id="1">butter</span> and <span class="ingredient" data-id="2">powdered sugar</span> together by hand or with a hand mixer/stand mixer.
 
-Add <b class="ingredient">salt</b> and <b class="ingredient">orange zest</b> and combine briefly. If using <b class="ingredient">food colouring</b>, add that now.
+Add <span class="ingredient" data-id="3">salt</span> and <span class="ingredient" data-id="4">orange zest</span> and combine briefly. If using <span class="ingredient">food colouring</span>, add that now.
 
-Add the <b class="ingredient">flour</b> and combine. May need to add extra flour if the food colouring made it too wet. 
+Add the <span class="ingredient" data-id="4">flour</span> and combine. May need to add extra flour if the food colouring made it too wet. 
 > You can alternatively add food colouring at this step, but gently knead it and be careful to not overwork the dough.
 
 Line the cookie sheet with the parchment paper.

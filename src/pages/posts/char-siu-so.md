@@ -12,32 +12,39 @@ ingredients:
     - name: "filling"
       ingredients:
         - name: "oil"
+          id: "1"
         - quantity: 1
           name: "small onion"
           note: "diced"
-          inRecipe: "onion"
+          id: "2"
         - quantity:  385
           unit: "g"
           name: "charsiu"
           note: "diced"
+          id: "3"
         - quantity:  1
           unit: "tsp"
           name: "soy sauce"
+          id: "4"
         - quantity: 2
           unit: "tsp"
           name: "white sugar"
-          inRecipe: "sugar"
+          id: "5"
         - name: "black pepper"
           unit: "some"
+          id: "6"
         - quantity:  1
           unit: "tsp"
           name: "cornstarch"
+          id: "7"
         - quantity: 0.5
           unit: "cup"
           name: "cold water"
+          id: "8"
         - name: "egg"
           quantity: 1
           note: "to brush on top as egg wash"
+          id: "9"
     - name: "skin"
       ingredients:
         - name: "puff pastry"
@@ -45,22 +52,23 @@ ingredients:
           unit: "batches"
           recipeId: "pastry-1"
           note: "store-bought is also fine, though I don't know how much..."
+          id: "10"
 ---
-Heat some <b class="ingredient">oil</b> in a pan and add the diced <b class="ingredient">onion</b>. Heat until translucent. 
+Heat some <span class="ingredient" data-id="1">oil</span> in a pan and add the diced <span class="ingredient" data-id="2">onion</span>. Heat until translucent. 
 
-Add the <b class="ingredient">charsiu</b>, <b class="ingredient">soy sauce</b>, <b class="ingredient">sugar</b>, and <b class="ingredient">black pepper</b> and stir fry a bit. 
+Add the <span class="ingredient" data-id="3">charsiu</span>, <span class="ingredient" data-id="4">soy sauce</span>, <span class="ingredient" data-id="5">sugar</span>, and <span class="ingredient" data-id="6">black pepper</span> and stir fry a bit. 
 
-Mix together the <b class="ingredient">cold water</b> and <b class="ingredient">cornstarch</b>. Let reduce until it become a little thick and saucy. If there isn't enough sauce to your liking, you can add more water. 
+Mix together the <span class="ingredient" data-id="1">cold water</span> and <span class="ingredient" data-id="8">cornstarch</span>. Let reduce until it become a little thick and saucy. If there isn't enough sauce to your liking, you can add more water. 
 
 Take off the heat and let cool.
 
 Preheat the oven to 400°F/205°C.
 
-Portion the puff pastry into the number of servings you are making. Add a spoonful of the filling onto the middle. Fold the pastry and seal (or shape however you want).
+Portion the <span class=ingredient data-id="10">puff pastry</span> into the number of servings you are making. Add a spoonful of the filling onto the middle. Fold the pastry and seal (or shape however you want).
 
 Line a sheet pan with parchment paper. Line the pastries onto the pan.
 
-Whisk the <b class="ingredient">egg</b> to create the egg wash. Brush on the egg wash.
+Whisk the <span class="ingredient" data-id="9">egg</span> to create the egg wash. Brush on the egg wash.
 > For a some extra flair, add sesame seeds on top!
 
 Bake for 30 mins. Let cool for 10 minutes before eating.

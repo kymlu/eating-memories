@@ -11,32 +11,39 @@ yieldUnit: "pastry"
 ingredients:
     - name: "water dough"
       ingredients:
-        - quantity: 38
-          unit: "g"
-          name: "unsalted butter"
-          note: "room temperature"
         - quantity: 10
           unit: "g"
           name: "sugar"
           note: "to make a sweeter dough for desserts (or if you like sweet), add 3x the sugar"
+          id: "1"
+        - quantity: 38
+          unit: "g"
+          name: "unsalted butter"
+          note: "room temperature"
+          id: "2"
         - quantity: 90
           unit: "g"
           name: "all-purpose flour"
+          id: "3"
         - quantity: 38
           unit: "g"
           name: "warm water"
           note: "room temperature at least, not boiling hot though"
+          id: "4"
     - name: "oil dough"
       ingredients:
         - name: "unsalted butter"
           quantity: 55
           unit: "g"
+          id: "5"
         - name: "all-purpose flour"
           quantity: 90
           unit: "g"
+          id: "6"
         - name: "cornstarch"
           quantity: 5
           unit: "g"
+          id: "7"
     - name: "filling ideas"
       ingredients:
         - name: "red bean paste"
@@ -49,14 +56,14 @@ ingredients:
         - name: "anything you want, really"
 ---
 # CREATE WATER DOUGH
-1. Add **sugar** in room temperature softened **butter**, mix well.
-2. Mix in **flour**. Once relatively mixed together, use fingers to rub until the texture is soft and sandy.
-3. Add **warm water**. Mix until it can come out of the bowl cleanly. 
+1. Add <span class="ingredient" data-id="1">sugar</span> to room temperature softened <span class="ingredient" data-id="2">butter</span>, mix well.
+2. Mix in <span class="ingredient" data-id="3">flour</span>. Once relatively mixed together, use fingers to rub until the texture is soft and sandy.
+3. Add <span class="ingredient" data-id="4">warm water</span>. Mix until it is cohesive and can come out of the bowl cleanly. 
 4. Wrap up with cling wrap and rest for 30 mins.
 ---
 # CREATE OIL DOUGH
-1. Soften **butter** to room temperature.
-2. Add the **flour** and **cornstarch**. Mix into a dough.
+1. Soften <span class="ingredient" data-id="5">butter</span> to room temperature.
+2. Add the <span class="ingredient" data-id="6">flour</span> and <span class="ingredient" data-id="7">cornstarch</span>. Mix into a dough.
 ---
 # MIX WATER AND OIL DOUGHS
 1. Knead the water dough.

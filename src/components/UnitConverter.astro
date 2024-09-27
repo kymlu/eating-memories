@@ -5,7 +5,7 @@ import { UNIT_TYPE_NAMES, UNIT_TYPES, ICONS } from "../const.ts";
 const unitTypes = Object.values(UNIT_TYPES);
 ---
 
-<div class="fixed flex flex-col gap-3 items-end bottom-10 right-0 px-10 box-border portrait:w-full">
+<div class="fixed flex flex-col gap-3 items-end bottom-10 right-0 px-10 box-border portrait:w-full print:hidden">
     <div id="converter" class="hidden flex-col rounded-xl w-80 portrait:w-full h-auto filled-background border-main-800 border-solid border-2">
         <div id="tabs" class="flex h-fit py-2 justify-evenly items-center border-b-2 border-main-800">
             <button id=`${UNIT_TYPE_NAMES.WEIGHT}-button` class="text-main-500"><Icon class="text-xl" name={ICONS.BALANCE}/></button>

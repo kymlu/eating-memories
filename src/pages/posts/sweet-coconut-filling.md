@@ -28,4 +28,4 @@ ingredients:
           unit: "g"
           note: "room temperature"
 ---
-Mix together until well combined. Form into balls and freeze before putting in pastry.
+Mix **everything** together until well combined. Form into balls and freeze before putting in pastry.

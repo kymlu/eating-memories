@@ -65,11 +65,12 @@ Sift the **dry ingredients** into the wet. Mix until the batter is just combined
 
 If you rinsed the fruit, dry them with a paper towel.
 
-In a separate bowl, add some **flour** and the  <b class="ingredient">fruit</b>. Toss together until all the fruit is covered.
+In a separate bowl, add some **flour** and the <span class="ingredient">fruit</span>. Toss together until all the fruit is covered.
 
 Add the flour-covered fruit to the batter and mix briefly.
 
-Lightly **butter/oil** up the inner walls of a 9x5 pan and lightly sprinkle **flour** to cover. Alternatively, line the pan with parchment paper.
+Lightly **butter/oil** up the inner walls of a 9x5 pan and lightly sprinkle **flour** to cover the walls. Alternatively, line the pan with parchment paper.
+> This step will prevent the cake sticking to the pan.
 
 Pour the batter into the pan.
 

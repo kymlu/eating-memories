@@ -15,24 +15,33 @@ ingredients:
         - name: "milk powder"
           quantity: 18
           unit: "g"
+          id: "1"
         - name: "unsalted butter"
           quantity: 54
           unit: "g"
+          id: "2"
         - name: "white granulated or powdered sugar"
           quantity: 36
           unit: "g"
+          id: "3"
         - name: "water"
           quantity: 12
           unit: "g"
+          id: "4"
         - name: "flour"
           quantity: 90
           unit: "g"
-        - name: "bag of tea"
+          id: "5"
+        - name: "tea leaves"
           quantity: 1
+          unit: "bag of"
+          id: "6"
+          note: "if using loose leaf tea, it is around 1-1.5 tsp per bag"
         - name: "molasses"
           quantity: 1
           unit: "tsp"
           note: "optional"
+          id: "7"
     - name: "eyes"
       ingredients:
         - name: "a few dark chocolate chips"
@@ -41,17 +50,17 @@ ingredients:
 ---
 > These cookies are good in a not-animal form too.
 # Making the dough
-In a saucepan, toast the **milk powder** on low-medium heat until slightly browned, constantly stirring.
+In a saucepan, toast the <span class="ingredient" data-id="1">milk powder</span> on low-medium heat until slightly browned, constantly stirring.
 
-In a bowl, cream together the **butter** and the **sugar**.
+In a bowl, cream together the <span class="ingredient" data-id="2">butter</span> and the <span class="ingredient" data-id="3">sugar</span>.
 
-Add the **water** and gently mix briefly.
+Add the <span class="ingredient" data-id="4">butter</span> and gently mix briefly.
 
-Sift in the **toasted milk powder** and the **flour** and mix until combined.
+Sift in the **toasted milk powder** and the <span class="ingredient" data-id="5">flour</span> and mix until combined.
 
-Remove the **tea leaves** from the bag. With a mortar and pestle, in a bowl with a utensil that has a bulbous bottom (maybe a knife), or in a blender (if making a large batch), grind up the leaves finely.
+Remove the <span class="ingredient" data-id="6">tea leaves</span> from the bag. With a mortar and pestle, in a bowl with a utensil that has a bulbous bottom (maybe a knife), or in a blender (if making a large batch), grind up the leaves finely.
 
-Take about 45g from the dough and add the **ground tea leaves** and **molasses** (if you want). Mix/knead until combined.
+Take about 45g (per 20 cookie serving) from the dough and add the **ground tea leaves** and <span class="ingredient" data-id="7">molasses</span> (if you want). Mix/knead until combined.
 > I think other flavour profiles would work too! Like apple spice (cinnamon, nutmeg, cardamom, allspice), for example.
 
 # Shaping the dough

@@ -242,7 +242,7 @@
         }
 
         .tag {
-            @apply px-2 py-1 rounded-xl bg-main-300 capitalize whitespace-nowrap;
+            @apply px-2 py-1 rounded-xl bg-main-300 capitalize whitespace-nowrap print:p-0 print:bg-white;
         }
 
         img.placeholder {
@@ -266,28 +266,36 @@
         }
 
         .recipe-method {
+            h1, h2, h3, h4, h5 {
+                @apply text-main-600;
+            }
+
             h1 {
-                @apply text-lg text-main-600;
+                @apply text-lg;
             }
     
             h2 {
-                @apply text-lg font-semibold text-main-600;
+                @apply text-lg font-semibold;
             }
 
             h3 {
-                @apply font-medium text-main-600;
+                @apply font-medium;
             }
             
-            blockquote, ul, ol {
-                @apply mb-2;
+            blockquote, ul, ol, p {
+                @apply mb-3;
             }
     
             a {
                 @apply underline text-main-600 hover:text-main-500;
             }
+            
+            ingredient-quantity, .ingredient { 
+                @apply decoration-main-600 decoration-2;
+            }
 
-            .ingredient, .ingredient-group {
-                @apply bg-main-200/50 px-3 rounded-xl;
+            .ingredient {
+                @apply bg-main-200/50 px-3 rounded-xl cursor-pointer font-bold text-nowrap;
             }
         }
 
@@ -297,18 +305,18 @@
     }
 
     html.dark {
-        @apply bg-main-1000 text-white;
+        @apply bg-main-1000 text-white print:bg-white print:text-black;
 
         blockquote {
-            @apply bg-main-950 pt-2 pb-1 px-5 border-l-4 border-l-main-400;
+            @apply bg-main-950 border-l-main-400 print:bg-main-100 print:border-l-main-600;
         }
 
         .subtitle {
-            @apply text-main-300
+            @apply text-main-300 print:text-main-900;
         }
 
         .tag {
-            @apply bg-main-800;
+            @apply bg-main-800 print:bg-white;
         }
 
         hr {
@@ -328,12 +336,12 @@
         }
 
         .filled-background {
-            @apply bg-main-1000;
+            @apply bg-main-1000 print:bg-white;
         }
 
         .recipe-method {
             h2, h3, a {
-                @apply text-main-400;
+                @apply text-main-400 print:text-main-600;
             }
 
             a {

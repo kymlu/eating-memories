@@ -14,11 +14,14 @@ ingredients:
           quantity: 4
           unit: "cups"
           note: "any veggies will work (tomato, carrots, zucchini, etc.)"
+          id: "1"
         - name: "onion"
           quantity: 1
+          id: "2"
         - name: "garlic"
           quantity: 4
           unit: "cloves"
+          id: "3"
         - name: "vegetable oil"
           note: "other oils (sunflower, olive, etc.) are ok too"
         - name: "salt"
@@ -36,18 +39,21 @@ ingredients:
 
 Preheat oven to 400°F/205°C.
 
-Chop **veggies** and **onion** into large pieces. 
+Chop <span class="ingredient" data-id="1">veggies</span> and <span class="ingredient" data-id="2">onion</span> into large pieces. 
 > Generally around the size of half a fist but everyone's fists are different. 
 >
 > For reference, I cut onions and large tomatoes into quarters, roma tomatoes into halves.
 > Garlic cloves should be separated but whole.
 
-Put all the **chopped veggies**, **onions**, and **garlic cloves** into a bowl and dizzle **oil** onto it. Mix to coat all the veggies.
+Put all the chopped veggies, chopped onions, and <span class="ingredient" data-id="3">garlic cloves</span> into a bowl and drizzle <span class="ingredient">oil</span> onto it. Mix to evenly coat all the veggies with the oil.
 > Oil prevents burning.
 
-Distribute the veggies onto the sheet pan evenly. Shake **salt**, **black pepper** and **chili pepper flakes** onto the veggies as you see fit.
+Distribute the veggies onto a sheet pan evenly. Shake a bit of <span class="ingredient">salt</span>, <span class="ingredient">black pepper</span> and <span class="ingredient">chili pepper flakes</span> onto the veggies as you see fit.
+> You can add other seasoning but personally this combination is sufficient. It is better to underseason than overseason because you can add more later if you don't like it.
 
 Bake for 30-35 minutes if the veggies are generally small and thin, or 45-50 minutes if they are round and chunky.
 
 Transfer the veggies into a pot and use an immersion blender or a masher, or use a blender/food processor to break the veggies down to a desired chunkiness/smoothness. Add pasta water if it is too thick.
 > Adding pasta water to the sauce will also help the sauce adhere to the pasta more!
+
+Best to eat immediately, but can store for a few days in the refrigerator if needed.

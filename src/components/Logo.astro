@@ -1,0 +1,15 @@
+---
+import { Icon } from "astro-icon/components";
+import { ICONS, SITE_TITLE } from "../const.ts";
+
+interface Props {
+    isLogoWhite? :boolean;
+}
+
+const { isLogoWhite } = Astro.props;
+---
+
+<div class="flex flex-row items-center flex-1 gap-2">
+    <Icon name={ICONS.LOGO} class:list={["text-3xl", {"text-white": isLogoWhite}, {"text-main-500": isLogoWhite == undefined || isLogoWhite == false}]}></Icon>
+    <div class="font-bold text-xl">{ SITE_TITLE }</div>
+</div>

@@ -41,13 +41,13 @@ ingredients:
         - name: "unsalted butter"
           quantity: 50
           unit: "g"
-          inRecipe: "butter"
+          id: "1"
 ---
 Mix the **wet ingredients** together.
 
 Add the **dry ingredients** and combine.
 
-Put the mixture onto a double boiler. Add <b class="ingredient">butter</b> and mix until melted.
+Put the mixture onto a double boiler. Add <span class="ingredient" data-id="1">butter</span> and mix until melted.
 > To make a double boiler:
 > 
 > Add some water (don't need too much) to the pot and heat on high. Put the metal bowl containing the mixture on top of the pot.

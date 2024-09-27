@@ -29,7 +29,7 @@ ingredients:
           quantity: 0.25
           unit: "tsp"
 ---
-Mix everything together.
+Mix **everything** together.
 
 Can refrigerate or use immediately.
 > Might be good to make a large batch to use over time. If doing so, save in an airtight container.

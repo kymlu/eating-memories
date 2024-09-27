@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/Recipe.astro"
-title: "Quick-ish Flatbread"
+title: "Quick-ish Yeastless Flatbread"
 id: "bread-1"
 pubDate: 2024-09-25
 description: "Is 40 minutes quick?"
@@ -11,20 +11,24 @@ yield: 6
 yieldUnit: '8" flatbread'
 ingredients:
     - ingredients:
-        - name: "flour"
-          quantity: 300
-          unit: "g"
-        - name: "salt"
-          quantity: 0.5
-          unit: "tsp"
-        - name: "butter"
-          quantity: 50
-          unit: "g"
-        - name: "milk"
-          quantity: 185
-          unit: "ml"
+      - name: "butter"
+        quantity: 50
+        unit: "g"
+        id: "1"
+      - name: "milk"
+        quantity: 185
+        unit: "ml"
+        id: "2"
+      - name: "flour"
+        quantity: 300
+        unit: "g"
+        id: "3"
+      - name: "salt"
+        quantity: 0.5
+        unit: "tsp"
+        id: "4"
 ---
-Melt the **butter** in the **milk** over low heat.
+Melt the <span class="ingredient" data-id="1">butter</span> in the <span class="ingredient" data-id="2">milk</span> over low heat.
 
 Mix **all the ingredients** together.
 

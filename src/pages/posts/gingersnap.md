@@ -38,18 +38,23 @@ ingredients:
           quantity: 67
           unit: "g"
           note: "softened"
+          id: "1"
         - name: "white sugar"
           quantity: 60
           unit: "g"
+          id: "2"
         - name: "molasses"
           quantity: 40
           unit: "g"
+          id: "3"
         - name: "egg"
           quantity: 1
           note: "I like using apple sauce instead (0.25 cup/egg)"
+          id: "4"
         - name: "vanilla extract"
           quantity: 1
           unit: "tsp"
+          id: "5"
     - name: "topping"
       ingredients:
         - name: "white sugar"
@@ -63,7 +68,7 @@ Preheat oven to 350°F/175°C.
 
 Sift all the **dry ingredients** into a bowl and whisk together until combined.
 
-In a separate bowl, cream the **butter** and **sugar** together until light in colour and fluffy. 
+In a separate bowl, cream the <span class="ingredient" data-id="1">butter</span> and <span class="ingredient" data-id="2">sugar</span> together until light in colour and fluffy. 
 
 Add the remainder of the **wet ingredients** and mix together until well incorporated.
 

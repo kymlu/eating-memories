@@ -2,24 +2,27 @@
 import "../styles/global.css";
 import { Icon } from "astro-icon/components";
 import { getPageLink } from "../utils.ts";
-import { ICONS, PAGE_NAMES, SITE_TITLE } from "../const.ts";
+import { ICONS, PAGE_NAMES } from "../const.ts";
 import ThemeToggle from "./ThemeToggle.astro";
+import Logo from "./Logo.astro";
 const pages = [["Recipes", undefined],
 			["Saved", PAGE_NAMES.SAVED, ICONS.SAVED],
 			["Substitutions", PAGE_NAMES.SUBSTITUTIONS],
 			["About", PAGE_NAMES.ABOUT],
 			["FAQ", PAGE_NAMES.FAQ]];
 ---
-<header class="sticky top-0 z-50 filled-background">
+<div class="hidden print:block mb-5">
+	<Logo/>
+</div>
+<header class="sticky top-0 z-50 filled-background print:hidden">
 	<div>
 		<div id="navigation" class="flex flex-row items-center gap-2 px-20 pt-5 h-20 pb-1 border-b-2 border-main-600 portrait:px-10">
 			<button id="menu-button" class="landscape:hidden">
 				<Icon id="close-icon" class="hidden hover:text-main-400" name={ICONS.CLOSE}></Icon>
 				<Icon id="menu-icon" class="hover:text-main-400" name={ICONS.MENU}></Icon>
 			</button>
-			<a href={getPageLink()} class="flex flex-row items-center gap-2 portrait:justify-center">
-				<Icon name={ICONS.LOGO} class="text-3xl text-main-500"></Icon>
-				<div class="text-xl font-bold">{ SITE_TITLE }</div>
+			<a href={getPageLink()}>
+				<Logo/>
 			</a>
 			<div class="flex flex-row items-center flex-1 gap-4 justify-end">
 				<div class="flex flex-row items-center gap-2 portrait:hidden">

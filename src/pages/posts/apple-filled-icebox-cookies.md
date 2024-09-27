@@ -14,33 +14,39 @@ ingredients:
           quantity: 150
           unit: "g"
           note: "softened"
-          inRecipe: "butter"
+          id: "1"
         - name: "powdered sugar"
           quantity: 120
           unit: "g"
+          id: "2"
         - name: "salt"
           quantity: 0.25
           unit: "tsp"
+          id: "3"
         - name: "egg"
           quantity: 1
           note: "room temperature"
+          id: "4"
         - name: "vanilla extract"
           quantity: 1
           unit: "tsp"
           note: "10g milk powder if no vanilla extract"
-          inRecipe: "vanilla"
+          id: "5"
     - name: "dry"
-      inRecipe: "dry ingredients"
+      id: "dry ingredients"
       ingredients:
         - name: "all-purpose flour"
           quantity: 280
           unit: "g"
+          id: "6"
         - name: "cornstarch"
           quantity: 20
           unit: "g"
+          id: "7"
         - name: "baking powder"
           quantity: 1
           unit: "tsp"
+          id: "8"
     - name: "decorations"
       ingredients:
         - name: "gel food colouring"
@@ -51,33 +57,33 @@ ingredients:
           note: "optional, good if you want 'eyes' for animal-shaped cookies"
     - name: "apple jam"
       ingredients:
-        - name: "white granulated sugar"
-          quantity: 75
-          unit: "g"
-          inRecipe: "sugar"
         - name: "apple"
           quantity: 250
           unit: "g"
           note: "peeled and diced finely"
-          inRecipe: "apples"
+          id: "9"
+        - name: "white granulated sugar"
+          quantity: 75
+          unit: "g"
+          id: "10"
         - name: "lemon juice"
           quantity: 2
           unit: "tbsp"
           note: "or around 1 lemon per 2 tbsp"
 ---
 # Making the dough
-Cream <b class="ingredient">butter</b> and then add <b class=ingredient>powdered sugar</b> and <b class="ingredient">salt</b>. Whip the mixture until light and fluffy for a crispy cookie.
+Cream <span class="ingredient" data-id="1">butter</span> and then add <span class=ingredient data-id="2">powdered sugar</span> and <span class="ingredient" data-id="3">salt</span>. Whip the mixture until light and fluffy for a crispy cookie.
 
-Add <b class="ingredient">vanilla</b> and <b class="ingredient">egg</b> and mix.
+Add <span class="ingredient" data-id="5">vanilla</span> and <span class="ingredient" data-id="4">egg</span> and mix.
 
-Sift the **dry ingredients** in. Mix thoroughly.
+Sift the **dry ingredients** (<span class="ingredient" data-id="6">flour</span>, <span class="ingredient" data-id="7">cornstarch</span>, <span class="ingredient" data-id="8">baking powder</span>) in. Mix thoroughly.
 
 # Decorating the dough
+[Examples of how to decorate at the end of the section.](#examples)
 ## Planning
 Figure out what image to make the cookies in beforehand. I've done birds, bears, and apples.
 
 Draw out the design you want to do, the simpler the easier. Separate the parts of the design by colour, and determine the shapes each colour should have. If the shape if complex, try breaking it down.
-[Here are some examples.](#examples)
 
 ## Colouring
 
@@ -135,7 +141,7 @@ Take a pinch of the red dough and make a teardrop for the wattle, placing it bel
 Bake at 320°F/160°C for 15 min. Let cool completely before creating the sandwiches.
 
 # Making the jam
-Dice the <b class="ingredient">apples</b> and put in a pot with the <b class="ingredient">sugar</b>. Boil on medium heat. When the water is almost all evaporated, add <b class="ingredient">lemon juice</b>. Turn off the heat and keep it on the stove until the mixture is thickened. 
+Dice the <span class="ingredient" data-id="9">apples</span> and put in a pot with the <span class="ingredient" data-id="10">sugar</span>. Boil on medium heat. When the water is almost all evaporated, add <span class="ingredient" data-id="11">lemon juice</span>. Turn off the heat and keep it on the stove until the mixture is thickened. 
 
 # Sandwiching the cookie
 Once the cookies have been cooled, pair up cookies that have similar shapes (the cookies will likely not be uniform). Some cookies might have a darker side, which you may or may not want to hide.
