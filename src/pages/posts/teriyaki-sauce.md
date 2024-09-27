@@ -35,7 +35,7 @@ Can refrigerate or use immediately.
 > Might be good to make a large batch to use over time. If doing so, save in an airtight container.
 
 # To use
-Marinade the meats/veggies for 5-10 minutes.
+Marinate the meats/veggies for 5-10 minutes.
 
 Heat up a pan (no oil needed). **Keeping the sauce on the side,** add the food to the pan and cook to 80% doneness.
 

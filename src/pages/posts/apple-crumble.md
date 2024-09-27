@@ -15,10 +15,10 @@ ingredients:
           quantity: 6
           unit: "cups"
           note: "peeled and diced"
-        - name: "sugar"
+        - name: "white granulated sugar"
           quantity: 0.25
           unit: "cup"
-        - name: "flour"
+        - name: "all-purpose flour"
           quantity: 1
           unit: "tbsp"
         - name: "cinnamon"
@@ -32,7 +32,7 @@ ingredients:
         - name: "brown sugar"
           quantity: 0.25
           unit: "cup"
-        - name: "flour"
+        - name: "all-purpose flour"
           quantity: 0.5
           unit: "cup"
         - name: "baking powder"
