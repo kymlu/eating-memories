@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/Recipe.astro"
-title: "Apple Muffin"
+title: "Apple Muffins"
 id: "dessert-2"
 pubDate: 2024-09-27
 description: "Classic fall treat."

@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/Recipe.astro"
-title: "Rainbow Puff Pastry"
+title: "Rainbow Flaky Mooncakes"
 id: "pastry-3"
 pubDate: 2024-09-16
 adaptedFrom: "SugarVine"

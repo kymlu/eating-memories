@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/Recipe.astro"
-title: "Apple-filled sandwich cookies"
+title: "Apple-Filled Sandwich Cookies"
 id: "cookie-4"
 pubDate: 2024-09-24
 description: "Cute."

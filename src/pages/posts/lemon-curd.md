@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/Recipe.astro"
-title: "Lemon curd"
+title: "Lemon Curd"
 id: "filling-5"
 pubDate: 2024-09-20
 description: "Pretty tart."

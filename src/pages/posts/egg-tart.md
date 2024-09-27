@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/Recipe.astro"
-title: "Egg tarts"
+title: "Egg Tarts"
 id: "pastry-4"
 pubDate: 2024-09-20
 description: "My grandma's recipe."
