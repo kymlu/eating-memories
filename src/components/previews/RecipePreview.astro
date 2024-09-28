@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css"
-import SaveButton from "./SaveButton.astro";
+import SaveButton from "../SaveButton.astro";
+import PreviewIcon from "./PreviewIcon.astro";
 
 interface Props {
     id: string;
@@ -8,16 +9,17 @@ interface Props {
     description: string;
 	link?: string;
 	imageLink?: string;
+    iconName?: string;
 	cuisine?: string;
 	course?: string;
 	dietary?: string[];
 }
-const { id, name, description, link, imageLink, cuisine, course, dietary} = Astro.props;
+const { id, name, description, link, imageLink, iconName, cuisine, course, dietary } = Astro.props;
 ---
 
 <div class="hover-shadow box-content relative flex flex-row justify-between p-2 transition-all duration-100 rounded-lg min-w-60 min-h-5">
     <a href={link} class="flex flex-row flex-1 gap-4 pr-7">
-        <img src={imageLink ?? "/eating-memories/favicon.svg"} class="placeholder">
+        <PreviewIcon iconName={iconName} imageLink={imageLink}/>
         <div class="flex-1">
             <span class="subtitle capitalize font-bold">{name}</span>
             <span class="overflow-hidden text-ellipsis" style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{description}</span>
@@ -29,6 +31,6 @@ const { id, name, description, link, imageLink, cuisine, course, dietary} = Astr
         </div> 
     </a>
     <div class="absolute right-2">
-        <SaveButton recipeId={id}></SaveButton>
+        <SaveButton recipeId={id}/>
     </div>
 </div>

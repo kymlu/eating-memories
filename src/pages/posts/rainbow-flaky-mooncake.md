@@ -8,6 +8,7 @@ adaptedromURL: "https://www.youtube.com/watch?v=Gm3FdmrR3E4"
 description: "Taste the rainbow."
 course: "dessert"
 cuisine: "Chinese"
+iconName: "mingcute:rainbow-line"
 yield: 8
 yieldUnit: "pastry"
 ingredients:

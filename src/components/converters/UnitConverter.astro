@@ -1,6 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
-import { UNIT_TYPE_NAMES, UNIT_TYPES, ICONS } from "../const.ts";
+import { UNIT_TYPE_NAMES, UNIT_TYPES, ICONS } from "../../const.ts";
 
 const unitTypes = Object.values(UNIT_TYPES);
 ---
@@ -62,9 +62,9 @@ const unitTypes = Object.values(UNIT_TYPES);
 </div>
 
 <script>
-    import { UNIT_TYPES, UNIT_TYPE_NAMES } from "../const.ts";
-    import type { unit, unitType } from "../interface.ts";
-    import { getFloatString } from "../utils.ts";
+    import { UNIT_TYPES, UNIT_TYPE_NAMES } from "../../const.ts";
+    import type { unit, unitType } from "../../interface.ts";
+    import { getFloatString } from "../../utils.ts";
 
     let currentTab = UNIT_TYPE_NAMES.WEIGHT;
 

@@ -6,6 +6,7 @@ pubDate: 2024-09-16
 description: "Fruity."
 course: "cookie"
 cuisine: "American"
+iconName: "mingcute:cookie-line"
 yield: 30
 yieldUnit: "tiny cookie"
 tools:

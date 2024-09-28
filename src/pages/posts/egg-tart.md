@@ -6,6 +6,7 @@ pubDate: 2024-09-20
 description: "My grandma's recipe."
 course: "dessert"
 cuisine: "Chinese"
+iconName: "mingcute:egg-crack-line"
 yield: 9
 yieldUnit: "tart"
 ingredients:

@@ -5,6 +5,7 @@ id: "cookie-3"
 pubDate: 2024-09-22
 description: "So cute you'll want to cry."
 course: "dessert"
+iconName: "mingcute:cookie-line"
 yield: 20
 yieldUnit: "hamster cookie"
 adaptedFrom: "mocha mocha"
@@ -96,7 +97,7 @@ Place the cookies in the fridge to keep cool and maximize shape retention when b
 Bake for 20 minutes. The colour should darken slightly. After taking the cookies out of the oven, wait for it to cool completely.
 
 # Adding life to the cookie
-Melt a few **chocolate chips** in a microwave. Add **a few drops of water** to thin it out.
-> Alternatively, use dark cocoa powder instead of chocolate chips. If it's not dark, the colour will not show up as well.
+Melt a few **chocolate chips** in a microwave. Mix in **a few drops of water** to thin it out.
+> Alternatively, use dark cocoa powder instead of chocolate chips. If it's not dark, the colour will not show up as well. I've used molasses but the colour wasn't that dark.
 
 With a toothpick, take a bit of the chocolate mixture and draw eyes on the end with the ears, and a line down the back. 

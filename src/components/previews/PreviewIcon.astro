@@ -1,0 +1,22 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+    iconName?: string;
+    imageLink?: string;
+}
+const {iconName, imageLink} = Astro.props;
+---
+{ iconName == undefined &&
+    <img class="w-20 h-20 rounded-lg bg-main-100" src={imageLink ?? "/eating-memories/favicon.svg"}>
+}
+{ iconName && 
+    <div class="bg-main-100 rounded-lg">
+        <Icon class="w-20 h-20 text-main-500" name={iconName}/>
+    </div>
+}
+<style>
+    :global(.dark) img, :global(.dark) div {
+        @apply bg-main-950;
+    }
+</style>

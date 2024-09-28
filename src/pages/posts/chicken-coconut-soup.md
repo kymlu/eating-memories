@@ -6,6 +6,7 @@ pubDate: 2024-09-19
 description: "My mom's recipe."
 course: "soup"
 cuisine: "Chinese"
+iconName: "mingcute:soup-pot-2-line"
 yield: 4
 yieldUnit: "litre"
 ingredients:

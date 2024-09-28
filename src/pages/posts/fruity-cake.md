@@ -7,6 +7,7 @@ description: "The nutrition from the fruit is cancelled out by the sugar."
 course: "dessert"
 adaptedFrom: "Preppy Kitchen"
 adaptedFromURL: "https://preppykitchen.com/strawberry-bread/"
+iconName: "mingcute:cake-line"
 yield: 1
 yieldUnit: "9x5 pan"
 ingredients:
@@ -65,7 +66,7 @@ Sift the **dry ingredients** into the wet. Mix until the batter is just combined
 
 If you rinsed the fruit, dry them with a paper towel.
 
-In a separate bowl, add some **flour** and the <span class="ingredient">fruit</span>. Toss together until all the fruit is covered.
+In a separate bowl, add some **flour** and <span class="ingredient">fruit</span>. Toss together until all the fruit is covered.
 
 Add the flour-covered fruit to the batter and mix briefly.
 

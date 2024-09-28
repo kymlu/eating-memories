@@ -7,6 +7,7 @@ description: "Is 40 minutes quick?"
 course: "bread"
 adaptedFrom: "Recipe Tin Eats"
 adaptedFromURL: "https://www.recipetineats.com/easy-soft-flatbread-yeast/#wprm-recipe-container-20705"
+iconName: "mingcute:bread-line"
 yield: 6
 yieldUnit: '8" flatbread'
 ingredients:

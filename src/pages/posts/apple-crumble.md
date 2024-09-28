@@ -6,6 +6,7 @@ pubDate: 2024-09-15
 description: "Called 'apple crisp' for the Americans out there."
 course: "dessert"
 cuisine: "American"
+iconName: "mingcute:cupcake-line"
 yield: 1
 yieldUnit: "9x5 pan"
 ingredients:

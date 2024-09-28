@@ -6,6 +6,7 @@ pubDate: 2024-09-19
 description: "Pork."
 cuisine: "Chinese"
 course: "main"
+iconName: "mingcute:chicken-line"
 yield: 16
 yieldUnit: "pastry"
 ingredients:

@@ -1,6 +1,6 @@
 ---
 layout: "../../layouts/Recipe.astro"
-title: "Custard Filling"
+title: "Custard Filling for Mooncakes"
 id: "filling-2"
 pubDate: 2024-09-16
 description: "For mooncakes."

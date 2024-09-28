@@ -5,6 +5,7 @@ id: "cookie-4"
 pubDate: 2024-09-24
 description: "Cute."
 course: "cookie"
+iconName: "mingcute:cookie-line"
 yield: 12
 yieldUnit: "sandwich cookie"
 ingredients:

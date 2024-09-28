@@ -6,6 +6,7 @@ pubDate: 2024-09-20
 description: "Earthy."
 course: "dessert"
 cuisine: "Chinese"
+iconName: "mingcute:soup-pot-2-line"
 yield: 7
 yieldUnit: "bowl"
 ingredients:

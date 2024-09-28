@@ -185,7 +185,8 @@
     html {
         @apply font-sans;
         @apply bg-white text-main-950;
-        span, del {
+
+        span, del, ingredient-quantity {
             @apply decoration-2;
         }
         
@@ -245,10 +246,6 @@
             @apply px-2 py-1 rounded-xl bg-main-300 capitalize whitespace-nowrap print:p-0 print:bg-white;
         }
 
-        img.placeholder {
-            @apply w-20 h-20 rounded-lg bg-main-100;
-        }
-
         .hover-shadow {
             @apply border-main-500 hover:shadow-custom hover:shadow-main-400 border-2 border-solid;
         }
@@ -299,7 +296,7 @@
             }
 
             .ingredient {
-                @apply bg-main-200/50 px-3 rounded-xl cursor-pointer font-bold text-nowrap;
+                @apply bg-main-200/50 px-3 print:px-0 rounded-xl cursor-pointer font-bold text-nowrap;
             }
         }
 
@@ -331,10 +328,6 @@
             @apply bg-main-950 border-main-900
         }
 
-        img.placeholder {
-            @apply bg-main-950
-        }
-
         .hover-shadow {
             @apply border-main-900 hover:shadow-main-700
         }
@@ -350,6 +343,10 @@
 
             a {
                 @apply hover:text-main-300;
+            }
+
+            .ingredient {
+                @apply bg-main-900/50 text-main-50 print:text-black;
             }
         }
     }

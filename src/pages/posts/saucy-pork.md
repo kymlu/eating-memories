@@ -6,6 +6,7 @@ pubDate: 2024-09-21
 description: "Havier in garlic if that's your thing."
 course: "meat"
 cuisine: "Chinese"
+iconName: "mingcute:chicken-line"
 yield: 4
 yieldUnit: "serving"
 ingredients:
@@ -75,7 +76,7 @@ Cover the bowl with plastic wrap or a lid and refrigerate for over an hour.
 # Cook the meat
 Add some <span class="ingredient" data-id="7">oil</span> to a frying pan and set the heat to high.
 
-When the oil is heated, add some <span class="brown sugar" data-id="8"></span> and mix the sugar and the oil.
+When the oil is heated, add some <span class="ingredient" data-id="8">brown sugar</span> and mix the sugar and the oil.
 
 When the mixture starts bubbling, add the <span class="ingredient" data-id="9">garlic cloves</span> and let cook, mixing occasionally. 
 

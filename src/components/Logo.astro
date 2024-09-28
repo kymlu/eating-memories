@@ -10,6 +10,6 @@ const { isLogoWhite } = Astro.props;
 ---
 
 <div class="flex flex-row items-center flex-1 gap-2">
-    <Icon name={ICONS.LOGO} class:list={["text-3xl", {"text-white": isLogoWhite}, {"text-main-500": isLogoWhite == undefined || isLogoWhite == false}]}></Icon>
+    <Icon name={ICONS.LOGO} class:list={["text-3xl", {"text-white": isLogoWhite}, {"text-main-500": isLogoWhite == undefined || isLogoWhite == false}]}/>
     <div class="font-bold text-xl">{ SITE_TITLE }</div>
 </div>

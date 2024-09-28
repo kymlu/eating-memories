@@ -5,6 +5,7 @@ id: "soup-2"
 pubDate: 2024-09-19
 description: "My grandma's recipe."
 course: "soup"
+iconName: "mingcute:soup-pot-2-line"
 yield: 4
 yieldUnit: "litre"
 ingredients:

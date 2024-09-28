@@ -7,6 +7,7 @@ description: "Fluffy bread."
 course: "bread"
 adaptedFrom: "Recipe Tin Eats"
 adaptedFromURL: "https://www.recipetineats.com/easy-soft-flatbread-yeast/#wprm-recipe-container-20705"
+iconName: "mingcute:bread-line"
 yield: 1
 yieldUnit: "9x5 pan"
 ingredients:

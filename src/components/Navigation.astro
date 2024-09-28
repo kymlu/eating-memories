@@ -18,8 +18,8 @@ const pages = [["Recipes", undefined],
 	<div>
 		<div id="navigation" class="flex flex-row items-center gap-2 px-20 pt-5 h-20 pb-1 border-b-2 border-main-600 portrait:px-10">
 			<button id="menu-button" class="landscape:hidden">
-				<Icon id="close-icon" class="hidden hover:text-main-400" name={ICONS.CLOSE}></Icon>
-				<Icon id="menu-icon" class="hover:text-main-400" name={ICONS.MENU}></Icon>
+				<Icon id="close-icon" class="hidden hover:text-main-400" name={ICONS.CLOSE}/>
+				<Icon id="menu-icon" class="hover:text-main-400" name={ICONS.MENU}/>
 			</button>
 			<a href={getPageLink()}>
 				<Logo/>
@@ -29,11 +29,11 @@ const pages = [["Recipes", undefined],
 					{pages.map(([title, slug, icon]) => (
 						<a href={getPageLink(slug)} class="nav hover-shadow">
 							<span>{title}</span>
-							{ icon && <Icon class="text-lg" name={icon}></Icon>}
+							{ icon && <Icon class="text-lg" name={icon}/>}
 						</a>
 					))}
 				</div>
-				<ThemeToggle></ThemeToggle>
+				<ThemeToggle/>
 			</div>
 		</div>
 		<div id="menu" class="hidden relative">
@@ -41,7 +41,7 @@ const pages = [["Recipes", undefined],
 				{pages.map(([title, slug, icon]) => (
 					<a href={getPageLink(slug)} class="h-10 text-xl nav hover-shadow">
 						<span class="pl-2">{title}</span>
-						{ icon && <Icon class="text-lg" name={icon}></Icon>}
+						{ icon && <Icon class="text-lg" name={icon}/>}
 					</a>))}
 			</div>
 		</div>

@@ -3,6 +3,7 @@ layout: "../../layouts/Recipe.astro"
 title: "Soy Sauce Chicken Drumstick"
 id: "sauce-2"
 pubDate: 2024-09-27
+iconName: "mingcute:chicken-line"
 description: "My mom's recipe."
 course: "meat"
 yield: 8

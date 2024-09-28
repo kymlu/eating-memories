@@ -5,6 +5,7 @@ id: "meat-3"
 pubDate: 2024-09-27
 description: "My grandma's recipe."
 course: "meat"
+iconName: "mingcute:pumpkin-line"
 yield: 2
 yieldUnit: "serving"
 ingredients:

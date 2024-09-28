@@ -6,6 +6,7 @@ pubDate: 2024-09-27
 description: "Classic fall treat."
 course: "dessert"
 cuisine: "American"
+iconName: "mingcute:cupcake-line"
 yield: 12
 yieldUnit: "muffin"
 ingredients:

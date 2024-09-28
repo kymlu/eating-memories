@@ -1,21 +1,23 @@
 ---
 import "../styles/global.css"
-import SaveButton from "./SaveButton.astro";
+import PreviewIcon from "../previews/PreviewIcon.astro";
+import SaveButton from "../SaveButton.astro";
 interface Props {
 	id: string;
 	name: string;
 	link: string;
 	imageLink?: string;
+	iconName?: string;
 }
-const { id, name, link, imageLink} = Astro.props;
+const { id, name, link, imageLink, iconName} = Astro.props;
 ---
 
 <div class="hover-shadow box-content relative flex flex-col w-24 px-3 pt-2 pb-1 transition-all duration-100 rounded-lg min-h-24 min-w-24">
 	<a href={link} class="flex flex-col items-center gap-0">
-		<img src={imageLink ?? "/eating-memories/favicon.svg"} class="placeholder">
+		<PreviewIcon iconName={iconName} imageLink={imageLink}/>
 		<span class="text-center capitalize">{name}</span>
 	</a>
 	<div class="absolute top-1 right-1">
-		<SaveButton recipeId={id}></SaveButton>
+		<SaveButton recipeId={id}/>
 	</div>
 </div>

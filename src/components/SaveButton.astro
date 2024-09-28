@@ -7,8 +7,8 @@ interface Props {
 const { recipeId } = Astro.props;
 ---
 <save-button class="relative w-6 h-6" data-recipe-id={recipeId}>
-    <button class="absolute top-0 right-0"><Icon name={ICONS.NOT_SAVED}></Icon></button>
-    <button class="absolute top-0 right-0 hidden"><Icon name={ICONS.SAVED}></Icon></button>
+    <button class="absolute top-0 right-0"><Icon name={ICONS.NOT_SAVED}/>
+    <button class="absolute top-0 right-0 hidden"><Icon name={ICONS.SAVED}/>
 </save-button>
 
 <script>

@@ -6,6 +6,7 @@ pubDate: 2024-09-13
 description: "Doesn't have to be for pasta."
 course: "sauce"
 cuisine: "American"
+iconName: "mingcute:carrot-line"
 yield: 4
 yieldUnit: "serving"
 ingredients:

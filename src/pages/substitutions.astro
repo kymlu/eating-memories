@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import BasePage from "../layouts/BasePage.astro";
 import ExpandableSection from "../layouts/ExpandableSection.astro";
-import IngredientConverter from "../layouts/IngredientConverter.astro";
+import IngredientConverter from "../components/IngredientConverter.astro";
 
 ---
 <BasePage title="Substitutions" contentTitle="Substitutions">
@@ -12,37 +12,37 @@ import IngredientConverter from "../layouts/IngredientConverter.astro";
         <IngredientConverter result="cake flour" 
             defaultTotal={100} 
             ingredients={[{name: "all-purpose flour", proportion: 0.93}, {name: "cornstarch", proportion: 0.07}]} 
-            unit="g"></IngredientConverter>
+            unit="g"/>
     </ExpandableSection>
     <hr>
     <ExpandableSection title="Sugar">
         <IngredientConverter result="Light brown sugar" 
             defaultTotal={1} 
             ingredients={[{name: "granulated white sugar", proportion: 1}, {name: "molasses", proportion: 1, unit: "tbsp"}]} 
-            unit="cup"></IngredientConverter>
+            unit="cup"/>
         <hr>
         <IngredientConverter result="Dark brown sugar" 
             defaultTotal={1} 
             ingredients={[{name: "granulated white sugar", proportion: 1}, {name: "molasses", proportion: 2, unit: "tbsp"}]} 
-            unit="cup"></IngredientConverter>
+            unit="cup"/>
         <hr>
         <IngredientConverter result="turbinado sugar" 
             defaultTotal={1} 
             ingredients={[{name: "granulated white sugar", proportion: 0.5}, {name: "brown sugar", proportion: 0.5}]} 
             unit="cup"
-            note="Will not result in the crunchy texture, only the taste."></IngredientConverter>
+            note="Will not result in the crunchy texture, only the taste."/>
         <hr>
         <IngredientConverter result="Caster sugar" 
             defaultTotal={100} 
             ingredients={[{name: "granulated white sugar", proportion: 1}]} 
             unit="g" 
-            note="Blend in a food processor briefly until grains get finer."></IngredientConverter>
+            note="Blend in a food processor briefly until grains get finer."/>
         <hr>
         <IngredientConverter result="Powdered sugar" 
             defaultTotal={100} 
             ingredients={[{name: "granulated white sugar", proportion: 0.93}, {name: "cornstarch", proportion: 0.07}]}
             unit="g"
-            note="Blend in a food processor until powdery."></IngredientConverter>
+            note="Blend in a food processor until powdery."/>
     </ExpandableSection>
     <hr>
     <ExpandableSection title="Other">
@@ -50,6 +50,6 @@ import IngredientConverter from "../layouts/IngredientConverter.astro";
             defaultTotal={1} 
             ingredients={[{name: "applesauce", proportion: 0.25, unit: "cup"}]} 
             unit="" 
-            note="Less protein but also less calories. This is a substitution for egg as a binder, not a main ingredient (e.g. souffle)."></IngredientConverter>
+            note="Less protein but also less calories. This is a substitution for egg as a binder, not a main ingredient (e.g. souffle)."/>
     </ExpandableSection>
 </BasePage>

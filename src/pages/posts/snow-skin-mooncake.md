@@ -6,6 +6,7 @@ pubDate: 2024-09-16
 description: "Let's go to the moon."
 course: "dessert"
 cuisine: "Chinese"
+iconName: "mingcute:snow-line"
 yield: 16
 yieldUnit: "50g mooncake"
 tools:

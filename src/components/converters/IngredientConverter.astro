@@ -1,5 +1,5 @@
 ---
-import ExpandableSection from './ExpandableSection.astro';
+import ExpandableSection from '../../layouts/ExpandableSection.astro';
 import IngredientInput from './IngredientInput.astro';
 
 interface SubstituteComponent {
@@ -21,17 +21,17 @@ const{result, ingredients, defaultTotal, unit, note} = Astro.props;
     <div class="flex flex-col gap-2 w-fit">
         { ingredients.map((ingredient, index) => 
             <substitute-component data-name={ingredient.name} data-proportion={ingredient.proportion}>
-                <IngredientInput name={ingredient.name} unit={ingredient.unit ?? unit} defaultValue={defaultTotal * ingredient.proportion} symbol={index == 0 ? " " : "+"}></IngredientInput>
+                <IngredientInput name={ingredient.name} unit={ingredient.unit ?? unit} defaultValue={defaultTotal * ingredient.proportion} symbol={index == 0 ? " " : "+"}/>
             </substitute-component>
         )}
         <result-component class="pt-2 border-t-2 border-main-800">
-            <IngredientInput name={result} unit={unit} defaultValue={defaultTotal} symbol={"="}></IngredientInput>
+            <IngredientInput name={result} unit={unit} defaultValue={defaultTotal} symbol={"="}/>
         </result-component>
     </div>
 </ExpandableSection>
 
 <script>
-    import { getFloatString } from "../utils";
+    import { getFloatString } from "../../utils";
     function preventNonNumeric(event: KeyboardEvent){
         if (!(event.key == "Backspace" || event.key == "Delete" || /\d/.test(event.key) || event.key.includes("Arrow") || event.key == ".")){
             event.preventDefault();

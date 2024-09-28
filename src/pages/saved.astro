@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import BasePage from "../layouts/BasePage.astro";
-import RecipePreview from "../layouts/RecipePreview.astro";
+import RecipePreview from "../components/previews/RecipePreview.astro";
 import { titleSort } from "../utils.ts";
 const allRecipes = await Astro.glob("./posts/*.md");
 ---
@@ -13,14 +13,14 @@ const allRecipes = await Astro.glob("./posts/*.md");
 	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
         { allRecipes.sort(titleSort).map((post) =>
             <saved-wrapper class="hidden" data-id={post.frontmatter.id}>
-                <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine}></RecipePreview>
+                <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine} iconName={post.frontmatter.iconName}/>
             </saved-wrapper>)
         }
     </div>
     <span id="no-saved" class="hidden">You have no saved recipes!</span>
 
     <div id="popup-container" class="absolute left-0 top-0 items-center justify-center w-svw h-svh hidden">
-        <div id="popup-bg" class="popup-bg"></div>
+        <div id="popup-bg" class="popup-bg"/>
         <div id="popup" class="filled-background z-10 w-auto max-w-[70%] portrait:max-w-[80%] h-auto border-main-600 border-2 border-solid rounded-xl p-5 flex flex-col gap-4">
             <h1>Are you sure you want to clear your saved recipes?</h1>
             <div class="flex justify-around w-full">
