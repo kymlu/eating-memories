@@ -6,6 +6,7 @@ pubDate: 2024-09-20
 description: "Pretty tart."
 course: "filling"
 cuisine: "English"
+iconName: "mingcute:lemon-squeezy-line"
 yield: 250
 yieldUnit: "ml"
 ingredients:

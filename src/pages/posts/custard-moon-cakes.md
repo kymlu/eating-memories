@@ -6,6 +6,7 @@ pubDate: 2024-09-16
 description: "For mooncakes."
 course: "dessert"
 cuisine: "Chinese"
+iconName: "mingcute:egg-crack-line"
 yield: 400
 yieldUnit: "gram"
 tools:

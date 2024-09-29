@@ -3,7 +3,7 @@ layout: "../../layouts/Recipe.astro"
 title: "Saucy Pork"
 id: "meat-1"
 pubDate: 2024-09-21
-description: "Havier in garlic if that's your thing."
+description: "Heavier in garlic if that's your thing."
 course: "meat"
 cuisine: "Chinese"
 iconName: "mingcute:chicken-line"
@@ -48,8 +48,9 @@ ingredients:
           quantity: 1
           unit: "tbsp"
           id: "8"
-        - name: "garlic cloves"
+        - name: "garlic"
           quantity: 8
+          unit: "cloves"
           note: "whole"
           id: "9"
         - name: "water"

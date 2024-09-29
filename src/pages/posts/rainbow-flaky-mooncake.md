@@ -4,7 +4,7 @@ title: "Rainbow Flaky Mooncakes"
 id: "pastry-3"
 pubDate: 2024-09-16
 adaptedFrom: "SugarVine"
-adaptedromURL: "https://www.youtube.com/watch?v=Gm3FdmrR3E4"
+adaptedFromURL: "https://www.youtube.com/watch?v=Gm3FdmrR3E4"
 description: "Taste the rainbow."
 course: "dessert"
 cuisine: "Chinese"

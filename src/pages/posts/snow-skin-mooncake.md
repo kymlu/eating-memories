@@ -3,7 +3,7 @@ layout: "../../layouts/Recipe.astro"
 title: "Snow Skin Mooncake"
 id: "dessert-1"
 pubDate: 2024-09-16
-description: "Let's go to the moon."
+description: "I wonder if it snows on the moon."
 course: "dessert"
 cuisine: "Chinese"
 iconName: "mingcute:snow-line"

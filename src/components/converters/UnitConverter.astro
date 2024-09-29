@@ -3,20 +3,23 @@ import { Icon } from "astro-icon/components";
 import { UNIT_TYPE_NAMES, UNIT_TYPES, ICONS } from "../../const.ts";
 
 const unitTypes = Object.values(UNIT_TYPES);
+const tabs = [[UNIT_TYPE_NAMES.WEIGHT, ICONS.BALANCE],
+    [UNIT_TYPE_NAMES.TEMPERATURE, ICONS.THERMOMETER],
+    [UNIT_TYPE_NAMES.LENGTH, ICONS.RULER],
+    [UNIT_TYPE_NAMES.VOLUME, ICONS.FLASK]]
 ---
 
 <div class="fixed flex flex-col gap-3 items-end bottom-10 right-0 px-10 box-border portrait:w-full print:hidden">
     <div id="converter" class="hidden flex-col rounded-xl w-80 portrait:w-full h-auto filled-background border-main-800 border-solid border-2">
         <div id="tabs" class="flex h-fit py-2 justify-evenly items-center border-b-2 border-main-800">
-            <button id=`${UNIT_TYPE_NAMES.WEIGHT}-button` class="text-main-500"><Icon class="text-xl" name={ICONS.BALANCE}/></button>
-            <button id=`${UNIT_TYPE_NAMES.TEMPERATURE}-button` class=""><Icon class="text-xl" name={ICONS.THERMOMETER}/></button>
-            <button id=`${UNIT_TYPE_NAMES.LENGTH}-button` class=""><Icon class="text-xl" name={ICONS.RULER}/></button>
-            <button id=`${UNIT_TYPE_NAMES.VOLUME}-button` class=""><Icon class="text-xl" name={ICONS.FLASK}/></button>
+            { tabs.map(([unitType, icon]) => 
+                <button id={`${unitType}-button`} class:list={[{"text-main-500": unitType == tabs[0][0]}]}><Icon class="text-2xl" name={icon}/></button>
+            )}
         </div>
         {
             unitTypes.map((unitType) => 
                 <div id={`${unitType.name}-converter`} 
-                     class:list={["flex portrait:flex-col gap-1 portrait:gap-2 px-3 py-4 justify-center items-center",
+                     class:list={["flex portrait:flex-col gap-1 portrait:gap-0 px-3 py-4 justify-center items-center",
                      {hidden: !unitType.isDefault}, 
                      {flex: unitType.isDefault}]}>
                     <div id={`${unitType.name}-converter-1`} class="w-full">
@@ -35,7 +38,7 @@ const unitTypes = Object.values(UNIT_TYPES);
                         </select>
                     </div>
 
-                    <span>=</span>
+                    <span class="text-2xl">=</span>
 
                     <div id={`${unitType.name}-converter-2`} class="w-full ">
                         <input class="px-2 w-full decimal-input rounded-t-xl rounded-b-none border-b-0" 

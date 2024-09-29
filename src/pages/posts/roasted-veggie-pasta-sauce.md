@@ -11,18 +11,22 @@ yield: 4
 yieldUnit: "serving"
 ingredients:
     - ingredients:
-        - name: "veggies"
-          quantity: 4
-          unit: "cups"
-          note: "any veggies will work (tomato, carrots, zucchini, etc.)"
+        - name: "tomatoes"
+          unit: 4
           id: "1"
+        - name: "carrots"
+          unit: 2
+          id: "2"
+        - name: "bell peppers"
+          unit: 2
+          id: "3"
         - name: "onion"
           quantity: 1
-          id: "2"
+          id: "4"
         - name: "garlic"
           quantity: 4
           unit: "cloves"
-          id: "3"
+          id: "5"
         - name: "vegetable oil"
           note: "other oils (sunflower, olive, etc.) are ok too"
         - name: "salt"
@@ -32,7 +36,9 @@ ingredients:
 ---
 > **WHAT VEGGIES SHOULD I USE?**
 >
-> Any veggie will work. Experiment. Doesn't have to be tomato.
+> Any veggie will work at any ratio. Experiment. Doesn't have to be the ones I list.
+> 
+> Examples: zucchini, 
 >
 > I like having additional 3-4 kinds of veggies for a variety of flavour and nutrients.
 >
@@ -40,17 +46,20 @@ ingredients:
 
 Preheat oven to 400°F/205°C.
 
-Chop <span class="ingredient" data-id="1">veggies</span> and <span class="ingredient" data-id="2">onion</span> into large pieces. 
-> Generally around the size of half a fist but everyone's fists are different. 
+Chop <span class="ingredient" data-id="1">tomatoes</span>, <span class="ingredient" data-id="2">carrots</span>, <span class="ingredient" data-id="3">peppers</span> and <span class="ingredient" data-id="4">onion</span> into large pieces. 
+> For reference, I cut onions and large tomatoes into quarters, roma tomatoes into halves, peppers into sixths. But it doesn't HAVE to be large, you could cut into smaller chunks. Note that smaller = less cooking time.
 >
-> For reference, I cut onions and large tomatoes into quarters, roma tomatoes into halves.
-> Garlic cloves should be separated but whole.
+> Garlic cloves should be separated and peeled, but whole.
 
-Put all the chopped veggies, chopped onions, and <span class="ingredient" data-id="3">garlic cloves</span> into a bowl and drizzle <span class="ingredient">oil</span> onto it. Mix to evenly coat all the veggies with the oil.
+Put all the chopped veggies, chopped onions, and <span class="ingredient" data-id="5">garlic cloves</span> into a bowl and drizzle <span class="ingredient">oil</span> onto it. Mix to evenly coat all the veggies with the oil.
 > Oil prevents burning.
 
-Distribute the veggies onto a sheet pan evenly. Shake a bit of <span class="ingredient">salt</span>, <span class="ingredient">black pepper</span> and <span class="ingredient">chili pepper flakes</span> onto the veggies as you see fit.
-> You can add other seasoning but personally this combination is sufficient. It is better to underseason than overseason because you can add more later if you don't like it.
+Line a sheet pan with parchment paper. Distribute the veggies onto a sheet pan evenly. 
+
+Shake some <span class="ingredient">salt</span>, <span class="ingredient">black pepper</span> and <span class="ingredient">chili pepper flakes</span> onto the veggies as you see fit.
+> You can add other seasoning, like Italian seasoning, but personally this combination is sufficient. It is better to underseason than overseason because you can add more later after blending if you don't like it.
+>
+> With all the vegetables, it may be a bit sweet without the salt.
 
 Bake for 30-35 minutes if the veggies are generally small and thin, or 45-50 minutes if they are round and chunky.
 

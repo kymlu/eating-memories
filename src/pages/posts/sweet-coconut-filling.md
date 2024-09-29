@@ -8,6 +8,7 @@ pubDate: 2024-09-19
 description: "Coconutty."
 course: "dessert"
 cuisine: "Chinese"
+iconName: "mingcute:sugar-coated-haws-line"
 yield: 130
 yieldUnit: "gram"
 tools:

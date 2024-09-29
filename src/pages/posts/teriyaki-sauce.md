@@ -6,6 +6,7 @@ pubDate: 2024-09-15
 description: "For sweet and savoury meats and veggies."
 course: "sauce"
 cuisine: "Japanese"
+iconName: "mingcute:chopsticks-line"
 yield: 2
 yieldUnit: "serving"
 ingredients:

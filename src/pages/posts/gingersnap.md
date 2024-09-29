@@ -6,7 +6,7 @@ pubDate: 2024-09-20
 description: "Tastes warm."
 course: "cookie"
 cuisine: "American"
-iconName: "mingcute:cookie-line"
+iconName: "mingcute:cookie-man-line"
 yield: 12
 yieldUnit: "cookie"
 ingredients:

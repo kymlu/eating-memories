@@ -6,6 +6,7 @@ pubDate: 2024-09-16
 description: "Nutty."
 course: "dessert"
 cuisine: "Chinese"
+iconName: "mingcute:sugar-coated-haws-line"
 yield: 400
 yieldUnit: "gram"
 tools:

@@ -8,6 +8,7 @@ adaptedFrom: "Just One Cookbook"
 adaptedFromURL: "https://www.justonecookbook.com/anko-red-bean-paste/"
 cuisine: "Asian"
 course: "dessert"
+iconName: "mingcute:sugar-coated-haws-line"
 yield: 450
 yieldUnit: "gram"
 ingredients:
