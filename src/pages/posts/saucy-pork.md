@@ -26,8 +26,7 @@ ingredients:
           quantity: 1
           unit: "tbsp"
           id: "3"
-        - name: "garlic"
-          unit: "cloves"
+        - name: "garlic cloves"
           quantity: 3
           note: "minced"
           id: "4"
@@ -48,9 +47,8 @@ ingredients:
           quantity: 1
           unit: "tbsp"
           id: "8"
-        - name: "garlic"
+        - name: "garlic cloves"
           quantity: 8
-          unit: "cloves"
           note: "whole"
           id: "9"
         - name: "water"

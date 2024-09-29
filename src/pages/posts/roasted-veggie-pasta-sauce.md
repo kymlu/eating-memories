@@ -12,20 +12,19 @@ yieldUnit: "serving"
 ingredients:
     - ingredients:
         - name: "tomatoes"
-          unit: 4
+          quantity: 4
           id: "1"
         - name: "carrots"
-          unit: 2
+          quantity: 2
           id: "2"
         - name: "bell peppers"
-          unit: 2
+          quantity: 2
           id: "3"
         - name: "onion"
           quantity: 1
           id: "4"
-        - name: "garlic"
+        - name: "garlic cloves"
           quantity: 4
-          unit: "cloves"
           id: "5"
         - name: "vegetable oil"
           note: "other oils (sunflower, olive, etc.) are ok too"
@@ -36,9 +35,9 @@ ingredients:
 ---
 > **WHAT VEGGIES SHOULD I USE?**
 >
-> Any veggie will work at any ratio. Experiment. Doesn't have to be the ones I list.
+> Any veggie will work at any ratio. Experiment with flavours you like or just take whatever's in the fridge. Doesn't have to be the ones I list.
 > 
-> Examples: zucchini, 
+> Examples: zucchini, cauliflower, mushrooms, pumpkin, etc.
 >
 > I like having additional 3-4 kinds of veggies for a variety of flavour and nutrients.
 >
@@ -63,7 +62,10 @@ Shake some <span class="ingredient">salt</span>, <span class="ingredient">black 
 
 Bake for 30-35 minutes if the veggies are generally small and thin, or 45-50 minutes if they are round and chunky.
 
-Transfer the veggies into a pot and use an immersion blender or a masher, or use a blender/food processor to break the veggies down to a desired chunkiness/smoothness. Add pasta water if it is too thick.
+Transfer the veggies into a pot and use an immersion blender or a masher, or use a blender/food processor to break the veggies down to a desired chunkiness/smoothness. 
+> If you prefer it to be less chunky, peel the tomato skins and tough outer onion layers. These are harder to break down.
+
+Add pasta water if it is too thick.
 > Adding pasta water to the sauce will also help the sauce adhere to the pasta more!
 
-Best to eat immediately, but can store for a few days in the refrigerator if needed.
+Best to mix the sauce with a protein and pasta and then eat immediately, but can store it for a few days in the refrigerator if needed.
