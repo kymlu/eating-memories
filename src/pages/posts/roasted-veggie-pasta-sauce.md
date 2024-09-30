@@ -37,7 +37,7 @@ ingredients:
 >
 > Any veggie will work at any ratio. Experiment with flavours you like or just take whatever's in the fridge. Doesn't have to be the ones I list.
 > 
-> Examples: zucchini, cauliflower, mushrooms, pumpkin, etc.
+> Examples: zucchini, cauliflower, broccoli, mushrooms, pumpkin, etc.
 >
 > I like having additional 3-4 kinds of veggies for a variety of flavour and nutrients.
 >

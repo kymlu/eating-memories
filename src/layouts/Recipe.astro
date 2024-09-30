@@ -59,7 +59,7 @@ interface Ingredient {
         </button>
     </div>
     <div class="flex flex-col gap-x-16 landscape:flex-row print:flex-col">
-        <div class="w-[40%] min-w-[25%] portrait:w-full portrait:min-w-full flex flex-col gap-2 print:w-full">
+        <div class="w-[40%] min-w-[25%] max-w-1/2 portrait:w-full portrait:min-w-full flex flex-col gap-2 print:w-full">
             <div class="subtitle">{frontmatter.description}</div>
             <div class="flex flex-row flex-wrap items-center gap-2">
                 {frontmatter.cuisine && <span class="tag">{frontmatter.cuisine }</span>}
@@ -69,12 +69,12 @@ interface Ingredient {
             {frontmatter.adaptedFrom && <a target="_blank" rel="noopener noreferrer" href={frontmatter.adaptedFromURL} class="subtitle">Adapted from {frontmatter.adaptedFrom}</a>}
             {frontmatter.yield && 
                 <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="w-60 flex flex-col gap-1">
-                    <div class="flex flex-row gap-2 justify-between">
+                    <div class="flex flex-row flex-wrap gap-2 justify-between">
                         <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default print:hidden"><Icon name={ICONS.MINUS}/></button>
                         <span class="text-nowrap">Yield: <span id="yield"/></span>
                         <button id="plus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default print:hidden"><Icon name={ICONS.PLUS}/></button>
                     </div>
-                    <div class="flex flex-row gap-2 justify-between print:hidden">
+                    <div class="flex flex-row flex-wrap gap-2 justify-between print:hidden">
                         {YIELD_MULTIPLIERS.map((multiplier) => 
                             <button id={multiplier.key} class="w-8 h-8 select-none hover-shadow rounded-lg">{multiplier.displayValue}x</button>
                         )}

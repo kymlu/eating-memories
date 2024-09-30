@@ -40,7 +40,7 @@ ingredients:
         - name: "milk"
           quantity: 185
           unit: "ml"
-          notes: "water also works, though the flavour may be less rich"
+          notes: "water also works, though the flavour may be less rich. half-condensed milk and half-water can help use up the can if you have excess that you don't know what to do with"
         - name: "oil"
           quantity: 30
           unit: "ml"
@@ -64,6 +64,7 @@ ingredients:
 Mix the **dry ingredients**.
 
 Add the **wet ingredients** and mix until the milk and oil don't separate.
+> The consistency will be watery.
 
 Steam for 20-25 min.
 > When it is done, the oil should separate from the rest of the dough. If you poke it with a spatula, the dough shouldn't be liquid.
