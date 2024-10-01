@@ -1,0 +1,16 @@
+---
+import "../styles/global.css";
+import BasePage from "../layouts/BasePage.astro";
+import { titleSort } from "../utils.ts";
+import ListPreview from "../components/previews/ListPreview.astro";
+
+const allRecipes = await Astro.glob("./posts/*.md");
+---
+
+<BasePage title="Archive">
+    <div class="flex flex-col gap-2">
+        { allRecipes.sort(titleSort).map((post) =>
+            <ListPreview id={post.frontmatter.id} name={post.frontmatter.title} link={post.url}iconName={post.frontmatter.iconName}/>)
+        }
+    </div>
+</BasePage>

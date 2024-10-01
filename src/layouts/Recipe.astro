@@ -190,35 +190,11 @@ interface Ingredient {
                 this.checkButtons();
             }
             (this.querySelector("#minus-yield") as HTMLElement).addEventListener("pointerdown", () => {
-                // include to prevent selection on touchscreen
-                document.body.classList.add("select-none"); 
-                this.adjustYield(false);
-                const minusInterval = setInterval(() => {
-                    if (!this.adjustYield(false)){
-                        clearInterval(minusInterval);
-                    }
-                }, 200);
-                
-                document.body.addEventListener("pointerup", () => {
-                    document.body.classList.remove("select-none");
-                    clearInterval(minusInterval);
-                }, { once: true });
+                this.onYieldChange(false);
             });
             
             (this.querySelector("#plus-yield") as HTMLElement).addEventListener("pointerdown", () => {
-                // include to prevent selection on touchscreen
-                document.body.classList.add("select-none");
-                this.adjustYield(true);
-                const plusInterval = setInterval(() => {
-                    if (!this.adjustYield(true)){
-                        clearInterval(plusInterval);
-                    }
-                }, 200);
-
-                document.body.addEventListener("pointerup", () => {
-                    document.body.classList.remove("select-none");
-                    clearInterval(plusInterval);
-                }, { once: true });
+                this.onYieldChange(true);
             });
             
             YIELD_MULTIPLIERS.forEach((multiplier) => {
@@ -226,17 +202,35 @@ interface Ingredient {
             });
         }
 
-        adjustYield(isIncrement: boolean): boolean{
+        onYieldChange(isIncrement: boolean) {
+            // include to prevent selection on touchscreen
+            document.body.classList.add("select-none");
+            this.adjustYield(isIncrement);
+            const startTime = (new Date()).getTime();
+            const interval = setInterval(() => {
+                const currentTime = (new Date()).getTime();
+                if (!this.adjustYield(isIncrement, (currentTime - startTime) > 7000 ? 25 : (currentTime - startTime) > 3000 ? 10 : 1)){
+                    clearInterval(interval);
+                }
+            }, 200);
+
+            document.body.addEventListener("pointerup", () => {
+                document.body.classList.remove("select-none");
+                clearInterval(interval);
+            }, { once: true });
+        }
+
+        adjustYield(isIncrement: boolean, interval?: number): boolean{
             let isInBounds = true;
             if (isIncrement){
                 if (this.currentValue < this.defaultValue * this.maxMultiplier){
-                    this.currentValue = Math.floor(this.currentValue + 1);
+                    this.currentValue = Math.min(Math.floor(this.currentValue + (interval ?? 1)), this.defaultValue * this.maxMultiplier);
                 } else {
                     isInBounds = false;
                 }
             } else {
                 if (this.currentValue > 1){
-                    this.currentValue--;
+                    this.currentValue = Math.max(Math.floor(this.currentValue - (interval ?? 1)), 1);
                 } else {
                     isInBounds = false;
                 }

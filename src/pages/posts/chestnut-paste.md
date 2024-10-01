@@ -45,4 +45,4 @@ Move the chestnuts to the saucepan and add <span class="ingredient" data-id="5">
 Heat on low to melt the butter and mix it in with the chestnuts.
 
 Add the <span class="ingredient" data-id="3">sugar</span> and <span class="ingredient" data-id="4">salt</span> and mix together. The mixture will become very liquidy, but after heating (stirring ocassionally) for 20-25 minutes, it will thicken up into a paste. 
-> **To test!** Become one with Moses and use your spatula to part the ~~seas~~ chestnuts. If the beans don't try to return to its original form, you're gucci.
+> **To test!** Become one with Moses and use your spatula to part the ~~seas~~ chestnuts. If the chestnuts don't try to return to its original form, you're gucci.

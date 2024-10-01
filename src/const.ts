@@ -8,7 +8,8 @@ export const PAGE_NAMES = {
     ABOUT: "about",
     FAQ: "faq",
     SAVED: "saved",
-    SUBSTITUTIONS: "substitutions"
+    SUBSTITUTIONS: "substitutions",
+    ARCHIVE: "archive"
 }
 
 export const LOCAL_STORAGE_KEYS = {

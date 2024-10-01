@@ -4,7 +4,7 @@ title: "Hamster Sugar Cookies"
 id: "cookie-3"
 pubDate: 2024-09-22
 description: "So cute you'll want to cry."
-course: "dessert"
+course: "cookie"
 iconName: "mingcute:cookie-line"
 yield: 20
 yieldUnit: "hamster cookie"

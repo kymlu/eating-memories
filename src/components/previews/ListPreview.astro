@@ -1,0 +1,21 @@
+---
+import "../../styles/global.css"
+import { Icon } from "astro-icon/components";
+import SaveButton from "../SaveButton.astro";
+import { ICONS } from "../../const";
+interface Props {
+	id: string;
+	name: string;
+	link?: string;
+	iconName?: string;
+}
+const { id, name, link, iconName} = Astro.props;
+---
+
+<div class="flex items-center gap-2">
+	<a href={link} class="flex flex-row gap-2 items-center hover:text-main-500">
+		<Icon class="text-main-500" name={iconName ?? ICONS.LOGO}/>
+        <span class="capitalize">{name}</span>
+	</a>
+	<SaveButton recipeId={id}/>
+</div>

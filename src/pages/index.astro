@@ -1,29 +1,53 @@
 ---
 import "../styles/global.css";
 import RecipePreview from "../components/previews/RecipePreview.astro";
-import { Icon } from "astro-icon/components"
 import BasePage from "../layouts/BasePage.astro";
-import { ICONS } from "../const.ts";
 import { titleSort } from "../utils.ts";
 
 const allRecipes = await Astro.glob("./posts/*.md");
-
+const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course).sort())];
 ---
 
-<BasePage title="Home">
-    <div class="flex-wrap items-center hidden gap-5 portrait:flex-col">
-		<div>
-			<input class="px-2 border-2 border-main-400" type="search" placeholder="Search name or ingredient"/>
+<BasePage title="Home" mainClasses="">
+	<div class="flex flex-col">
+		<div class="pb-2 px-5">
+			<select class="rounded-xl">
+				{
+					allTags.map((tag) =>
+						<option value={tag} 
+								class="capitalize">
+							{tag[0].toUpperCase() + tag.substr(1).toLowerCase()}
+						</option>
+				)}
+			</select>
 		</div>
-		<button class="flex items-center"><span>Cuisine </span><span><Icon name={ICONS.EXPAND}/></span></button>
-		<button class="flex items-center"><span>Course </span><span><Icon name={ICONS.EXPAND}/></span></button>
-		<button class="flex items-center"><span>Dietary </span><span><Icon name={ICONS.EXPAND}/></span></button>
+		
+		<div id="recipes" class="flex-1 overflow-y-hidden pb-5 px-5">
+			{
+				allTags.map((tag) => 
+					<div id={tag} class:list={["gap-2 landscape:grid-cols-2", {hidden: tag != allTags[0]}, {grid: tag == allTags[0]}]}>
+						{ allRecipes.filter((recipe) => recipe.frontmatter.course == tag).sort(titleSort).map((post) =>
+							<RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine} iconName={post.frontmatter.iconName}/>)
+						}
+					</div>
+				)
+			}
+		</div>
 	</div>
-    
-	<div class="grid gap-2 landscape:grid-cols-2">
-        { allRecipes.sort(titleSort).map((post) =>
-            <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine} iconName={post.frontmatter.iconName}/>)
-        }
-    </div>
-	<div class="hidden">No recipes match your filter :(</div>
 </BasePage>
+
+<script>
+	document.querySelector("select")?.addEventListener("change", (e) => {
+		const recipesToHide = document.getElementById("recipes")?.querySelector(".grid");
+		if (recipesToHide) {
+			recipesToHide?.classList.remove("grid");
+			recipesToHide?.classList.add("hidden");
+		}
+
+		const recipesToShow = document.getElementById((e.target as HTMLSelectElement).value);
+		if (recipesToShow){
+			recipesToShow.classList.add("grid");
+			recipesToShow.classList.remove("hidden");
+		}
+	})
+</script>

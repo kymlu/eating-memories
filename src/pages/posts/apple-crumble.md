@@ -3,7 +3,7 @@ layout: "../../layouts/Recipe.astro"
 title: "Apple Crumble"
 id: "dessert-2"
 pubDate: 2024-09-15
-description: "Called 'apple crisp' for the Americans out there."
+description: "Americans call it 'apple crisp'."
 course: "dessert"
 cuisine: "American"
 iconName: "mingcute:cupcake-line"
