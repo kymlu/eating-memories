@@ -7,7 +7,7 @@ description: "Any bean works."
 adaptedFrom: "Just One Cookbook"
 adaptedFromURL: "https://www.justonecookbook.com/anko-red-bean-paste/"
 cuisine: "Asian"
-course: "dessert"
+course: "filling"
 iconName: "mingcute:sugar-coated-haws-line"
 yield: 450
 yieldUnit: "gram"

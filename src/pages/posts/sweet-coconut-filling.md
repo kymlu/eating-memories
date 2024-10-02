@@ -6,7 +6,7 @@ adaptedFrom: "Qiong Cooking"
 adaptedFromURL: "https://www.youtube.com/watch?v=4rpZUC4-GHo"
 pubDate: 2024-09-19
 description: "Coconutty."
-course: "dessert"
+course: "filling"
 cuisine: "Chinese"
 iconName: "mingcute:sugar-coated-haws-line"
 yield: 130

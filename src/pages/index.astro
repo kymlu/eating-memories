@@ -10,7 +10,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 
 <BasePage title="Home" mainClasses="">
 	<div class="flex flex-col">
-		<div class="pb-2 px-5">
+		<div class="pb-2 px-2">
 			<select class="rounded-xl">
 				{
 					allTags.map((tag) =>
@@ -22,7 +22,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 			</select>
 		</div>
 		
-		<div id="recipes" class="flex-1 overflow-y-hidden pb-5 px-5">
+		<div id="recipes" class="flex-1 overflow-y-hidden pb-5 px-2">
 			{
 				allTags.map((tag) => 
 					<div id={tag} class:list={["gap-2 landscape:grid-cols-2", {hidden: tag != allTags[0]}, {grid: tag == allTags[0]}]}>

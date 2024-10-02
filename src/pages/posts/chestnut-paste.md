@@ -4,7 +4,7 @@ title: "Chestnut Paste"
 id: "filling-3"
 pubDate: 2024-09-16
 description: "Nutty."
-course: "dessert"
+course: "filling"
 cuisine: "Chinese"
 iconName: "mingcute:sugar-coated-haws-line"
 yield: 325

@@ -4,7 +4,7 @@ title: "Custard Filling for Mooncakes"
 id: "filling-2"
 pubDate: 2024-09-16
 description: "For mooncakes."
-course: "dessert"
+course: "filling"
 cuisine: "Chinese"
 iconName: "mingcute:egg-crack-line"
 yield: 400
