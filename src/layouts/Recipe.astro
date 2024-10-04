@@ -107,7 +107,7 @@ interface Ingredient {
                                                         {ingredient.note && <span class="text-xs italic subtitle">{ingredient.note}</span>}
                                                     </span>
                                                 return <ingredient-component>
-                                                            <li class="flex items-center gap-2 list-none decoration-main-600">
+                                                            <li class="flex items-start gap-2 list-none decoration-main-600">
                                                                 <input type="checkbox">
                                                                 {ingredient.recipeId ? <a href={getPostLink(ingredient.recipeId)} class="underline text-main-500">{text}</a> : text}
                                                             </li>

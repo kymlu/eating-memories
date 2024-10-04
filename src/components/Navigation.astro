@@ -2,14 +2,11 @@
 import "../styles/global.css";
 import { Icon } from "astro-icon/components";
 import { getPageLink } from "../utils.ts";
-import { ICONS, PAGE_NAMES } from "../const.ts";
+import { ICONS, NAV_SECTIONS, PAGE_NAMES } from "../const.ts";
 import ThemeToggle from "./ThemeToggle.astro";
 import Logo from "./Logo.astro";
-const pages = [["Recipes", undefined],
-			["Saved", PAGE_NAMES.SAVED, ICONS.SAVED],
-			["Substitutions", PAGE_NAMES.SUBSTITUTIONS],
-			["About", PAGE_NAMES.ABOUT],
-			["FAQ", PAGE_NAMES.FAQ]];
+
+const navSections = NAV_SECTIONS.filter((section) => section.path != PAGE_NAMES.ARCHIVE)
 ---
 <div class="hidden print:block mb-4">
 	<Logo/>
@@ -26,10 +23,10 @@ const pages = [["Recipes", undefined],
 			</a>
 			<div class="flex flex-row items-center flex-1 gap-4 justify-end">
 				<div class="flex flex-row items-center gap-2 portrait:hidden">
-					{pages.map(([title, slug, icon]) => (
-						<a href={getPageLink(slug)} class="nav hover-shadow">
-							<span>{title}</span>
-							{ icon && <Icon class="text-lg" name={icon}/>}
+					{navSections.map((section) => (
+						<a href={getPageLink(section.path)} class="nav hover-shadow">
+							<span>{section.display}</span>
+							{ section.icon && <Icon class="text-lg" name={section.icon}/>}
 						</a>
 					))}
 				</div>
@@ -38,10 +35,10 @@ const pages = [["Recipes", undefined],
 		</div>
 		<div id="menu" class="hidden relative">
 			<div id="menu-contents" class="filled-background absolute top-0 flex gap-5 flex-col w-screen h-fit pt-4 pb-6 px-8 z-10 rounded-b-xl bg-white">
-				{pages.map(([title, slug, icon]) => (
-					<a href={getPageLink(slug)} class="h-10 text-xl nav hover-shadow">
-						<span class="pl-2">{title}</span>
-						{ icon && <Icon class="text-lg" name={icon}/>}
+				{navSections.map((section) => (
+					<a href={getPageLink(section.path)} class="h-10 text-xl nav hover-shadow">
+						<span class="pl-2">{section.display}</span>
+						{ section.icon && <Icon class="text-lg" name={section.icon}/>}
 					</a>))}
 			</div>
 		</div>

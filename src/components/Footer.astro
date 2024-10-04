@@ -1,19 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
 import { getPageLink } from "../utils";
-import { ICONS, PAGE_NAMES } from "../const.ts";
+import { ICONS, NAV_SECTIONS, PAGE_NAMES } from "../const.ts";
 import Logo from "./Logo.astro";
 ---
 
-<div id="footer" class="flex items-center py-2 text-white justify-evenly bg-main-600 print:hidden">
-    <div>
+<div id="footer" class="flex items-start py-6 text-white justify-evenly bg-main-600 print:hidden">
+    <div class="flex flex-col gap-2">
         <a href={getPageLink()}>
             <Logo isLogoWhite={true}/>
         </a>
-        <a href={getPageLink(PAGE_NAMES.ARCHIVE)}>Archive</a>
+        {
+            NAV_SECTIONS.filter((section) => section.path == PAGE_NAMES.ARCHIVE).map((section) => 
+                <a href={getPageLink(section.path)}>{section.display}</a>
+            )
+        }
     </div>
     <a target="_blank" rel="noopener noreferrer" href=`https://github.com/kymlu/eating-memories`>
-        <div class="flex flex-row items-center gap-1 p-2">
+        <div class="flex flex-row items-center gap-1">
             <Icon class="text-3xl" name={ICONS.GITHUB}/>
             <span class="portrait:hidden">Github</span>
         </div>

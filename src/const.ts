@@ -39,6 +39,14 @@ export const ICONS = {
     PRINT: "mingcute:print-line",
 }
 
+export const NAV_SECTIONS: {display: string, path?: string, icon?: string}[] = 
+    [{display: "Recipes", path: undefined},
+    {display: "Saved", path: PAGE_NAMES.SAVED, icon:ICONS.SAVED},
+    {display: "Substitutions", path: PAGE_NAMES.SUBSTITUTIONS},
+    {display: "About", path: PAGE_NAMES.ABOUT},
+    {display: "FAQ", path: PAGE_NAMES.FAQ},
+    {display: "Archive", path: PAGE_NAMES.ARCHIVE}]
+
 export const UNIT_TYPE_NAMES = {
     WEIGHT: "weight",
     TEMPERATURE: "temperature",
