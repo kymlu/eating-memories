@@ -7,12 +7,12 @@ interface Props {
 const { recipeId } = Astro.props;
 ---
 <save-button class="relative w-6 h-6" data-recipe-id={recipeId}>
-    <button class="absolute top-0 right-0"><Icon name={ICONS.NOT_SAVED}/>
-    <button class="absolute top-0 right-0 hidden"><Icon name={ICONS.SAVED}/>
+    <button class="absolute top-0 right-0"><Icon name={ICONS.NOT_SAVED}/></button>
+    <button class="absolute top-0 right-0 hidden"><Icon name={ICONS.SAVED}/></button>
 </save-button>
 
 <script>
-    import { LOCAL_STORAGE_KEYS } from "../const.ts";
+    import { addSavedRecipe, getUserSavedRecipes, removeSavedRecipe } from "../helpers/saved-recipe-helper.ts";
     class SaveButton extends HTMLElement {
         buttons: HTMLButtonElement[];
         recipeId: string;
@@ -27,14 +27,8 @@ const { recipeId } = Astro.props;
             this.buttons = Array.from(this.querySelectorAll("button"));
             this.buttons[0].addEventListener("click", () => { this.addSaved(); });
             this.buttons[1].addEventListener("click", () => { this.removeSaved(); });
-            // TODO: see if I can set this as a global var
-            const savedString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
-            try{
-                if (savedString && (JSON.parse(savedString) as string[]).includes(this.recipeId)) {
-                    this.toggleButton(true);
-                }
-            } catch(e) {
-                this.#removeAllSaved();
+            if (getUserSavedRecipes().includes(this.recipeId)) {
+                this.toggleButton(true);
             }
         }
         
@@ -44,41 +38,15 @@ const { recipeId } = Astro.props;
         }
 
         addSaved(){
-            let currentSaved = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
-            let savedList: string[] = [];
-            if (currentSaved) {
-                try {
-                    savedList = (JSON.parse(currentSaved) as string[]).filter(saved => saved != "") ?? [];
-                } catch(e) {
-                    this.#removeAllSaved();
-                }
-            }
-            if (!savedList.includes(this.recipeId)){
-                let newSaved = JSON.stringify(savedList.concat(this.recipeId));
-                window.localStorage.setItem(LOCAL_STORAGE_KEYS.SAVED, newSaved);
+            if(addSavedRecipe(this.recipeId)) {
                 this.toggleButton(true);
             }
         }
         
         removeSaved(){
-            let currentSaved = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
-            if (!currentSaved){
-                return;
+            if(removeSavedRecipe(this.recipeId)) {
+                this.toggleButton(false);
             }
-            try {
-                let savedList = (JSON.parse(currentSaved) as string[]).filter(saved => saved != "");
-                if (savedList.includes(this.recipeId)){
-                    let newSaved = JSON.stringify(savedList.toSpliced(savedList.indexOf(this.recipeId), 1));
-                    window.localStorage.setItem(LOCAL_STORAGE_KEYS.SAVED, newSaved);
-                    this.toggleButton(false);
-                }
-            } catch (e) {
-                this.#removeAllSaved();
-            }
-        }
-
-        #removeAllSaved(){
-            window.localStorage.removeItem(LOCAL_STORAGE_KEYS.SAVED);
         }
     }
 

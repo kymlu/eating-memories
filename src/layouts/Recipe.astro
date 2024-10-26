@@ -3,8 +3,9 @@ import "../styles/global.css";
 import BasePage from "./BasePage.astro";
 import { Icon } from "astro-icon/components"
 import MiniRecipePreview from "../components/previews/MiniRecipePreview.astro";
-import { getPostLink, titleSort } from "../utils.ts";
-import { ICONS, YIELD_MULTIPLIERS } from "../const";
+import { type Recipe, type Ingredient, type IngredientsGroup } from "../interface.ts";
+import { getRecipeLink, titleSort } from "../utils.ts";
+import { ICONS, YIELD_MULTIPLIERS } from "../const.ts";
 import SaveButton from "../components/SaveButton.astro";
 import UnitConverter from "../components/converters/UnitConverter.astro";
 
@@ -17,38 +18,6 @@ const relatedRecipes = await Astro.glob("/src/pages/posts/*.md").then((recipes) 
     (recipe.frontmatter.ingredients.some((group: IngredientsGroup) => group.recipeId && group.recipeId ==frontmatter.id)
     || recipe.frontmatter.ingredients.flatMap((group: IngredientsGroup) => group.ingredients).some((ingredient: Ingredient) => {
         return ingredient.recipeId && ingredient.recipeId ==frontmatter.id})))});
-
-interface Recipe {
-    layout: string;
-    id: string;
-    title: string;
-    pubDate: Date;
-    description: string;
-    adaptedFrom?: string;
-    adaptedFromURL?: string;
-    cuisine?: string;
-    course?: string;
-    dietary?: string[];
-    yield?: number;
-    yieldUnit?: string;
-    ingredients?: IngredientsGroup[];
-    url: string;
-}
-
-interface IngredientsGroup {
-    name?: string;
-    ingredients: Ingredient[];
-    recipeId?: string;
-}
-
-interface Ingredient {
-    quantity?: number;
-    unit?: string;
-    name: string;
-    note?: string;
-    recipeId?: string;
-    id?: string;
-}
 ---
 <BasePage title={frontmatter.title}>
     <div class="flex items-center gap-1 mb-2">
@@ -92,7 +61,7 @@ interface Ingredient {
                                 {group.name && 
                                     <div id={groupId}>
                                         {group.recipeId ? 
-                                            <a href={getPostLink(group.recipeId)} class="underline text-main-500">
+                                            <a href={getRecipeLink(group.recipeId)} class="underline text-main-500">
                                                 <h3 class="capitalize" data-group-id={groupId}>{group.name}</h3>
                                             </a> :
                                             <h3 class="capitalize" data-group-id={groupId}>{group.name}</h3>
@@ -109,7 +78,7 @@ interface Ingredient {
                                                 return <ingredient-component>
                                                             <li class="flex items-start gap-2 list-none decoration-main-600">
                                                                 <input type="checkbox">
-                                                                {ingredient.recipeId ? <a href={getPostLink(ingredient.recipeId)} class="underline text-main-500">{text}</a> : text}
+                                                                {ingredient.recipeId ? <a href={getRecipeLink(ingredient.recipeId)} class="underline text-main-500">{text}</a> : text}
                                                             </li>
                                                         </ingredient-component>
                                             }

@@ -5,23 +5,42 @@ import RecipePreview from "../components/previews/RecipePreview.astro";
 import { titleSort } from "../utils.ts";
 const allRecipes = await Astro.glob("./posts/*.md");
 ---
+
 <BasePage title="Saved Recipes">
     <div class="flex flex-row justify-between mb-2 portrait:flex-col">
         <h1 class="">Saved Recipes</h1>
-        <button id="clear-btn" class="hidden w-32 p-1 text-white portrait:self-end rounded-xl bg-main-500 hover:bg-main-400">Clear Saved</button>
+        <button
+            id="clear-btn"
+            class="hidden w-32 p-1 text-white portrait:self-end rounded-xl bg-main-500 hover:bg-main-400"
+            >Clear Saved</button
+        >
     </div>
-	<div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
-        { allRecipes.sort(titleSort).map((post) =>
-            <saved-wrapper class="hidden" data-id={post.frontmatter.id}>
-                <RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine} iconName={post.frontmatter.iconName}/>
-            </saved-wrapper>)
+    <div id="recipe-list" class="grid gap-2 landscape:grid-cols-2">
+        {
+            allRecipes.sort(titleSort).map((post) => (
+                <saved-wrapper class="hidden" data-id={post.frontmatter.id}>
+                    <RecipePreview
+                        id={post.frontmatter.id}
+                        name={post.frontmatter.title}
+                        description={post.frontmatter.description}
+                        link={post.url}
+                        dietary={post.frontmatter.dietary}
+                        course={post.frontmatter.course}
+                        cuisine={post.frontmatter.cuisine}
+                        iconName={post.frontmatter.iconName}
+                    />
+                </saved-wrapper>
+            ))
         }
     </div>
     <span id="no-saved" class="hidden">You have no saved recipes!</span>
 
-    <div id="popup-container" class="absolute left-0 top-0 items-center justify-center w-svw h-svh hidden">
-        <div id="popup-bg" class="popup-bg"/>
-        <div id="popup" class="filled-background z-10 w-auto max-w-[70%] portrait:max-w-[80%] h-auto border-main-600 border-2 border-solid rounded-xl p-5 flex flex-col gap-4">
+    <div
+        id="popup-container"
+        class="absolute left-0 top-0 items-center justify-center w-svw h-svh hidden">
+        <div id="popup-bg" class="popup-bg"></div>
+        <div id="popup"
+            class="filled-background z-10 w-auto max-w-[70%] portrait:max-w-[80%] h-auto border-main-600 border-2 border-solid rounded-xl p-5 flex flex-col gap-4">
             <h1>Are you sure you want to clear your saved recipes?</h1>
             <div class="flex justify-around w-full">
                 <button id="no" class="hover-shadow option-button">No</button>
@@ -45,40 +64,37 @@ const allRecipes = await Astro.glob("./posts/*.md");
 </style>
 
 <script>
-    import {LOCAL_STORAGE_KEYS} from "../const.ts";
-    const savedString = window.localStorage.getItem(LOCAL_STORAGE_KEYS.SAVED);
-    let savedList: string[] = [];
-    if (savedString){
-        savedList = (JSON.parse(savedString) as string[]).filter(id => id != "");
+    import { LOCAL_STORAGE_KEYS } from "../const.ts";
+    import { getUserSavedRecipes } from "../helpers/saved-recipe-helper";
+
+    let savedList: string[] = getUserSavedRecipes();
+    if (savedList.length == 0) {
+        document.getElementById("no-saved")?.classList.remove("hidden");
     }
-    let savedCount = document.querySelectorAll("saved-wrapper").length;
-    
     document.getElementById("clear-btn")?.addEventListener("click", () => {
         document.getElementById("popup-container")?.classList.remove("hidden");
         document.getElementById("popup-container")?.classList.add("flex");
     });
-    
+
     ["no", "popup-bg"].forEach((elementId: string) => {
         document.getElementById(elementId)?.addEventListener("click", () => {
             document.getElementById("popup-container")?.classList.add("hidden");
         });
-    })
+    });
 
     document.getElementById("yes")?.addEventListener("click", () => {
         window.localStorage.removeItem(LOCAL_STORAGE_KEYS.SAVED);
         location.reload();
     });
-    
+
     class SavedWrapper extends HTMLElement {
-        connectedCallback(){
-            if (this.dataset.id && savedList.includes(this.dataset.id)){
+        connectedCallback() {
+            if (this.dataset.id && savedList.includes(this.dataset.id)) {
                 this.classList.remove("hidden");
-                document.getElementById("clear-btn")?.classList.remove("hidden");
+                document
+                    .getElementById("clear-btn")
+                    ?.classList.remove("hidden");
             } else {
-                savedCount--;
-                if (savedCount == 0){
-                    document.getElementById("no-saved")?.classList.remove("hidden");
-                }
                 // Note: there is this weird bug (at least in safari) where if you remove this element, unless the first recipe is in the saved list, all the bookmark icons on the page will not be visible.
                 // Works regardless of what is first.
                 // TODO: work on a solution where you aren't removing saved recipes but instead adding.

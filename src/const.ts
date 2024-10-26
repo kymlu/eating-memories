@@ -39,13 +39,13 @@ export const ICONS = {
     PRINT: "mingcute:print-line",
 }
 
-export const NAV_SECTIONS: {display: string, path?: string, icon?: string}[] = 
-    [{display: "Recipes", path: undefined},
-    {display: "Saved", path: PAGE_NAMES.SAVED, icon:ICONS.SAVED},
-    {display: "Substitutions", path: PAGE_NAMES.SUBSTITUTIONS},
-    {display: "About", path: PAGE_NAMES.ABOUT},
-    {display: "FAQ", path: PAGE_NAMES.FAQ},
-    {display: "Archive", path: PAGE_NAMES.ARCHIVE}]
+export const NAV_SECTIONS: { display: string, path?: string, icon?: string }[] =
+    [{ display: "Recipes", path: undefined },
+    { display: "Saved", path: PAGE_NAMES.SAVED, icon: ICONS.SAVED },
+    { display: "Substitutions", path: PAGE_NAMES.SUBSTITUTIONS },
+    { display: "About", path: PAGE_NAMES.ABOUT },
+    { display: "FAQ", path: PAGE_NAMES.FAQ },
+    { display: "Archive", path: PAGE_NAMES.ARCHIVE }]
 
 export const UNIT_TYPE_NAMES = {
     WEIGHT: "weight",
@@ -159,3 +159,19 @@ export const YIELD_MULTIPLIERS: { key: string, value: number, displayValue: stri
         { key: "triple", value: 3, displayValue: "3" },
         { key: "quadruple", value: 4, displayValue: "4" },
     ];
+
+export const allFractions: { [key: number]: string } = {
+    0.125: "⅛",
+    0.2: "⅕",
+    0.25: "¼",
+    0.33: "⅓",
+    0.375: "⅜",
+    0.4: "⅖",
+    0.5: "½",
+    0.6: "⅗",
+    0.625: "⅝",
+    0.67: "⅔",
+    0.75: "¾",
+    0.85: "⅘",
+    0.875: "⅞"
+} 

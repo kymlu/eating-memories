@@ -1,11 +1,9 @@
-interface RecipeIndex {
-    [id: string]: string;
-}
+import type { Dictionary } from "./interface.ts";
 
-// Example usage
-export const recipeIndex: RecipeIndex = {
+export const recipeIndex: Dictionary<string> = {
     "bread-1": "quick-flatbread",
     "bread-2": "focaccia",
+    "dimsum-1": "shrimp-lotus-root-dim-sum",
     "pastry-1": "chinese-puff-pastry",
     "pastry-2": "char-siu-so",
     "pastry-3": "rainbow-flaky-mooncake",
