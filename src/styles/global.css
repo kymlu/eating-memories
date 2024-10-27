@@ -302,6 +302,14 @@
 
         select {
             @apply w-full px-2 py-1 border-2 border-solid border-main-600 bg-main-50 appearance-none cursor-pointer;
+            background-image: url("../../public/icons/down_line_light.svg");
+            background-position: right;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        select:active {
+            background-image: url("../../public/icons/up_line_light.svg");
         }
     }
 
@@ -325,11 +333,19 @@
         }
 
         input, select {
-            @apply bg-main-950 border-main-900
+            @apply bg-main-950 border-main-900;
+        }
+
+        select {
+            background-image: url("../../public/icons/down_line_dark.svg");
+        }
+
+        select:active {
+            background-image: url("../../public/icons/up_line_dark.svg");
         }
 
         .hover-shadow {
-            @apply border-main-900 hover:shadow-main-700
+            @apply border-main-900 hover:shadow-main-700;
         }
 
         .filled-background {

@@ -3,36 +3,28 @@ import "../styles/global.css";
 import RecipePreview from "../components/previews/RecipePreview.astro";
 import BasePage from "../layouts/BasePage.astro";
 import { titleSort } from "../utils.ts";
+import ExpandableSection from "../layouts/ExpandableSection.astro";
 
 const allRecipes = await Astro.glob("./posts/*.md");
 const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course).sort())];
 ---
 
 <BasePage title="Home" mainClasses="">
-	<div class="flex flex-col">
-		<div class="pb-2 px-2">
-			<select class="rounded-xl">
-				{
-					allTags.map((tag) =>
-						<option value={tag} 
-								class="capitalize">
-							{tag[0].toUpperCase() + tag.substr(1).toLowerCase()}
-						</option>
-				)}
-			</select>
-		</div>
-		
-		<div id="recipes" class="flex-1 overflow-y-hidden pb-5 px-2">
-			{
-				allTags.map((tag) => 
-					<div id={tag} class:list={["gap-2 landscape:grid-cols-2", {hidden: tag != allTags[0]}, {grid: tag == allTags[0]}]}>
-						{ allRecipes.filter((recipe) => recipe.frontmatter.course == tag).sort(titleSort).map((post) =>
-							<RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine} iconName={post.frontmatter.iconName}/>)
-						}
-					</div>
-				)
-			}
-		</div>
+	<div>
+		{
+			allTags.map((tag) => 
+				<div>
+					<ExpandableSection title={tag} startOpen={allTags.indexOf(tag) == 0}>
+						<div class="flex flex-col gap-2">
+							{ allRecipes.filter((recipe) => recipe.frontmatter.course == tag).sort(titleSort).map((post) =>
+								<RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine} iconName={post.frontmatter.iconName}/>)
+							}
+						</div>
+					</ExpandableSection>
+					<hr/>
+				</div>
+			)
+		}
 	</div>
 </BasePage>
 
