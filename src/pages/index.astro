@@ -10,16 +10,19 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 ---
 
 <BasePage title="Home" mainClasses="">
-	<div class="flex flex-row justify-end gap-2">
-		<button id="expand-all" class="hover-shadow action-button">Expand All</button>
-		<button id="collapse-all" class="hover-shadow action-button">Collapse All</button>
+	<div class="flex flex-row justify-between">
+		<input type="search" id="search" placeholder="Search!" class="search-input"/>
+		<div class="flex flex-row justify-end gap-2">
+			<button id="expand-all" class="hover-shadow action-button">Expand All</button>
+			<button id="collapse-all" class="hover-shadow action-button">Collapse All</button>
+		</div>
 	</div>
-	<div>
+	<div class="mt-5">
 		{
 			allTags.map((tag) => 
-				<div>
+				<div class="recipe-section">
 					<ExpandableSection title={tag} startOpen={allTags.indexOf(tag) == 0}>
-						<div class="flex flex-col gap-2">
+						<div class="flex flex-col gap-2 pt-1">
 							{ allRecipes.filter((recipe) => recipe.frontmatter.course == tag).sort(titleSort).map((post) =>
 								<RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine} iconName={post.frontmatter.iconName}/>)
 							}
@@ -34,12 +37,17 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 
 <style>
 	.action-button {
-		@apply gap-1 px-2 py-1 transition-all rounded-full;
+		@apply gap-1 px-2 py-1 transition-all rounded-lg;
 	}
 </style>
 
 <script>
-	import SectionHeader from "../classes/CustomHeader";
+	import SectionHeader from "../classes/CustomHeader.ts";
+	import RecipePreview from "../classes/RecipePreview.ts";
+
+	(document.querySelector("input") as HTMLInputElement)?.addEventListener("input", (e: Event) => {
+		filterRecipes((document.querySelector("input") as HTMLInputElement).value);
+	});
 
 	document.querySelector("#expand-all")?.addEventListener("click", (e) => {
 		toggleAll(true);
@@ -47,6 +55,30 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 	document.querySelector("#collapse-all")?.addEventListener("click", (e) => {
 		toggleAll(false);
 	});
+
+	function filterRecipes(searchText: string) {
+		toggleAll(true);
+		if (searchText == "") {
+			Array.from(document.querySelectorAll("recipe-preview")).forEach((recipe) => {
+				recipe.classList.remove("hidden");
+			});
+			Array.from(document.querySelectorAll(".recipe-section")).forEach((section) => {
+				section.classList.remove("hidden");
+			});
+		} else {
+			Array.from(document.querySelectorAll(".recipe-section")).forEach((section) => {
+				let recipePreviews = (Array.from(section.querySelectorAll("recipe-preview")) as RecipePreview[]);
+				recipePreviews.forEach((recipe) => {
+					recipe.classList.toggle("hidden", !recipe.getSearchQuery()?.includes(searchText));
+				});
+				if(!recipePreviews.some((recipe) => !recipe.classList.contains("hidden"))) {
+					section.classList.add("hidden");
+				} else {
+					section.classList.remove("hidden");
+				}
+			})
+		}
+	}
 
 	/**
 	 * Toggles all the expandable sections on the page.

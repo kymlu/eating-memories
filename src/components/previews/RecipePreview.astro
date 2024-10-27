@@ -1,4 +1,5 @@
 ---
+import { string } from "astro:schema";
 import "../../styles/global.css"
 import SaveButton from "../SaveButton.astro";
 import PreviewIcon from "./PreviewIcon.astro";
@@ -17,7 +18,8 @@ interface Props {
 const { id, name, description, link, imageLink, iconName, cuisine, course, dietary } = Astro.props;
 ---
 
-<div class="hover-shadow box-content relative flex flex-row justify-between p-2 transition-all duration-100 rounded-lg min-w-60 min-h-5">
+<recipe-preview data-query={([name, description, cuisine, course, dietary] as string[]).join(" ")} 
+    class="hover-shadow box-content relative flex flex-row justify-between p-2 transition-all duration-100 rounded-lg min-w-60 min-h-5">
     <a href={link} class="flex flex-row flex-1 gap-4 pr-7">
         <PreviewIcon iconName={iconName} imageLink={imageLink}/>
         <div class="flex-1">
@@ -33,4 +35,8 @@ const { id, name, description, link, imageLink, iconName, cuisine, course, dieta
     <div class="absolute right-2">
         <SaveButton recipeId={id}/>
     </div>
-</div>
+</recipe-preview>
+
+<script>
+    import RecipePreview from "../../classes/RecipePreview";
+</script>

@@ -250,8 +250,20 @@
             @apply border-main-500 hover:shadow-custom hover:shadow-main-400 border-2 border-solid;
         }
 
-        input.decimal-input {
+        input {
+            @apply rounded-lg;
+        }
+
+        input.decimal-input, input.search-input {
             @apply border-solid border-main-600 border-2;
+        }
+
+        input.search-input {
+            @apply pl-7 pr-2 bg-no-repeat;
+            background-image: url("../../public/icons/search_line_light.svg");
+            background-size: 20px;
+            background-position-x: 5px;
+            background-position-y: center;
         }
 
         input:focus, select:focus {
@@ -301,11 +313,8 @@
         }
 
         select {
-            @apply w-full px-2 py-1 border-2 border-solid border-main-600 bg-main-50 appearance-none cursor-pointer;
+            @apply w-full px-2 py-1 border-2 border-solid border-main-600 bg-main-50 appearance-none cursor-pointer bg-right bg-no-repeat bg-contain;
             background-image: url("../../public/icons/down_line_light.svg");
-            background-position: right;
-            background-repeat: no-repeat;
-            background-size: contain;
         }
 
         select:active {
@@ -336,12 +345,20 @@
             @apply bg-main-950 border-main-900;
         }
 
+        input.search-input {
+            background-image: url("../../public/icons/search_line_dark.svg");
+        }
+
         select {
             background-image: url("../../public/icons/down_line_dark.svg");
         }
 
         select:active {
             background-image: url("../../public/icons/up_line_dark.svg");
+        }
+
+        input::placeholder {
+            @apply text-main-900;
         }
 
         .hover-shadow {
