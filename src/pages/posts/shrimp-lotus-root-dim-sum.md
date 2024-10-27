@@ -21,7 +21,7 @@ ingredients:
           quantity: 0.5
           unit: "pound"
           id: "10"
-          note: "I might experiment and use less next time. Alternatively, I would try using water chestnuts."
+          note: "I might experiment and use less (half?) next time. Alternatively, I would try using water chestnuts."
         - name: "green onion"
           quantity: 1
           unit: "stem"
@@ -74,7 +74,13 @@ ingredients:
 Peel and devein the <span class="ingredient" data-id="1">shrimp</span>. Mince until it becomes a paste.
 > Can also use a food processor.
 
-Peel and mince the <span class="ingredient" data-id="10">lotus root</span>. Mince the <span class="ingredient" data-id="11">green onion</span>.
+Peel and mince the <span class="ingredient" data-id="10">lotus root</span>. 
+> When prepping lotus root, if you leave it out for too long, the colour may darken significantly. Place cut lotus root in some water with a splash of vinegar and leave it there until you're ready to use it.
+>
+> My initial trial used 1 pound of lotus root, but I think that it may have been too much. I like crunchy textures, so if I'd used less but cut them slightly larger, I may enjoy it more.
+
+Mince the <span class="ingredient" data-id="11">green onion</span>.
+> My dad doesn't like green onions and shrimp, and suggested using garlic instead.
 
 Combine the all the **filling** and **seasoning** ingredients into a bowl. Mix in one direction until a sticky paste forms.
 > Can chill the mixture for 20 minutes to firm up the paste and make it easier to work with.
@@ -85,7 +91,7 @@ For each of the <span class="ingredient" data-id="2">spring roll wrappers</span>
 Wet your hands with water and then roll a tablespoon of shrimp into a ball. Roll the ball onto the strips until fully coated.
 > It's ok if you can see some shrimp.
 
-In a pan/wok, heat oil to 350°F/175°C and then fry in small batches until golden brown, around 4-5 minutes each. After frying, place the balls onto a paper towel to dry.
+In a pan/wok, heat oil to 350°F/175°C and then fry in small batches until golden brown, around 4-5 minutes each. After frying, place the balls onto a paper towel to drain the oil. Place drained balls on a wire rack or a plate.
 > To deep fry, heat oil on high until it hits the desired temperature. Put the balls in and take out when it's ready. Wait until the heat hits the desired temperature again before adding a new batch.
 
 Is good plain, but can also taste good with a creamy chili sauce or sriracha mayo.
