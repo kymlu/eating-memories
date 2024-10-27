@@ -14,7 +14,7 @@ interface Props {
     unit: string;
     note?: string;
 }
-const{result, ingredients, defaultTotal, unit, note} = Astro.props;
+const {result, ingredients, defaultTotal, unit, note} = Astro.props;
 ---
 <ExpandableSection title={result} level={2}>
     <p>{note}</p>

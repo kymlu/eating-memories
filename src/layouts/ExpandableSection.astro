@@ -13,10 +13,10 @@ const { title, level, startOpen } = Astro.props;
     <section-header data-start-open={startOpen ? startOpen.toString() : false} 
         class="flex flex-row items-center justify-between py-2 cursor-pointer select-none">
         {level == 2 ? <h2 class="first-letter:capitalize">{title}</h2> : <h1>{title}</h1>}
-        <span>
+        <span data-id="expand" >
             <Icon class="text-xl" name={ICONS.EXPAND}/>
         </span>
-        <span class="hidden">
+        <span data-id="collapse" class="hidden">
             <Icon class="text-xl" name={ICONS.COLLAPSE}/>
         </span>
     </section-header>
@@ -26,26 +26,5 @@ const { title, level, startOpen } = Astro.props;
 </div>
 
 <script>
-    class SectionHeader extends HTMLElement {
-        connectedCallback() {
-            if (this.dataset.startOpen === "true"){
-                this.toggleContents();
-            }
-
-            this.addEventListener("click", () => {
-                this.toggleContents();
-            })
-        }
-
-        /**
-         * Expands/collapses the contents of the section.
-         */
-        toggleContents(){
-            Array.from(this.querySelectorAll("span")).forEach((icon) => {
-                icon.classList.toggle("hidden");
-            });
-            this.parentElement?.querySelector("div")?.classList.toggle("hidden");
-        }
-    }
-    customElements.define("section-header", SectionHeader);
+    import SectionHeader from "../classes/CustomHeader";
 </script>

@@ -10,6 +10,10 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 ---
 
 <BasePage title="Home" mainClasses="">
+	<div class="flex flex-row justify-end gap-2">
+		<button id="expand-all" class="hover-shadow action-button">Expand All</button>
+		<button id="collapse-all" class="hover-shadow action-button">Collapse All</button>
+	</div>
 	<div>
 		{
 			allTags.map((tag) => 
@@ -21,25 +25,36 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 							}
 						</div>
 					</ExpandableSection>
-					<hr/>
+					<hr class:list={[{"hidden": allTags.indexOf(tag) == allTags.length - 1}]}/>
 				</div>
 			)
 		}
 	</div>
 </BasePage>
 
-<script>
-	document.querySelector("select")?.addEventListener("change", (e) => {
-		const recipesToHide = document.getElementById("recipes")?.querySelector(".grid");
-		if (recipesToHide) {
-			recipesToHide?.classList.remove("grid");
-			recipesToHide?.classList.add("hidden");
-		}
+<style>
+	.action-button {
+		@apply gap-1 px-2 py-1 transition-all rounded-full;
+	}
+</style>
 
-		const recipesToShow = document.getElementById((e.target as HTMLSelectElement).value);
-		if (recipesToShow){
-			recipesToShow.classList.add("grid");
-			recipesToShow.classList.remove("hidden");
-		}
-	})
+<script>
+	import SectionHeader from "../classes/CustomHeader";
+
+	document.querySelector("#expand-all")?.addEventListener("click", (e) => {
+		toggleAll(true);
+	});
+	document.querySelector("#collapse-all")?.addEventListener("click", (e) => {
+		toggleAll(false);
+	});
+
+	/**
+	 * Toggles all the expandable sections on the page.
+	 * @param isExpand True if all the sections should be expanded, false if should be collapsed.
+	 */
+	function toggleAll(isExpand: boolean) {
+		(Array.from(document.querySelectorAll("section-header")) as SectionHeader[]).forEach((section) => {
+			section.toggleContents(isExpand);
+		});
+	}
 </script>
