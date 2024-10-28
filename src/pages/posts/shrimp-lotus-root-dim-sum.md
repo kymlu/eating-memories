@@ -4,7 +4,7 @@ title: "Deep-fried Shrimp and Lotus Root Dim Sum"
 id: "dimsum-1"
 pubDate: 2024-10-26
 description: "Based on Culinary Class Wars"
-course: "main"
+course: "dim sum"
 cuisine: "Chinese"
 iconName: "mingcute:chopsticks-line"
 yield: 15

@@ -5,7 +5,7 @@ id: "pastry-2"
 pubDate: 2024-09-19
 description: "Pork."
 cuisine: "Chinese"
-course: "main"
+course: "dim sum"
 iconName: "mingcute:chicken-line"
 yield: 16
 yieldUnit: "pastry"
