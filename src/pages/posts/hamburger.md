@@ -19,9 +19,8 @@ ingredients:
         - name: "onion"
           quantity: 1
           id: "2"
-        - name: "garlic"
+        - name: "garlic clove"
           quantity: 1
-          unit: "clove"
           id: "8"
         - name: "breadcrumbs"
           quantity: 0.25
