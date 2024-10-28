@@ -46,6 +46,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 				</div>
 			)
 		}
+		<div id="no-recipes" class="mt-5 portrait:mt-2">No recipes found!</div>
 	</div>
 </BasePage>
 
@@ -56,8 +57,8 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 </style>
 
 <script>
-	import RecipePreview from "../classes/RecipePreview.ts";
-	import SectionHeader from "../classes/CustomHeader.ts";
+	import RecipePreview from "../custom-elements/RecipePreview.ts";
+	import SectionHeader from "../custom-elements/CustomHeader.ts";
 
 	(document.querySelector("input") as HTMLInputElement)?.addEventListener("input", (e: Event) => {
 		filterRecipes((document.querySelector("input") as HTMLInputElement).value);
@@ -84,7 +85,8 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 
 		if (searchText == "") {
 			document.querySelector("#clear-search")?.classList.add("hidden");
-
+			document.querySelector("#no-recipes")?.classList.add("hidden");
+			
 			Array.from(document.querySelectorAll("recipe-preview")).forEach((recipe) => {
 				recipe.classList.remove("hidden");
 			});
@@ -94,7 +96,10 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 		} else {
 			document.querySelector("#clear-search")?.classList.remove("hidden");
 
-			Array.from(document.querySelectorAll(".recipe-section")).forEach((section) => {
+			let recipeSections = Array.from(document.querySelectorAll(".recipe-section"));
+			let hiddenCount = 0;
+			
+			recipeSections.forEach((section) => {
 				let recipePreviews = (Array.from(section.querySelectorAll("recipe-preview")) as RecipePreview[]);
 				let splitSearchQuery = searchText.toLowerCase().split(" ");
 				recipePreviews.forEach((recipe) => {
@@ -102,16 +107,19 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 					// of each of the recipe details or ingredients, the recipe is a match.
 					let splitRecipeQuery = recipe.getSearchQuery();
 					recipe.classList.toggle("hidden", !splitSearchQuery.every((searchWord: string) => 
-							splitRecipeQuery.some((recipeWord: string) => recipeWord.includes(searchWord))));
+					splitRecipeQuery.some((recipeWord: string) => recipeWord.includes(searchWord))));
 				});
-
+				
 				// if no recipes in the category match the search terms, hide the whole category
 				if(!recipePreviews.some((recipe) => !recipe.classList.contains("hidden"))) {
 					section.classList.add("hidden");
+					hiddenCount++;
 				} else {
 					section.classList.remove("hidden");
 				}
-			})
+			});
+
+			document.querySelector("#no-recipes")?.classList.toggle("hidden", hiddenCount != recipeSections.length);
 		}
 	}
 

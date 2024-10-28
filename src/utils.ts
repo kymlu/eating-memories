@@ -55,3 +55,9 @@ export function getFloatString(input: number, maxDecimalPrecision: number): stri
 export function getFraction(input: number): string {
     return allFractions[input] ?? getFloatString(input, 2);
 }
+
+export function preventNonNumeric(event: KeyboardEvent){
+    if (!(event.key == "Backspace" || event.key == "Delete" || /\d/.test(event.key) || event.key.includes("Arrow") || event.key == ".")){
+        event.preventDefault();
+    }
+}
