@@ -4,27 +4,36 @@ import RecipePreview from "../components/previews/RecipePreview.astro";
 import BasePage from "../layouts/BasePage.astro";
 import { titleSort } from "../utils.ts";
 import ExpandableSection from "../layouts/ExpandableSection.astro";
+import type { Ingredient, IngredientsGroup } from "../interface";
 
 const allRecipes = await Astro.glob("./posts/*.md");
 const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course).sort())];
 ---
 
-<BasePage title="Home" mainClasses="">
-	<div class="flex flex-row justify-between">
-		<input type="search" id="search" placeholder="Search!" class="search-input"/>
-		<div class="flex flex-row justify-end gap-2">
+<BasePage title="Home">
+	<div class="flex flex-row w-full justify-between gap-2 portrait:flex-col">
+		<input type="search" id="search" placeholder="Search!" class="search-input flex-1 h-9"/>
+		<div class="flex flex-row justify-end gap-2 portrait:w-full">
 			<button id="expand-all" class="hover-shadow action-button">Expand All</button>
 			<button id="collapse-all" class="hover-shadow action-button">Collapse All</button>
 		</div>
 	</div>
-	<div class="mt-5">
+	<div class="mt-5 portrait:mt-2">
 		{
 			allTags.map((tag) => 
 				<div class="recipe-section">
 					<ExpandableSection title={tag} startOpen={allTags.indexOf(tag) == 0}>
 						<div class="flex flex-col gap-2 pt-1">
 							{ allRecipes.filter((recipe) => recipe.frontmatter.course == tag).sort(titleSort).map((post) =>
-								<RecipePreview id={post.frontmatter.id} name={post.frontmatter.title} description={post.frontmatter.description} link={post.url} dietary={post.frontmatter.dietary} course={post.frontmatter.course} cuisine={post.frontmatter.cuisine} iconName={post.frontmatter.iconName}/>)
+								<RecipePreview id={post.frontmatter.id} 
+									name={post.frontmatter.title} 
+									description={post.frontmatter.description} 
+									link={post.url} 
+									dietary={post.frontmatter.dietary} 
+									course={post.frontmatter.course} 
+									cuisine={post.frontmatter.cuisine} 
+									ingredients={post.frontmatter.ingredients.flatMap((group: IngredientsGroup) => group.ingredients).map((ingredient: Ingredient) => ingredient.name)}
+									iconName={post.frontmatter.iconName}/>)
 							}
 						</div>
 					</ExpandableSection>
@@ -37,7 +46,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 
 <style>
 	.action-button {
-		@apply gap-1 px-2 py-1 transition-all rounded-lg;
+		@apply gap-1 px-2 py-1 transition-all rounded-lg h-9 landscape:w-36 portrait:flex-1;
 	}
 </style>
 
@@ -68,8 +77,10 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 		} else {
 			Array.from(document.querySelectorAll(".recipe-section")).forEach((section) => {
 				let recipePreviews = (Array.from(section.querySelectorAll("recipe-preview")) as RecipePreview[]);
+				let splitSearchQuery = searchText.toLowerCase().split(" ");
 				recipePreviews.forEach((recipe) => {
-					recipe.classList.toggle("hidden", !recipe.getSearchQuery()?.includes(searchText));
+					let splitRecipeQuery = recipe.getSearchQuery();
+					recipe.classList.toggle("hidden", !splitSearchQuery.every((searchWord: string) => splitRecipeQuery.some((recipeWord: string) => recipeWord.includes(searchWord))));
 				});
 				if(!recipePreviews.some((recipe) => !recipe.classList.contains("hidden"))) {
 					section.classList.add("hidden");

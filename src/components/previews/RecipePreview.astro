@@ -14,11 +14,12 @@ interface Props {
 	cuisine?: string;
 	course?: string;
 	dietary?: string[];
+    ingredients?: string[];
 }
-const { id, name, description, link, imageLink, iconName, cuisine, course, dietary } = Astro.props;
+const { id, name, description, link, imageLink, iconName, cuisine, course, dietary, ingredients } = Astro.props;
 ---
 
-<recipe-preview data-query={([name, description, cuisine, course, dietary] as string[]).join(" ")} 
+<recipe-preview data-query={([name, description, cuisine, course, dietary] as string[]).concat(ingredients ?? []).join(" ")} 
     class="hover-shadow box-content relative flex flex-row justify-between p-2 transition-all duration-100 rounded-lg min-w-60 min-h-5">
     <a href={link} class="flex flex-row flex-1 gap-4 pr-7">
         <PreviewIcon iconName={iconName} imageLink={imageLink}/>

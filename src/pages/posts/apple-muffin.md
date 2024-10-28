@@ -29,7 +29,7 @@ ingredients:
           unit: "tbsp"
     - name: "dry"
       ingredients:
-        - name: "all-purpose"
+        - name: "all-purpose flour"
           quantity: 3
           unit: "cup"
         - name: "cinnamon"

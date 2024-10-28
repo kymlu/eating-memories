@@ -346,15 +346,15 @@
         }
 
         input.search-input {
-            background-image: url("../../public/icons/search_line_dark.svg");
+            background-image: url("icons/search_line_dark.svg");
         }
 
         select {
-            background-image: url("../../public/icons/down_line_dark.svg");
+            background-image: url("icons/down_line_dark.svg");
         }
 
         select:active {
-            background-image: url("../../public/icons/up_line_dark.svg");
+            background-image: url("icons/up_line_dark.svg");
         }
 
         input::placeholder {
