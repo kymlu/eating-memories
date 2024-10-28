@@ -254,17 +254,24 @@
             @apply rounded-lg;
         }
 
-        input.decimal-input, input.search-input {
+        input[type="number"], input[type="search"] {
             @apply border-solid border-main-500 border-2;
         }
 
-        input.search-input {
-            @apply pl-7 pr-2 bg-no-repeat;
+        input[type="search"] {
+            @apply px-7 bg-no-repeat;
             background-image: url("../../public/icons/search_line_light.svg");
             background-size: 20px;
             background-position-x: 5px;
             background-position-y: center;
             background-color: white;
+        }
+
+        input[type="search"]::-webkit-search-decoration,
+        input[type="search"]::-webkit-search-cancel-button,
+        input[type="search"]::-webkit-search-results-button,
+        input[type="search"]::-webkit-search-results-decoration {
+        -webkit-appearance:none;
         }
 
         input:focus, select:focus {
@@ -346,21 +353,21 @@
             @apply bg-main-950 border-main-900;
         }
 
-        input.search-input {
+        input[type="search"] {
             background-image: url("../../public/icons/search_line_dark.svg");
+        }
+        
+        input::placeholder {
+            @apply text-main-900;
         }
 
         select {
             background-image: url("../../public/icons/down_line_dark.svg");
-        }
+        }    
 
         select:active {
             background-image: url("../../public/icons/up_line_dark.svg");
-        }
-
-        input::placeholder {
-            @apply text-main-900;
-        }
+        }    
 
         .hover-shadow {
             @apply border-main-900 hover:shadow-main-700;

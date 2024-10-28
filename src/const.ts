@@ -38,6 +38,7 @@ export const ICONS = {
     FLASK: "mingcute:flask-2-line",
     PRINT: "mingcute:print-line",
     SEARCH: "mingcute:search-line",
+    CLOSE_CIRCLE: "mingcute:close-circle-line",
 }
 
 export const NAV_SECTIONS: { display: string, path?: string, icon?: string }[] =

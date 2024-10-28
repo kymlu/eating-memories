@@ -4,7 +4,9 @@ import RecipePreview from "../components/previews/RecipePreview.astro";
 import BasePage from "../layouts/BasePage.astro";
 import { titleSort } from "../utils.ts";
 import ExpandableSection from "../layouts/ExpandableSection.astro";
-import type { Ingredient, IngredientsGroup } from "../interface";
+import type { Ingredient, IngredientsGroup } from "../interface.ts";
+import { Icon } from "astro-icon/components";
+import { ICONS } from "../const.ts";
 
 const allRecipes = await Astro.glob("./posts/*.md");
 const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course).sort())];
@@ -12,7 +14,10 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 
 <BasePage title="Home">
 	<div class="flex flex-row w-full justify-between gap-2 portrait:flex-col">
-		<input type="search" id="search" placeholder="Search!" class="search-input flex-1 h-9"/>
+		<div class="relative flex items-center flex-1">
+			<input type="search" id="search" placeholder="Search!" class="flex-1 h-9"/>
+			<Icon id="clear-search" name={ICONS.CLOSE_CIRCLE} class="absolute right-2 hidden"></Icon>
+		</div>
 		<div class="flex flex-row justify-end gap-2 portrait:w-full">
 			<button id="expand-all" class="hover-shadow action-button">Expand All</button>
 			<button id="collapse-all" class="hover-shadow action-button">Collapse All</button>
@@ -51,11 +56,15 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 </style>
 
 <script>
-	import SectionHeader from "../classes/CustomHeader.ts";
 	import RecipePreview from "../classes/RecipePreview.ts";
+	import SectionHeader from "../classes/CustomHeader.ts";
 
 	(document.querySelector("input") as HTMLInputElement)?.addEventListener("input", (e: Event) => {
 		filterRecipes((document.querySelector("input") as HTMLInputElement).value);
+	});
+	document.querySelector("#clear-search")?.addEventListener("click", (e) => {
+		(document.querySelector("input") as HTMLInputElement).value = "";
+		filterRecipes();
 	});
 
 	document.querySelector("#expand-all")?.addEventListener("click", (e) => {
@@ -65,9 +74,17 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 		toggleAll(false);
 	});
 
-	function filterRecipes(searchText: string) {
+	/**
+	 * Filters the recipes that contain one or more of the keywords that 
+	 * the user entered and hides sections if necessary.
+	 * @param searchText The user-entered text to search through.
+	 */
+	function filterRecipes(searchText: string = "") {
 		toggleAll(true);
+
 		if (searchText == "") {
+			document.querySelector("#clear-search")?.classList.add("hidden");
+
 			Array.from(document.querySelectorAll("recipe-preview")).forEach((recipe) => {
 				recipe.classList.remove("hidden");
 			});
@@ -75,13 +92,20 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 				section.classList.remove("hidden");
 			});
 		} else {
+			document.querySelector("#clear-search")?.classList.remove("hidden");
+
 			Array.from(document.querySelectorAll(".recipe-section")).forEach((section) => {
 				let recipePreviews = (Array.from(section.querySelectorAll("recipe-preview")) as RecipePreview[]);
 				let splitSearchQuery = searchText.toLowerCase().split(" ");
 				recipePreviews.forEach((recipe) => {
+					// if all of the user entered keywords are found in one or more
+					// of each of the recipe details or ingredients, the recipe is a match.
 					let splitRecipeQuery = recipe.getSearchQuery();
-					recipe.classList.toggle("hidden", !splitSearchQuery.every((searchWord: string) => splitRecipeQuery.some((recipeWord: string) => recipeWord.includes(searchWord))));
+					recipe.classList.toggle("hidden", !splitSearchQuery.every((searchWord: string) => 
+							splitRecipeQuery.some((recipeWord: string) => recipeWord.includes(searchWord))));
 				});
+
+				// if no recipes in the category match the search terms, hide the whole category
 				if(!recipePreviews.some((recipe) => !recipe.classList.contains("hidden"))) {
 					section.classList.add("hidden");
 				} else {
