@@ -25,9 +25,11 @@ export const recipeIndex: Dictionary<string> = {
     "meat-2": "soy-sauce-chicken-drumsticks",
     "meat-3": "spare-ribs-pumpkin",
     "meat-4": "hamburger",
+    "meat-5": "baked-chicken",
     "dessert-1": "snow-skin-mooncake",
     "dessert-2": "apple-crumble",
     "dessert-3": "fruity-cake",
     "dessert-4": "walnut-soup",
     "dessert-5": "apple-muffin",
+    "dessert-6": "coffee-jelly",
 };

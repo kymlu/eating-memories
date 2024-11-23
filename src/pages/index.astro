@@ -16,7 +16,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 	<div class="flex flex-row w-full justify-between gap-2 portrait:flex-col">
 		<div class="relative flex items-center flex-1">
 			<input type="search" id="search" placeholder="Search!" class="flex-1 h-9"/>
-			<Icon id="clear-search" name={ICONS.CLOSE_CIRCLE} class="absolute right-2 hidden"></Icon>
+			<Icon id="clear-search-small" name={ICONS.CLOSE_CIRCLE} class="absolute right-2 hidden"></Icon>
 		</div>
 		<div class="flex flex-row justify-end gap-2 portrait:w-full">
 			<button id="expand-all" class="hover-shadow action-button">Expand All</button>
@@ -46,7 +46,13 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 				</div>
 			)
 		}
-		<div id="no-recipes" class="mt-5 portrait:mt-2">No recipes found!</div>
+		<div id="no-recipes" class="hidden flex-col justify-center w-full mt-28">
+			<span>No recipes found!</span>
+			<div class="flex flex-row justify-end gap-2 portrait:w-full">
+				<button id="clear-search" class="hover-shadow action-button">Clear Search</button>
+				<button id="random-recipe" class="hover-shadow action-button">Random Recipe</button>
+			</div>
+		</div>
 	</div>
 </BasePage>
 
@@ -59,13 +65,20 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 <script>
 	import RecipePreview from "../custom-elements/RecipePreview.ts";
 	import SectionHeader from "../custom-elements/CustomHeader.ts";
+	import { recipeIndex } from "../recipe-index";
 
 	(document.querySelector("input") as HTMLInputElement)?.addEventListener("input", (e: Event) => {
 		filterRecipes((document.querySelector("input") as HTMLInputElement).value);
 	});
 	document.querySelector("#clear-search")?.addEventListener("click", (e) => {
-		(document.querySelector("input") as HTMLInputElement).value = "";
-		filterRecipes();
+		clearSearch();
+	});
+	document.querySelector("#clear-search-small")?.addEventListener("click", (e) => {
+		clearSearch();
+	});
+	document.querySelector("#random-recipe")?.addEventListener("click", (e) => {
+		const allRecipes = Object.values(recipeIndex);
+		allRecipes[Math.floor(Math.random() * allRecipes.length)];
 	});
 
 	document.querySelector("#expand-all")?.addEventListener("click", (e) => {
@@ -74,6 +87,14 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 	document.querySelector("#collapse-all")?.addEventListener("click", (e) => {
 		toggleAll(false);
 	});
+
+	/**
+	 * Clears the search bar.
+	 */
+	function clearSearch() {
+		(document.querySelector("input") as HTMLInputElement).value = "";
+		filterRecipes();
+	}
 
 	/**
 	 * Filters the recipes that contain one or more of the keywords that 
@@ -85,6 +106,8 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 
 		if (searchText == "") {
 			document.querySelector("#clear-search")?.classList.add("hidden");
+			document.querySelector("#clear-search-small")?.classList.add("hidden");
+			document.querySelector("#no-recipes")?.classList.remove("flex");
 			document.querySelector("#no-recipes")?.classList.add("hidden");
 			
 			Array.from(document.querySelectorAll("recipe-preview")).forEach((recipe) => {
@@ -95,6 +118,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 			});
 		} else {
 			document.querySelector("#clear-search")?.classList.remove("hidden");
+			document.querySelector("#clear-search-small")?.classList.remove("hidden");
 
 			let recipeSections = Array.from(document.querySelectorAll(".recipe-section"));
 			let hiddenCount = 0;
@@ -119,6 +143,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 				}
 			});
 
+			document.querySelector("#no-recipes")?.classList.toggle("flex", hiddenCount == recipeSections.length);
 			document.querySelector("#no-recipes")?.classList.toggle("hidden", hiddenCount != recipeSections.length);
 		}
 	}
