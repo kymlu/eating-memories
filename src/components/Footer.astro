@@ -8,7 +8,7 @@ import Logo from "./Logo.astro";
 <div id="footer" class="flex items-start py-6 text-white justify-evenly bg-main-600 print:hidden">
     <div class="flex flex-col gap-2">
         <a href={getPageLink()}>
-            <Logo isLogoWhite={false}/>
+            <Logo isLogoWhite={true}/>
         </a>
         {
             NAV_SECTIONS.filter((section) => section.path == PAGE_NAMES.ARCHIVE).map((section) => 

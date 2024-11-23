@@ -8,7 +8,7 @@ course: "dessert"
 cuisine: "Japanese"
 iconName: "mingcute:teacup-line"
 yield: 5
-yieldUnit: "bowls"
+yieldUnit: "bowl"
 ingredients:
     - name: "jelly"
       ingredients:
@@ -16,14 +16,14 @@ ingredients:
           quantity: 50
           unit: "ml"
           id: "2"
-        - name: "gelatine"
+        - name: "gelatin"
           quantity: 7
           unit: "g"
           note: "generally 7g/packet if using portioned packets"
           id: "1"
         - name: "instant coffee"
           quantity: 3
-          unit: "heaping soup spoons"
+          unit: "tbsp"
           id: "3"
         - name: "boiling water"
           quantity: 450

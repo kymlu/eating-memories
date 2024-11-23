@@ -67,7 +67,7 @@ ingredients:
 ---
 # MIX WATER AND OIL DOUGHS
 1. Knead the water dough.
-> There are many ways to combine the doughs together. You could combine them in portioned sections, or combine it all at once. Additionally, you could **[fold it into thirds](#folding)**, or **[roll them (see the rainbow flaky pastry for reference)](./rainbow-flaky-mooncake)**. I don't see anything wrong with mixing and matching.
+> There are many ways to combine the doughs together. You could combine them in portioned sections, or combine it all at once. Additionally, you could **[fold it into thirds](#folding)**, or **[roll them (see the rainbow flaky pastry for reference)](../rainbow-flaky-mooncake)**. I don't see anything wrong with mixing and matching.
 
 > If portioning:
 >> 1. Divide the water dough into 47g portions.
