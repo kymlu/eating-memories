@@ -15,7 +15,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 <BasePage title="Home">
 	<div class="flex flex-row w-full justify-between gap-2 portrait:flex-col">
 		<div class="relative flex items-center flex-1">
-			<input type="search" id="search" placeholder="Search!" class="flex-1 h-9"/>
+			<input type="search" id="search" placeholder="Search!" class="flex-1 h-9 min-w-0"/>
 			<Icon id="clear-search-small" name={ICONS.CLOSE_CIRCLE} class="absolute right-2 hidden"></Icon>
 		</div>
 		<div class="flex flex-row justify-end gap-2 portrait:w-full">
@@ -23,7 +23,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 			<button id="collapse-all" class="hover-shadow action-button">Collapse All</button>
 		</div>
 	</div>
-	<div class="mt-5 portrait:mt-2">
+	<div class="flex flex-col mt-5 grow portrait:mt-2">
 		{
 			allTags.map((tag) => 
 				<div class="recipe-section">
@@ -46,7 +46,7 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 				</div>
 			)
 		}
-		<div id="no-recipes" class="hidden flex-col justify-center w-full mt-28 gap-2">
+		<div id="no-recipes" class="hidden flex-col justify-center items-center grow w-full gap-2">
 			<span class="text-center">No recipes found!</span>
 			<div class="flex flex-row justify-center items-center gap-2 portrait:w-full portrait:flex-col">
 				<button id="clear-search" class="hover-shadow action-button !w-56">Clear Search</button>

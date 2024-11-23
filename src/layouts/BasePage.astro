@@ -23,7 +23,7 @@ const {title, contentTitle} = Astro.props;
 	<body class="relative flex flex-col h-auto min-h-svh">
 		<Navigation/>
 
-        <main class="flex-grow mx-20 my-10 portrait:mx-10 print:m-0">
+        <main class="flex flex-col flex-grow mx-20 my-10 portrait:mx-10 print:m-0">
 			{contentTitle && <h1 class="mb-2">{contentTitle}</h1>}
             <slot/>
         </main>
