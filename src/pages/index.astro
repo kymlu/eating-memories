@@ -46,11 +46,11 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 				</div>
 			)
 		}
-		<div id="no-recipes" class="hidden flex-col justify-center w-full mt-28">
-			<span>No recipes found!</span>
-			<div class="flex flex-row justify-end gap-2 portrait:w-full">
-				<button id="clear-search" class="hover-shadow action-button">Clear Search</button>
-				<button id="random-recipe" class="hover-shadow action-button">Random Recipe</button>
+		<div id="no-recipes" class="hidden flex-col justify-center w-full mt-28 gap-2">
+			<span class="text-center">No recipes found!</span>
+			<div class="flex flex-row justify-center gap-2 portrait:w-full">
+				<button id="clear-search" class="hover-shadow action-button !w-56">Clear Search</button>
+				<button id="random-recipe" class="hover-shadow action-button !w-56">Random Recipe</button>
 			</div>
 		</div>
 	</div>
@@ -65,7 +65,8 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 <script>
 	import RecipePreview from "../custom-elements/RecipePreview.ts";
 	import SectionHeader from "../custom-elements/CustomHeader.ts";
-	import { recipeIndex } from "../recipe-index";
+	import { recipeIndex } from "../recipe-index.ts";
+	import { getRecipeLink } from "../utils.ts"
 
 	(document.querySelector("input") as HTMLInputElement)?.addEventListener("input", (e: Event) => {
 		filterRecipes((document.querySelector("input") as HTMLInputElement).value);
@@ -77,8 +78,9 @@ const allTags = [...new Set(allRecipes.map((recipe) => recipe.frontmatter.course
 		clearSearch();
 	});
 	document.querySelector("#random-recipe")?.addEventListener("click", (e) => {
-		const allRecipes = Object.values(recipeIndex);
-		allRecipes[Math.floor(Math.random() * allRecipes.length)];
+		const allRecipes = Object.keys(recipeIndex);
+		var randomId = allRecipes[Math.floor(Math.random() * allRecipes.length)];
+		location.href = getRecipeLink(randomId);
 	});
 
 	document.querySelector("#expand-all")?.addEventListener("click", (e) => {

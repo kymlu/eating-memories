@@ -1,6 +1,6 @@
 import type { MarkdownInstance } from "astro";
 import { recipeIndex } from "./recipe-index.ts";
-import { allFractions, LOCAL_STORAGE_KEYS, SITE_SLUG } from "./const.ts";
+import { allFractions, SITE_SLUG } from "./const.ts";
 
 /**
  * Gets the url to the page on the site.
