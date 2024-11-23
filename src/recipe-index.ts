@@ -12,6 +12,7 @@ export const recipeIndex: Dictionary<string> = {
     "cookie-2": "gingersnap",
     "cookie-3": "hamster-sugar-cookies",
     "cookie-4": "apple-filled-icebox-cookies",
+    "cookie-5": "langue-de-chat",
     "filling-1": "bean-paste",
     "filling-2": "custard-moon-cakes",
     "filling-3": "chestnut-paste",

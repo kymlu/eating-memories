@@ -6,7 +6,7 @@ pubDate: 2024-11-20
 description: "My sister's favourite dessert."
 course: "dessert"
 cuisine: "Japanese"
-iconName: "mingcute:cupcake-line"
+iconName: "mingcute:teacup-line"
 yield: 5
 yieldUnit: "bowls"
 ingredients:
