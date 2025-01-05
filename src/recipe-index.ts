@@ -3,6 +3,7 @@ import type { Dictionary } from "./interface.ts";
 export const recipeIndex: Dictionary<string> = {
     "bread-1": "quick-flatbread",
     "bread-2": "focaccia",
+    "bread-3": "pizza-dough",
     "dimsum-1": "shrimp-lotus-root-dim-sum",
     "pastry-1": "chinese-puff-pastry",
     "pastry-2": "char-siu-so",

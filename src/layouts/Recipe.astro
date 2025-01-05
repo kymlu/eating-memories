@@ -37,7 +37,7 @@ const relatedRecipes = await Astro.glob("/src/pages/posts/*.md").then((recipes) 
             </div>
             {frontmatter.adaptedFrom && <a target="_blank" rel="noopener noreferrer" href={frontmatter.adaptedFromURL} class="subtitle">Adapted from {frontmatter.adaptedFrom}</a>}
             {frontmatter.yield && 
-                <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="w-60 flex flex-col gap-1">
+                <yield-component data-default-value={frontmatter.yield} data-unit={frontmatter.yieldUnit} class="flex flex-col gap-1">
                     <div class="flex flex-row flex-wrap gap-2 justify-between">
                         <button id="minus-yield" class="enabled:hover:text-main-400 disabled:opacity-40 disabled:cursor-default print:hidden"><Icon name={ICONS.MINUS}/></button>
                         <span class="text-nowrap">Yield: <span id="yield"/></span>
