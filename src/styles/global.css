@@ -278,6 +278,10 @@
             @apply outline-none;
         }
 
+        input[type="checkbox"] {
+            margin-top: 5px;
+        }
+
         .filled-background {
             @apply bg-white;
         }

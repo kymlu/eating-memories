@@ -68,7 +68,7 @@ ingredients:
 
 ---
 
-Cream together <span class="ingredient" data-id="1">butter</span> and <span class="ingredient" data-id="2">sugar</span> until light and slightly fluffy.
+Cream together <span class="ingredient" data-id="1">butter</span> and <span class="ingredient" data-id="2">sugar</span> by hand or with a mixer until light and slightly fluffy.
 
 Add in <span class="ingredient" data-id="3">molasses</span>, <span class="ingredient" data-id="4">egg</span>, and <span class="ingredient" data-id="5">orange peel</span> and mix until combined.
 
