@@ -59,10 +59,11 @@ ingredients:
           id: "9"
           note: "could instead have an equal amount of fruit or nuts"
 ---
-In a mug, add <span class="ingredient" data-id="1">flour</span>, <span class="ingredient" data-id="2">sugar</span>, <span class="ingredient" data-id="3">cocoa powder</span>, <span class="ingredient" data-id="4">salt</span>, and <span class="ingredient" data-id="5">baking powder</span>. Mix with a chopstick until combined.
 > The cake doesn't have to be chocolate! You can replace the cocoa powder with extra flour, and then add whatever flavouring you want instead. Some ideas:
-- 1/8 tsp cinnamon powder
-- 1 tsp citrus juice + zest
+> - add 1/8 tsp cinnamon powder and 1 tsp of diced apples
+> - substitute orange juice for the milk + add 1 tsp citrus zest
+
+In a mug, add <span class="ingredient" data-id="1">flour</span>, <span class="ingredient" data-id="2">sugar</span>, <span class="ingredient" data-id="3">cocoa powder</span>, <span class="ingredient" data-id="4">salt</span>, and <span class="ingredient" data-id="5">baking powder</span>. Mix with a chopstick until combined.
 
 Add in <span class="ingredient" data-id="6">milk</span>, <span class="ingredient" data-id="7">melted butter</span>, and <span class="ingredient" data-id="8">vanilla extract</span>. Mix until just combined.
 
