@@ -36,4 +36,5 @@ export const recipeIndex: Dictionary<string> = {
     "dessert-4": "walnut-soup",
     "dessert-5": "apple-muffin",
     "dessert-6": "coffee-jelly",
+    "dessert-7": "chocolate-mug-cake",
 };
