@@ -60,7 +60,7 @@ ingredients:
           note: "could instead have an equal amount of fruit or nuts"
 ---
 > The cake doesn't have to be chocolate! You can replace the cocoa powder with extra flour, and then add whatever flavouring you want instead. Some ideas:
-> - add 1/8 tsp cinnamon powder and 1 tsp of diced apples
+> - add 1/8 tsp cinnamon powder and 1 tsp of diced apples coated in flour
 > - substitute orange juice for the milk + add 1 tsp citrus zest
 
 In a mug, add <span class="ingredient" data-id="1">flour</span>, <span class="ingredient" data-id="2">sugar</span>, <span class="ingredient" data-id="3">cocoa powder</span>, <span class="ingredient" data-id="4">salt</span>, and <span class="ingredient" data-id="5">baking powder</span>. Mix with a chopstick until combined.
@@ -69,6 +69,6 @@ Add in <span class="ingredient" data-id="6">milk</span>, <span class="ingredient
 
 If adding toppings, mix them in briefly.
 
-Microwave the mug for 90 seconds. It is done if the top is a little shiny but not runny. If it's not fully cooked, microwave again for 15 seconds at a time until it is.
+Microwave the mug for 90 seconds. It is done if the top is slightly shiny but not runny. If it's not fully cooked, microwave again for 15 seconds at a time until it is.
 
 Let cook for 1 minute before eating.
