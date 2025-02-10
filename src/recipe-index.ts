@@ -4,7 +4,7 @@ export const recipeIndex: Dictionary<string> = {
     "bread-1": "quick-flatbread",
     "bread-2": "focaccia",
     "bread-3": "pizza-dough",
-    "dimsum-1": "shrimp-lotus-root-dim-sum",
+    "dimsum-1": "shrimp-ball-dim-sum",
     "pastry-1": "chinese-puff-pastry",
     "pastry-2": "char-siu-so",
     "pastry-3": "rainbow-flaky-mooncake",
