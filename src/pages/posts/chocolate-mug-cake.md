@@ -63,6 +63,8 @@ ingredients:
 > - add 1/8 tsp cinnamon powder and 1 tsp of diced apples coated in flour
 > - substitute orange juice for the milk + add 1 tsp citrus zest
 
+> If you have no baking powder, replace the milk with an equal amount of a carbonated drink! The carbonation will help the batter rise.
+
 In a mug, add <span class="ingredient" data-id="1">flour</span>, <span class="ingredient" data-id="2">sugar</span>, <span class="ingredient" data-id="3">cocoa powder</span>, <span class="ingredient" data-id="4">salt</span>, and <span class="ingredient" data-id="5">baking powder</span>. Mix with a chopstick until combined.
 
 Add in <span class="ingredient" data-id="6">milk</span>, <span class="ingredient" data-id="7">melted butter</span>, and <span class="ingredient" data-id="8">vanilla extract</span>. Mix until just combined.
